@@ -7,98 +7,178 @@
     <style>
         :root { --primary: #007aff; --success: #34c759; --error: #ff3b30; --bg: #f2f2f7; }
         body { font-family: -apple-system, system-ui; background-color: var(--bg); display: flex; justify-content: center; padding: 20px; margin: 0; }
-        #app { width: 100%; max-width: 500px; background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .question { font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; color: #1c1c1e; }
-        .options-container { display: flex; flex-direction: column; gap: 12px; }
-        .option { padding: 15px; border: 2px solid #e5e5ea; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 1rem; text-align: left; background: white; }
-        .option:active { transform: scale(0.98); }
-        .correct { background-color: var(--success) !important; border-color: var(--success); color: white; }
-        .wrong { background-color: var(--error) !important; border-color: var(--error); color: white; }
-        #feedback { margin-top: 20px; font-weight: 600; min-height: 24px; text-align: center; }
-        .btn-next { margin-top: 20px; width: 100%; padding: 15px; border: none; border-radius: 12px; background: var(--primary); color: white; font-size: 1rem; font-weight: 600; cursor: pointer; display: none; }
-        #score-board { margin-bottom: 10px; font-size: 0.9rem; color: #8e8e93; text-align: right; }
+        #app { width: 100%; max-width: 500px; background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; }
+        
+        /* Schermate */
+        .screen { display: none; }
+        .active { display: block; }
+
+        /* Timer e UI */
+        #timer { font-weight: bold; color: var(--error); font-size: 1.2rem; text-align: center; margin-bottom: 10px; }
+        .question { font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; color: #1c1c1e; }
+        .options-container { display: flex; flex-direction: column; gap: 10px; }
+        .option { padding: 15px; border: 2px solid #e5e5ea; border-radius: 12px; cursor: pointer; text-align: left; background: white; font-size: 1rem; }
+        .correct { background-color: var(--success) !important; color: white; border-color: var(--success); }
+        .wrong { background-color: var(--error) !important; color: white; border-color: var(--error); }
+        
+        /* Revisione */
+        .review-item { text-align: left; margin-bottom: 15px; padding: 10px; border-bottom: 1px solid #eee; }
+        .review-q { font-weight: bold; }
+        .review-a { color: var(--success); }
+
+        button.main-btn { width: 100%; padding: 15px; border: none; border-radius: 12px; background: var(--primary); color: white; font-size: 1.1rem; font-weight: 600; cursor: pointer; margin-top: 20px; }
     </style>
 </head>
 <body>
 
 <div id="app">
-    <div id="score-board">Punteggio: <span id="points">0</span></div>
-    <div id="question" class="question">Caricamento...</div>
-    <div id="options" class="options-container"></div>
-    <div id="feedback"></div>
-    <button id="next-btn" class="btn-next" onclick="loadNewQuestion()">Prossima Domanda</button>
+    <div id="start-screen" class="screen active">
+        <h1>Simulatore Farmacologia</h1>
+        <p>Il tentativo include domande estratte casualmente. Hai 30 minuti di tempo.</p>
+        <button class="main-btn" onclick="startAttempt()">Iniziare tentativo?</button>
+    </div>
+
+    <div id="quiz-screen" class="screen">
+        <div id="timer">Tempo: 30:00</div>
+        <div id="score-board" style="text-align:right; font-size:0.8rem;">Domanda <span id="q-idx">1</span></div>
+        <div id="question" class="question"></div>
+        <div id="options" class="options-container"></div>
+        <button id="next-btn" class="main-btn" style="display:none;" onclick="renderQuestion()">Prossima Domanda</button>
+    </div>
+
+    <div id="result-screen" class="screen">
+        <h2>Tentativo Completato</h2>
+        <p id="final-score"></p>
+        <div id="review-section">
+            <h3>Revisione Errori:</h3>
+            <div id="error-list"></div>
+        </div>
+        <button class="main-btn" onclick="location.reload()">Nuovo Tentativo</button>
+    </div>
 </div>
 
 <script>
-// La sezione DATA è ora pronta per essere riempita
-const questions = [
-    {q: "Esempio: Meccanismo Statine?", a: "Inibizione HMG-CoA reduttasi"},
-    {q: "Esempio: Antidoto Oppioidi?", a: "Naloxone"},
-    {q: "Esempio: Antidoto Benzodiazepine?", a: "Flumazenil"},
-    {q: "Esempio: Meccanismo Aspirina?", a: "Inibizione irreversibile COX"}
+// I tuoi dati (Esempio, aggiungi qui tutti i batch)
+const allQuestions = [
+    {q: "Meccanismo Statine?", a: "Inibizione HMG-CoA reduttasi"},
+    {q: "Antidoto Oppioidi?", a: "Naloxone"},
+    {q: "Antidoto Benzodiazepine?", a: "Flumazenil"},
+    {q: "Tossicità Amfotericina B?", a: "Nefrotossicità"},
+    {q: "Meccanismo Rivaroxaban?", a: "Inibitore Fattore Xa"}
+    // Aggiungi qui gli altri dati...
 ];
 
+let attemptQuestions = [];
+let currentIndex = 0;
 let score = 0;
-let currentCorrectAnswer = "";
+let errors = [];
+let timerInterval;
+let timeLeft = 30 * 60; // 30 minuti in secondi
 
-function loadNewQuestion() {
-    // Reset interfaccia
-    document.getElementById('feedback').innerText = "";
+function startAttempt() {
+    // Mescola e seleziona domande (ogni domanda presente una sola volta)
+    attemptQuestions = [...allQuestions].sort(() => Math.random() - 0.5);
+    currentIndex = 0;
+    score = 0;
+    errors = [];
+    timeLeft = 30 * 60;
+
+    document.getElementById('start-screen').classList.remove('active');
+    document.getElementById('quiz-screen').classList.add('active');
+    
+    startTimer();
+    renderQuestion();
+}
+
+function startTimer() {
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        let mins = Math.floor(timeLeft / 60);
+        let secs = timeLeft % 60;
+        document.getElementById('timer').innerText = `Tempo: ${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        
+        if (timeLeft <= 0) {
+            endAttempt("Tempo scaduto!");
+        }
+    }, 1000);
+}
+
+function renderQuestion() {
+    if (currentIndex >= attemptQuestions.length) {
+        endAttempt("Quiz completato!");
+        return;
+    }
+
     document.getElementById('next-btn').style.display = "none";
+    document.getElementById('q-idx').innerText = (currentIndex + 1) + "/" + attemptQuestions.length;
+    
+    const qObj = attemptQuestions[currentIndex];
+    document.getElementById('question').innerText = qObj.q;
+    
     const optionsDiv = document.getElementById('options');
     optionsDiv.innerHTML = "";
 
-    // Scegli domanda casuale
-    const qObj = questions[Math.floor(Math.random() * questions.length)];
-    document.getElementById('question').innerText = qObj.q;
-    currentCorrectAnswer = qObj.a;
-
-    // Crea lista di risposte (1 corretta + 3 casuali dal database)
-    let answers = [qObj.a];
-    while(answers.length < 4) {
-        let randomA = questions[Math.floor(Math.random() * questions.length)].a;
-        if(!answers.includes(randomA)) answers.push(randomA);
+    // Genera opzioni (1 corretta + 3 errate)
+    let choices = [qObj.a];
+    while(choices.length < 4 && choices.length < allQuestions.length) {
+        let randA = allQuestions[Math.floor(Math.random() * allQuestions.length)].a;
+        if(!choices.includes(randA)) choices.push(randA);
     }
+    choices.sort(() => Math.random() - 0.5);
 
-    // Mischia le risposte
-    answers.sort(() => Math.random() - 0.5);
-
-    // Genera bottoni
-    answers.forEach(text => {
+    choices.forEach(choice => {
         const btn = document.createElement('button');
         btn.className = 'option';
-        btn.innerText = text;
-        btn.onclick = () => checkAnswer(btn, text);
+        btn.innerText = choice;
+        btn.onclick = () => checkAnswer(btn, choice, qObj);
         optionsDiv.appendChild(btn);
     });
 }
 
-function checkAnswer(selectedBtn, text) {
-    const allOptions = document.querySelectorAll('.option');
-    allOptions.forEach(btn => btn.disabled = true); // Disabilita altri click
+function checkAnswer(btn, choice, qObj) {
+    const allBtns = document.querySelectorAll('.option');
+    allBtns.forEach(b => b.disabled = true);
 
-    if(text === currentCorrectAnswer) {
-        selectedBtn.classList.add('correct');
-        document.getElementById('feedback').innerText = "Corretto! 🎉";
-        document.getElementById('feedback').style.color = "#34c759";
+    if (choice === qObj.a) {
+        btn.classList.add('correct');
         score++;
     } else {
-        selectedBtn.classList.add('wrong');
-        document.getElementById('feedback').innerText = "Sbagliato. La risposta corretta era: " + currentCorrectAnswer;
-        document.getElementById('feedback').style.color = "#ff3b30";
-        // Evidenzia quella corretta
-        allOptions.forEach(btn => {
-            if(btn.innerText === currentCorrectAnswer) btn.classList.add('correct');
-        });
+        btn.classList.add('wrong');
+        errors.push({q: qObj.q, a: qObj.a, your: choice});
+        // Evidenzia la corretta
+        allBtns.forEach(b => { if(b.innerText === qObj.a) b.classList.add('correct'); });
     }
-
-    document.getElementById('points').innerText = score;
+    
+    currentIndex++;
     document.getElementById('next-btn').style.display = "block";
 }
 
-// Avvio
-window.onload = loadNewQuestion;
-</script>
+function endAttempt(reason) {
+    clearInterval(timerInterval);
+    
+    // Gestione domande non fatte se scade il tempo
+    if (currentIndex < attemptQuestions.length) {
+        for (let i = currentIndex; i < attemptQuestions.length; i++) {
+            errors.push({q: attemptQuestions[i].q, a: attemptQuestions[i].a, your: "Non risposta (tempo scaduto)"});
+        }
+    }
 
+    document.getElementById('quiz-screen').classList.remove('active');
+    document.getElementById('result-screen').classList.add('active');
+    
+    document.getElementById('final-score').innerText = `${reason} Punteggio finale: ${score}/${attemptQuestions.length}`;
+    
+    const errorList = document.getElementById('error-list');
+    errorList.innerHTML = "";
+    errors.forEach(err => {
+        errorList.innerHTML += `
+            <div class="review-item">
+                <div class="review-q">${err.q}</div>
+                <div style="color:var(--error)">Tua: ${err.your}</div>
+                <div class="review-a">Corretta: ${err.a}</div>
+            </div>`;
+    });
+}
+</script>
 </body>
 </html>
