@@ -2,870 +2,103 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flashcards Farmacologia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Simulatore Esame Farmacologia</title>
     <style>
-        :root {
-            --primary: #2563eb;
-            --success: #22c55e;
-            --danger: #ef4444;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text: #1e293b;
-        }
-
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-        }
-
-        /* Header e Statistiche */
-        .header {
-            width: 100%;
-            max-width: 600px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            background: white;
-            padding: 15px;
-            border-radius: 12px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
-        .stats-box {
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        .stats-val {
-            font-weight: bold;
-            font-size: 1.2rem;
-            display: block;
-        }
-        
-        .score-green { color: var(--success); }
-        .score-red { color: var(--danger); }
-
-        /* Contenitore Card */
-        .card-container {
-            perspective: 1000px;
-            width: 100%;
-            max-width: 600px;
-            height: 350px;
-            cursor: pointer;
-            margin-bottom: 30px;
-        }
-
-        .flashcard {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .flashcard.flipped {
-            transform: rotateY(180deg);
-        }
-
-        .card-face {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
-            box-sizing: border-box;
-            background: var(--card-bg);
-            border-radius: 20px;
-            text-align: center;
-            user-select: none;
-        }
-
-        .card-front {
-            border: 2px solid #e2e8f0;
-        }
-
-        .card-back {
-            background-color: #f0f9ff;
-            transform: rotateY(180deg);
-            border: 2px solid var(--primary);
-        }
-
-        .card-label {
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            color: #94a3b8;
-            margin-bottom: 15px;
-        }
-
-        .card-text {
-            font-size: 1.3rem;
-            line-height: 1.5;
-            font-weight: 500;
-        }
-
-        /* Pulsanti di Valutazione */
-        .actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
-        }
-
-        .flashcard.flipped + .controls .actions { 
-            /* Logica gestita via JS per visualizzare i bottoni quando girata */
-        }
-
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.1s, opacity 0.2s;
-            font-size: 1rem;
-        }
-
-        .btn:active { transform: scale(0.95); }
-        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-        .btn-success { background-color: var(--success); color: white; box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3); }
-        .btn-danger { background-color: var(--danger); color: white; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); }
-        .btn-nav { background-color: #e2e8f0; color: var(--text); }
-        .btn-reset { background-color: var(--text); color: white; margin-top: 20px; font-size: 0.8rem; padding: 8px 16px;}
-
-        /* Controls Container */
-        .controls {
-            width: 100%;
-            max-width: 600px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .nav-row {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .evaluation-row {
-            display: flex;
-            gap: 20px;
-            height: 50px; /* Spazio riservato */
-        }
-
-        .hidden { visibility: hidden; opacity: 0; }
-        .visible { visibility: visible; opacity: 1; }
-
-        .progress-bar {
-            width: 100%;
-            height: 6px;
-            background: #e2e8f0;
-            border-radius: 3px;
-            margin-top: 10px;
-            overflow: hidden;
-        }
-        .progress-fill {
-            height: 100%;
-            background: var(--primary);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
+        :root { --primary: #007aff; --success: #34c759; --error: #ff3b30; --bg: #f2f2f7; }
+        body { font-family: -apple-system, system-ui; background-color: var(--bg); display: flex; justify-content: center; padding: 20px; margin: 0; }
+        #app { width: 100%; max-width: 500px; background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .question { font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; color: #1c1c1e; }
+        .options-container { display: flex; flex-direction: column; gap: 12px; }
+        .option { padding: 15px; border: 2px solid #e5e5ea; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 1rem; text-align: left; background: white; }
+        .option:active { transform: scale(0.98); }
+        .correct { background-color: var(--success) !important; border-color: var(--success); color: white; }
+        .wrong { background-color: var(--error) !important; border-color: var(--error); color: white; }
+        #feedback { margin-top: 20px; font-weight: 600; min-height: 24px; text-align: center; }
+        .btn-next { margin-top: 20px; width: 100%; padding: 15px; border: none; border-radius: 12px; background: var(--primary); color: white; font-size: 1rem; font-weight: 600; cursor: pointer; display: none; }
+        #score-board { margin-bottom: 10px; font-size: 0.9rem; color: #8e8e93; text-align: right; }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <div class="stats-box">
-            <span class="stats-val score-green" id="score-right">0</span>
-            Giuste
-        </div>
-        <div class="stats-box">
-            <span class="stats-val" id="card-counter">1</span>
-            Card
-        </div>
-        <div class="stats-box">
-            <span class="stats-val score-red" id="score-wrong">0</span>
-            Sbagliate
-        </div>
-    </div>
+<div id="app">
+    <div id="score-board">Punteggio: <span id="points">0</span></div>
+    <div id="question" class="question">Caricamento...</div>
+    <div id="options" class="options-container"></div>
+    <div id="feedback"></div>
+    <button id="next-btn" class="btn-next" onclick="loadNewQuestion()">Prossima Domanda</button>
+</div>
 
-    <div class="card-container" onclick="flipCard()">
-        <div class="flashcard" id="flashcard">
-            <div class="card-face card-front">
-                <div class="card-label">Domanda</div>
-                <div class="card-text" id="question-text">Caricamento...</div>
-            </div>
-            <div class="card-face card-back">
-                <div class="card-label">Risposta</div>
-                <div class="card-text" id="answer-text">...</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="controls">
-        <div class="evaluation-row" id="eval-buttons">
-            <button class="btn btn-danger hidden" onclick="vote(false)">❌ </button>
-            <button class="btn btn-success hidden" onclick="vote(true)">✅ </button>
-        </div>
-
-        <div style="width: 100%;">
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress-fill"></div>
-            </div>
-        </div>
-
-        <div class="nav-row">
-            <button class="btn btn-nav" onclick="prevCard()">← Indietro</button>
-            <button class="btn btn-nav" onclick="toggleShuffle()">🔀 Shuffle <span id="shuffle-status">(Off)</span></button>
-            <button class="btn btn-nav" onclick="nextCard()">Avanti →</button>
-        </div>
-
-        <button class="btn btn-reset" onclick="resetProgress()">🗑️ Reset Punteggio</button>
-    </div>
-
-    <script>
-        // --- DATASET ESTRATTO DAI TUOI FILE ---
-    const originalData = [
-    // --- FARMACOCINETICA E GENERALITÀ ---
-    { q: "Quali sono i 4 parametri fondamentali della farmacocinetica?", a: "Biodisponibilità, volume di distribuzione, clearance ed emivita" },
-    { q: "Quando, con somministrazione continua, si perde efficacia terapeutica ed effetti collaterali, si ha:", a: "Tolleranza farmacometabolica" },
-    { q: "Cosa fare in caso di tolleranza farmacometabolica?", a: "Aumentare il dosaggio (non serve cambiare farmaco)" },
-    { q: "Chi sono i 'lenti acetilatori'?", a: "Individui che metabolizzano lentamente farmaci (es. isoniazide), rischiando tossicità" },
-    { q: "Vantaggi via Endovenosa (EV):", a: "Biodisponibilità 100%, effetto immediato, utile in emergenza" },
-    { q: "Definizione di Clearance:", a: "Volume di plasma depurato dal farmaco nell’unità di tempo" },
-    { q: "Perché l’amfetamina penetra nel SNC?", a: "Perché ha un elevato coefficiente di ripartizione olio-acqua (lipofila)" },
-    { q: "Rischio teratogeno maggiore nel feto per:", a: "SNC (Sistema Nervoso Centrale)" },
-    { q: "Controindicazione assoluta barbiturici:", a: "Porfiria" },
-    { q: "Formula Biodisponibilità (F) intramuscolare:", a: "(AUC IM / AUC EV) x 100" },
-    { q: "Struttura proteine G:", a: "Eterotrimeri (subunità alfa, beta, gamma)" },
-    { q: "Vantaggio via sublinguale:", a: "Evita il metabolismo di primo passaggio epatico" },
-    { q: "Citocromo che metabolizza più farmaci:", a: "CYP3A4/5" },
-    { q: "Legge di Fick (Diffusione):", a: "Il flusso è proporzionale a: (Area x Diff. Concentrazione) / Spessore" },
-    { q: "Effetto 'First Pass':", a: "Metabolismo epatico prima che il farmaco raggiunga la circolazione sistemica" },
-    { q: "Proteina G dei recettori α1 adrenergici:", a: "Gq (attiva fosfolipasi C -> aumenta Ca2+)" },
-    { q: "Proteina G dei recettori β-adrenergici:", a: "Gs (stimola adenilato ciclasi -> aumenta cAMP)" },
-    { q: "Cosa stima il pA2 (Grafico Schild)?", a: "La potenza di un antagonista competitivo" },
-    { q: "Antagonista competitivo:", a: "Sposta curve dose-risposta a destra (non riduce effetto massimo)" },
-    { q: "Antagonista non competitivo:", a: "Riduce l'effetto massimo (deprime la curva)" },
-    { q: "Indice terapeutico:", a: "Rapporto DL50 / ED50 (più è alto, più il farmaco è sicuro)" },
-    { q: "Recettore nicotinico:", a: "Canale ionico (ionotropico), azione in millisecondi" },
-    { q: "Volume di distribuzione (Vd) elevato significa:", a: "Il farmaco si accumula nei tessuti (bassa concentrazione plasmatica)" },
-    { q: "Reazioni di fase I del metabolismo:", a: "Ossidazione, riduzione, idrolisi (funzionalizzazione)" },
-    { q: "Reazioni di fase II del metabolismo:", a: "Coniugazione (es. acido glucuronico)" },
-    { q: "Cosa è un profarmaco?", a: "Sostanza inattiva che diventa attiva dopo metabolizzazione" },
-    { q: "Definizione di Tachyfilassi:", a: "Tolleranza acuta e rapida (es. efedrina)" },
-    { q: "Legame farmaco-proteico elevato comporta:", a: "Minore filtrazione glomerulare e lunga emivita" },
-
-    // --- ANTIBIOTICI E CHEMIOTERAPICI ---
-    { q: "Meccanismo Macrolidi (es. Claritromicina):", a: "Inibizione sintesi proteica (subunità 50S)" },
-    { q: "Meccanismo Aminoglicosidi (es. Gentamicina):", a: "Blocco sintesi proteica (30S), battericidi, tossicità otovestibolare/renale" },
-    { q: "Sindrome del bambino grigio causata da:", a: "Cloramfenicolo" },
-    { q: "Meccanismo Fluorochinoloni:", a: "Inibizione DNA girasi e Topoisomerasi IV" },
-    { q: "Meccanismo Penicilline/Cefalosporine:", a: "Inibizione sintesi parete batterica (transpeptidasi)" },
-    { q: "Farmaco per Tubercolosi attivato da KatG:", a: "Isoniazide" },
-    { q: "Effetto avverso Tetracicline:", a: "Colorazione denti, ipoplasia smalto, fotosensibilità" },
-    { q: "Sulfamidici agiscono inibendo:", a: "Diidropteroato sintetasi (sintesi folati)" },
-    { q: "Trimethoprim agisce inibendo:", a: "Diidrofolato reduttasi" },
-    { q: "Cotrimoxazolo è l'associazione di:", a: "Sulfametoxazolo + Trimethoprim" },
-    { q: "Antibiotico glicopeptidico per MRSA:", a: "Vancomicina" },
-    { q: "Triplice terapia H. Pylori:", a: "IPP (Omeprazolo) + Claritromicina + Amoxicillina (o Metronidazolo)" },
-    { q: "Rifampicina (effetto sul metabolismo):", a: "Potente induttore enzimatico (riduce efficacia altri farmaci)" },
-
-    // --- NEUROFARMACOLOGIA E SNC ---
-    { q: "Antidoto Benzodiazepine:", a: "Flumazenil" },
-    { q: "Antidoto Oppioidi:", a: "Naloxone" },
-    { q: "Meccanismo Cocaina:", a: "Inibisce il reuptake di Dopamina e Noradrenalina" },
-    { q: "Anestetici locali Amidi vs Esteri:", a: "Amidi: emivita lunga, metabolismo epatico. Esteri: emivita breve, esterasi plasmatiche." },
-    { q: "Effetto collaterale Clozapina:", a: "Agranulocitosi (monitorare emocromo)" },
-    { q: "Farmaci SSRI (es. Fluoxetina):", a: "Inibitori selettivi reuptake Serotonina" },
-    { q: "Farmaci Triciclici (TCA) effetti avversi:", a: "Antimuscarinici (secchezza fauci), cardiotossicità, ipotensione" },
-    { q: "Litio è usato per:", a: "Disturbo bipolare (stabilizzante umore)" },
-    { q: "Meccanismo Barbiturici:", a: "Aumentano la *durata* di apertura del canale Cl- (GABA-A)" },
-    { q: "Meccanismo Benzodiazepine:", a: "Aumentano la *frequenza* di apertura del canale Cl- (GABA-A)" },
-    { q: "Farmaco per Parkinson (precursore):", a: "Levodopa (L-Dopa)" },
-    { q: "Inibitore Dopa-decarbossilasi periferica:", a: "Carbidopa (si associa a L-Dopa)" },
-    { q: "Antiepilettico bloccante canali Na+:", a: "Carbamazepina, Fenitoina" },
-    { q: "Valproato meccanismo:", a: "Blocco canali Na+, Ca2+ (T) e aumenta GABA" },
-    { q: "Effetto collaterale tipico Antipsicotici tipici (es. Aloperidolo):", a: "Sintomi extrapiramidali (Parkinsonismo, discinesie)" },
-    { q: "Recettori Oppioidi principali:", a: "Mu (μ), Kappa (κ), Delta (δ)" },
-    { q: "Effetti morfina:", a: "Analgesia, depressione respiratoria, stipsi, miosi puntiforme" },
-
-    // --- CARDIOVASCOLARE ---
-    { q: "Farmaco shock anafilattico:", a: "Adrenalina" },
-    { q: "Meccanismo ACE-inibitori:", a: "Bloccano conversione Ang I -> Ang II e degradazione bradichinina" },
-    { q: "Effetto collaterale ACE-inibitori:", a: "Tosse secca, angioedema" },
-    { q: "Diuretici dell'ansa (Furosemide):", a: "Blocco Na+/K+/2Cl- (tratto ascendente ansa Henle)" },
-    { q: "Tossicità Furosemide:", a: "Ipokaliemia, Ototossicità" },
-    { q: "Diuretici Tiazidici:", a: "Blocco Na+/Cl- (tubulo distale). Ipercalcemia, Iperuricemia." },
-    { q: "Controindicazione Tiazidici:", a: "Gotta (riducono escrezione acido urico)" },
-    { q: "Diuretici risparmiatori di potassio:", a: "Spironolattone (antagonista Aldosterone), Amiloride" },
-    { q: "Beta-bloccanti selettivi β1:", a: "Atenololo, Metoprololo" },
-    { q: "Controindicazione Beta-bloccanti:", a: "Asma (rischio broncocostrizione da blocco β2)" },
-    { q: "Calcio-antagonisti Diidropiridinici (Nifedipina):", a: "Vasodilatazione arteriosa (agiscono sui vasi)" },
-    { q: "Calcio-antagonisti Non-Diidropiridinici (Verapamil):", a: "Depressori cardiaci (agiscono sul cuore)" },
-    { q: "Digossina meccanismo:", a: "Blocco pompa Na+/K+ ATPasi -> Aumento calcio intracellulare -> Inotropo positivo" },
-    { q: "Tossicità da Digossina aumentata da:", a: "Ipokaliemia (basso potassio)" },
-    { q: "Nitrovasodilatatori (Nitroglicerina):", a: "Rilasciano NO -> aumento cGMP -> venodilatazione (riduzione precarico)" },
-
-    // --- INFIAMMAZIONE E ORMONI ---
-    { q: "Meccanismo FANS:", a: "Inibizione COX (Ciclossigenasi) e sintesi Prostaglandine" },
-    { q: "Tossicità Paracetamolo antidoto:", a: "N-acetilcisteina" },
-    { q: "Differenza Aspirina vs altri FANS:", a: "L'aspirina inibisce la COX in modo irreversibile" },
-    { q: "Coxib (Celecoxib):", a: "Inibitori selettivi COX-2 (meno gastrolesivi, rischio cardiovascolare)" },
-    { q: "Effetti Glucocorticoidi:", a: "Antinfiammatorio, immunosoppressore, iperglicemizzante" },
-    { q: "Sindrome da sospensione brusca steroidi:", a: "Insufficienza surrenalica acuta" },
-    { q: "Bifosfonati (Osteoporosi) meccanismo:", a: "Inibiscono attività osteoclasti e riassorbimento osseo" },
-    { q: "Effetto collaterale raro Bifosfonati:", a: "Osteonecrosi della mascella" },
-    { q: "Insulina Lispro/Aspart:", a: "Analogo rapido (ultra-breve)" },
-    { q: "Insulina Glargine:", a: "Lunga durata, senza picco (basale)" },
-    { q: "Metformina meccanismo:", a: "Riduce gluconeogenesi epatica, aumenta sensibilità insulina" },
-    { q: "Pericolo Metformina:", a: "Acidosi lattica (raro, in insufficienza renale)" },
-    { q: "Farmaci ipotiroidismo:", a: "Levotiroxina (T4)" },
-    { q: "Farmaci ipertiroidismo:", a: "Metimazolo, Propiltiouracile (inibiscono sintesi ormoni tiroidei)" },
-    
-    // --- ANTIDOTI E VARIE ---
-    { q: "Antidoto Eparina:", a: "Protamina solfato" },
-    { q: "Antidoto Warfarin:", a: "Vitamina K (fitomenadione)" },
-    { q: "Antidoto Ferro:", a: "Deferoxamina" },
-    { q: "Antidoto Metanolo:", a: "Etanolo o Fomepizolo" },
-    { q: "Antidoto Organofosforici:", a: "Atropina (sintomatico) + Pralidossima (riattivatore)" },
-    { q: "Farmaco monoclonale suffisso -zumab:", a: "Umanizzato (>90% umano)" },
-    { q: "Farmaco monoclonale suffisso -ximab:", a: "Chimerico (topo/uomo)" },
-    { q: "Anti-TNF alfa (Infliximab, Adalimumab) rischio:", a: "Riattivazione Tubercolosi latente" },
-    { q: "Farmaci teratogeni noti:", a: "Warfarin, Retinoidi, Talidomide, Valproato, ACE-inibitori" },
-    { q: "Recettori H1 istamina:", a: "Veglia, broncocostrizione, prurito (Antistaminici sedano perché li bloccano nel SNC)" },
-    { q: "Recettori H2 istamina:", a: "Secrezione acida gastrica (bloccati da Ranitidina)" },
-    { q: "Omeprazolo meccanismo:", a: "Inibitore irreversibile pompa protonica H+/K+ ATPasi" },
-    { q: "Antiemetico antagonista 5-HT3:", a: "Ondansetron (per chemio)" },
-    { q: "Farmaco per asma acuto:", a: "SABA (Salbutamolo)" },
-    { q: "Farmaco per asma controllo:", a: "Corticosteroidi inalatori (ICS) + LABA" },
-    { q: "Montelukast meccanismo:", a: "Antagonista recettori Leucotrieni" },
-    { q: "Nirmatrelvir (COVID-19):", a: "Inibisce la proteasi virale 3CL" },
-    
-    // --- ANTIFUNGINI E ANTIMICOTICI ---
-    { q: "Meccanismo d'azione dell'Amfotericina B:", a: "Si lega all'ergosterolo creando pori/canali nella membrana fungina (perdita ioni)" },
-    { q: "Effetto tossico principale dell'Amfotericina B:", a: "Nefrotossicità (estremamente comune)" },
-    { q: "Meccanismo degli Azoli (es. Fluconazolo, Ketoconazolo):", a: "Inibizione dell'enzima 14-alfa-demetilasi (blocca sintesi ergosterolo)" },
-    { q: "Caspofungina (Echinocandine) meccanismo:", a: "Inibizione sintesi del beta-(1,3)-D-glucano (parete cellulare)" },
-    { q: "Griseofulvina uso e meccanismo:", a: "Antimicotico per dermatofitosi, inibisce la mitosi legandosi alla tubulina" },
-
-    // --- CARDIOVASCOLARE AVANZATA (ANTIARITMICI E ALTRI) ---
-    { q: "Antiaritmici di Classe IA (es. Quinidina):", a: "Blocco canali Na+ (stato aperto), aumentano durata potenziale d'azione" },
-    { q: "Antiaritmici di Classe IB (es. Lidocaina):", a: "Blocco canali Na+ (stato inattivato), utili in aritmie ventricolari post-infarto" },
-    { q: "Antiaritmici di Classe IC (es. Flecainide):", a: "Potenti bloccanti canali Na+, effetto spiccato sulla conduzione (senza variare durata PA)" },
-    { q: "Meccanismo Amiodarone (Classe III):", a: "Blocco canali K+ (allunga ripolarizzazione), ma ha anche effetti Classe I, II e IV" },
-    { q: "Effetto collaterale Amiodarone sulla tiroide:", a: "Ipo o Ipertiroidismo (contiene iodio nella struttura)" },
-    { q: "Ivabradina meccanismo:", a: "Inibizione selettiva della corrente If nel nodo del seno (riduce solo la frequenza cardiaca)" },
-    { q: "Meccanismo dei Sartani (es. Losartan):", a: "Antagonisti selettivi del recettore AT1 dell'Angiotensina II" },
-    { q: "Nitroprussiato di sodio uso:", a: "Emergenze ipertensive (potente vasodilatatore arterioso e venoso via NO)" },
-    { q: "Perché i nitrati perdono effetto (tolleranza)?", a: "Deplezione di gruppi sulfidrilici (SH) necessari per liberare NO" },
-
-    // --- EMATOLOGIA E COAGULAZIONE ---
-    { q: "Meccanismo d'azione Clopidogrel:", a: "Antagonista irreversibile dei recettori P2Y12 per l'ADP sulle piastrine" },
-    { q: "Perché il Clopidogrel ha variabilità di risposta?", a: "È un profarmaco attivato dal CYP2C19 (polimorfismi genetici)" },
-    { q: "Meccanismo dei nuovi anticoagulanti orali (DOAC) come Rivaroxaban/Apixaban:", a: "Inibitori diretti del Fattore Xa" },
-    { q: "Dabigatran meccanismo:", a: "Inibitore diretto e reversibile della Trombina (Fattore IIa)" },
-    { q: "Quale farmaco si usa per l'anemia in pazienti con insufficienza renale cronica?", a: "Eritropoietina / Darbepoetina" },
-
-    // --- ANTIBIOTICI (DETTAGLI E NICCHIE) ---
-    { q: "Meccanismo Linezolid (Oxazolidinoni):", a: "Inibizione sintesi proteica legandosi al sito 23S della subunità 50S" },
-    { q: "Interazione pericolosa Linezolid:", a: "Inibitore debole delle MAO (rischio sindrome serotoninergica con SSRI)" },
-    { q: "Daptomicina meccanismo:", a: "Inserimento nella membrana batterica (calcio-dipendente) e depolarizzazione rapida" },
-    { q: "Perché la Daptomicina non si usa per la polmonite?", a: "Viene inattivata dal surfattante polmonare" },
-    { q: "Meccanismo d'azione della Fosfomicina:", a: "Inibizione dell'enzima MurA (fase precoce sintesi parete)" },
-
-    // --- GASTROENTEROLOGIA E RESPIRATORIO ---
-    { q: "Sucralfato meccanismo:", a: "Forma un gel protettivo viscoso che aderisce al cratere dell'ulcera" },
-    { q: "Misoprostolo uso e meccanismo:", a: "Analogo PGE1, protegge mucosa gastrica (usato per prevenire danni da FANS)" },
-    { q: "Loperamide (Imodium) meccanismo:", a: "Agonista oppioide μ che non attraversa la barriera emato-encefalica (antidiarroico)" },
-    { q: "Teofillina (Metilxantine) meccanismo:", a: "Inibizione fosfodiesterasi (PDE) e antagonismo recettori Adenosina" },
-
-    // --- ORMONI E UROLOGIA ---
-    { q: "Finasteride meccanismo e uso:", a: "Inibitore 5-alfa-reduttasi; usato per Ipertrofia Prostatica Benigna e alopecia" },
-    { q: "Levonorgestrel (pillola del giorno dopo) meccanismo:", a: "Progestinico ad alte dosi che blocca/ritarda l'ovulazione" },
-    { q: "Tamoxifene è un:", a: "SERM (Modulatore selettivo recettore estrogeni) - antagonista mammella, agonista osso/utero" },
-    { q: "Octreotide uso:", a: "Analogo della somatostatina; usato per acromegalia e tumori neuroendocrini" },
-
-    // --- TOSSICOLOGIA E VARIE ---
-    { q: "Cos'è la CAM (Concentrazione Alveolare Minima)?", a: "Misura la potenza di un anestetico generale inalatorio (più è bassa, più è potente)" },
-    { q: "Effetto collaterale 'Sindrome grigia' da cloramfenicolo dovuto a:", a: "Mancanza di coniugazione con acido glucuronico nel neonato" },
-    { q: "Quale farmaco causa miosi puntiforme in overdose?", a: "Eroina / Morfina (Oppioidi)" },
-    { q: "Definizione di Teratogenesi:", a: "Capacità di un farmaco di causare malformazioni strutturali nel feto" },
-    { q: "Quale organo è coinvolto nel metabolismo di primo passaggio?", a: "Fegato (attraverso la vena porta)" },
-    { q: "Antidoto per l'intossicazione da Rame (Malattia di Wilson):", a: "Penicillamina" },
-
-    // --- ANESTETICI (GENERALI E LOCALI) ---
-    { q: "Qual è il principale meccanismo degli anestetici locali?", a: "Blocco dei canali del Na+ voltaggio-dipendenti dall'interno della cellula" },
-    { q: "Quale fibra nervosa viene bloccata per prima dagli anestetici locali?", a: "Fibre di piccolo calibro (fibre C e fibre A-delta), ovvero quelle del dolore" },
-    { q: "Perché si aggiunge adrenalina agli anestetici locali?", a: "Per indurre vasocostrizione, riducendo l'assorbimento sistemico e prolungando l'effetto locale" },
-    { q: "Propofol: caratteristica principale come anestetico endovenoso:", a: "Induzione rapida e risveglio molto veloce (senza 'hangover')" },
-    { q: "Ketamina meccanismo d'azione:", a: "Antagonista dei recettori NMDA del glutammato (anestesia dissociativa)" },
-    { q: "Succinilcolina (Suxametonio) meccanismo:", a: "Bloccante neuromuscolare depolarizzante (agonista nicotinico persistente)" },
-    { q: "Effetto collaterale raro ma grave degli anestetici alogenati (es. Alotano):", a: "Ipertermia maligna (trattata con Dantrolene)" },
-
-    // --- ANTITUMORALI BIOLOGICI E TARGETED THERAPY ---
-    { q: "Imatinib (Glivec) meccanismo d'azione:", a: "Inibitore della tirosina chinasi Bcr-Abl (specifico per Leucemia Mieloide Cronica)" },
-    { q: "Meccanismo del Bevacizumab (Avastin):", a: "Anticorpo monoclonale anti-VEGF (inibisce l'angiogenesi tumorale)" },
-    { q: "Meccanismo del Cetuximab:", a: "Anticorpo monoclonale anti-EGFR" },
-    { q: "Cosa si intende per 'Small Molecules' (suffisso -nib)?", a: "Farmaci a basso peso molecolare che agiscono su bersagli intracellulari (es. chinasi)" },
-    { q: "Quale farmaco si usa per il tumore alla prostata metastatico?", a: "Abiraterone (inibitore sintesi androgeni) o analoghi GnRH" },
-
-    // --- DIABETE E DISLIPIDEMIE ---
-    { q: "Inibitori DPP-4 (es. Sitagliptin) meccanismo:", a: "Inibiscono la degradazione delle incretine (GLP-1), aumentando la secrezione di insulina" },
-    { q: "Analoghi del GLP-1 (es. Liraglutide) vantaggi:", a: "Aumento secrezione insulina glucosio-dipendente e perdita di peso" },
-    { q: "Inibitori SGLT2 (es. Dapagliflozin) meccanismo:", a: "Inibiscono il riassorbimento di glucosio nel tubulo renale (provocano glicosuria)" },
-    { q: "Fibrati (es. Fenofibrato) meccanismo:", a: "Agonisti dei recettori PPAR-alfa (riducono drasticamente i trigliceridi)" },
-    { q: "Ezetimibe meccanismo:", a: "Inibisce l'assorbimento intestinale del colesterolo (agisce sulla proteina NPC1L1)" },
-
-    // --- GOTTA E METABOLISMO OSSEO ---
-    { q: "Allopurinolo meccanismo:", a: "Inibitore della Xantina Ossidasi (riduce la produzione di acido urico)" },
-    { q: "Febuxostat vs Allopurinolo:", a: "Febuxostat è un inibitore non purinico della xantina ossidasi, più potente" },
-    { q: "Probenecid meccanismo:", a: "Uricosurico (aumenta l'escrezione renale di acido urico inibendo URAT1)" },
-    { q: "Teriparatide cos'è?", a: "Frammento ricombinante dell'ormone paratiroideo (PTH), unico farmaco osteo-formatore" },
-    { q: "Denosumab meccanismo:", a: "Anticorpo monoclonale anti-RANKL (inibisce la maturazione degli osteoclasti)" },
-
-    // --- SNC E PSICHIATRIA (DETTAGLI) ---
-    { q: "Etosuccimide indicazione specifica:", a: "Piccolo male epilettico (assenze), blocca i canali Ca2+ di tipo T" },
-    { q: "Perché gli antipsicotici atipici (es. Olanzapina) causano meno Parkinsonismo?", a: "Perché hanno una minore affinità per D2 e bloccano anche i recettori 5-HT2A" },
-    { q: "Vareniclina uso e meccanismo:", a: "Disassuefazione dal fumo; agonista parziale dei recettori nicotinici α4β2" },
-    { q: "Bromocriptina cos'è?", a: "Agonista dopaminergico D2, usato nel Parkinson e per l'iperprolattinemia" },
-    { q: "Entacapone meccanismo:", a: "Inibitore delle COMT (prolunga l'emivita della Levodopa periferica)" },
-
-    // --- VARIE E REGOLE GENERALI ---
-    { q: "Come vengono somministrati i farmaci peptidici (es. Insulina)?", a: "Prevalentemente per via parenterale (sottocutanea/EV) perché degradati nello stomaco" },
-    { q: "Definizione di Mutagenesi:", a: "Capacità di un farmaco di indurre mutazioni nel DNA (test di Ames)" },
-    { q: "Qual è il vantaggio dei farmaci bioequivalenti?", a: "Offrono la stessa efficacia e sicurezza del farmaco 'di marca' a un costo inferiore" },
-    { q: "Sindrome serotoninergica: triade dei sintomi:", a: "Alterazioni stato mentale, instabilità autonomica, iperattività neuromuscolare" },
-    { q: "Pilocarpina uso tipico:", a: "Glaucoma ad angolo aperto (miosi e riduzione pressione intraoculare)" },
-    { q: "Vitamina B12 (Cianocobalamina) carenza causa:", a: "Anemia megaloblastica e danni neurologici" },
-    
-    // --- APPROFONDIMENTI FARMACOCINETICA ---
-    { q: "Cosa si intende per 'Volume apparente di distribuzione' (Vd)?", a: "Il volume teorico necessario a contenere la quantità totale di farmaco nell'organismo alla stessa concentrazione presente nel plasma" },
-    { q: "Se un farmaco ha un Vd molto superiore al volume totale d'acqua corporea (es. > 50L):", a: "Significa che il farmaco è altamente sequestrato nei tessuti (es. adipe o ossa)" },
-    { q: "Relazione tra legame alle proteine plasmatiche e filtrazione glomerulare:", a: "Solo la quota libera del farmaco (non legata all'albumina) può essere filtrata dal glomerulo" },
-    { q: "Cosa indica il 'Rapporto di Estrazione' epatico?", a: "La frazione di farmaco che viene rimossa dal sangue durante un singolo passaggio attraverso il fegato" },
-    { q: "Circolazione Entero-epatica: cos'è?", a: "Fenomeno per cui un farmaco escreto con la bile viene riassorbito nell'intestino, prolungandone la permanenza nell'organismo" },
-    { q: "Definizione di Bioavailability (F):", a: "Frazione di farmaco somministrato che raggiunge la circolazione sistemica in forma immodificata" },
-    { q: "Quale via di somministrazione ha effetto di primo passaggio polmonare?", a: "La via endovenosa (il sangue passa dai polmoni prima di andare al resto del corpo)" },
-
-    // --- SISTEMA NANC E MEDIATORI ---
-    { q: "Cosa significa l'acronimo NANC?", a: "Non-Adrenergico Non-Colinergico (neurotrasmettitori come NO, ATP, VIP, Sostanza P)" },
-    { q: "Principale mediatore NANC per il rilassamento della muscolatura liscia vasale:", a: "Ossido Nitrico (NO)" },
-    { q: "Il Monossido di Carbonio (CO) agisce come neurotrasmettitore attivando:", a: "La guanilato ciclasi solubile (simile al NO)" },
-
-    // --- SEROTONINA (5-HT) ---
-    { q: "Qual è l'unico recettore della Serotonina ad essere ionotropico (canale)?", a: "Il recettore 5-HT3" },
-    { q: "Uso clinico degli agonisti 5-HT1D/1B (es. Sumatriptan):", a: "Trattamento dell'attacco acuto di emicrania (vasocostrizione vasi cranici)" },
-    { q: "Dove si trova la maggior parte della serotonina nell'organismo?", a: "Nelle cellule enterocromaffini del tratto gastrointestinale (90%)" },
-    { q: "Effetto dei recettori 5-HT4 a livello intestinale:", a: "Procinetico (aumentano la motilità intestinale)" },
-
-    // --- SISTEMA GABA E BENZODIAZEPINE (DETTAGLI) ---
-    { q: "Differenza strutturale tra GABA-A e GABA-B:", a: "GABA-A è ionotropico (canale Cl-), GABA-B è metabotropico (accoppiato a proteina Gi)" },
-    { q: "Dove si lega il GABA sul recettore GABA-A?", a: "Tra le subunità alfa e beta" },
-    { q: "Dove si legano le Benzodiazepine sul recettore GABA-A?", a: "Tra le subunità alfa e gamma" },
-    { q: "Cosa sono i 'Z-Compounds' (Zolpidem, Zopiclone)?", a: "Ipnotici non-benzodiazepinici che si legano selettivamente al sito BZ1 (subunità alfa-1) del recettore GABA-A" },
-    { q: "Perché i Barbiturici sono più pericolosi delle Benzodiazepine?", a: "Perché ad alte dosi possono aprire il canale Cl- anche in assenza di GABA (effetto GABA-mimetico)" },
-    { q: "Effetto collaterale 'Paradosso' delle Benzodiazepine:", a: "Aumento dell'aggressività e agitazione (raro, più comune in anziani e bambini)" },
-
-    // --- FARMACI PEPTIDICI E BIOTECNOLOGICI ---
-    { q: "Problema principale della somministrazione orale dei peptidi:", a: "Degradazione da parte delle proteasi gastriche e scarso assorbimento per dimensioni elevate" },
-    { q: "Cosa si intende per 'Immunogenicità' di un farmaco biologico?", a: "La capacità del farmaco di indurre la formazione di anticorpi anti-farmaco (ADA) che ne riducono l'efficacia" },
-    { q: "Vantaggio della 'Pegilazione' (aggiunta di PEG) a un farmaco proteico:", a: "Aumenta l'emivita riducendo la clearance renale e protegge dalla degradazione" },
-
-    // --- TOSSICOLOGIA GENERALE ---
-    { q: "Antidoto per l'intossicazione da Glicole Etilenico (antigelo):", a: "Etanolo o Fomepizolo (competono per l'alcol deidrogenasi)" },
-    { q: "Cos'è il carbone attivo e quando si usa?", a: "Agente adsorbente usato nell'emergenza tossicologica per impedire l'assorbimento gastrico del tossico" },
-    { q: "Meccanismo dei chelanti (es. EDTA, BAL):", a: "Legano i metalli pesanti formando complessi stabili e idrosolubili escreti dai reni" },
-    
-    // --- ANTIEPILETTICI (NUOVA GENERAZIONE E SPECIFICI) ---
-    { q: "Meccanismo d'azione del Levetiracetam (Keppra):", a: "Si lega alla proteina SV2A delle vescicole sinaptiche, modulando il rilascio di neurotrasmettitori" },
-    { q: "Gabapentin e Pregabalin - Meccanismo d'azione:", a: "Si legano alla subunità alfa-2-delta dei canali del calcio voltaggio-dipendenti (non agiscono direttamente sui recettori GABA)" },
-    { q: "Vigabatrin - Meccanismo d'azione:", a: "Inibitore irreversibile della GABA-transaminasi (aumenta i livelli di GABA)" },
-    { q: "Tiagabina - Meccanismo d'azione:", a: "Inibisce il trasportatore GAT-1, bloccando il reuptake del GABA dallo spazio sinaptico" },
-    { q: "Lamotrigina - Principali bersagli e uso:", a: "Blocca canali Na+ e Ca2+; usata per epilessia e come stabilizzante nel disturbo bipolare" },
-    { q: "Zonisamide - Meccanismo:", a: "Blocco canali Na+ e canali Ca2+ di tipo T (simile a etosuccimide ma spettro più ampio)" },
-    { q: "Qual è il rischio principale associato all'uso di Vigabatrin?", a: "Restrizione irreversibile del campo visivo (difetti retinici)" },
-
-    // --- ANTIPSICOTICI (DETTAGLI RECETTORIALI) ---
-    { q: "Aripiprazolo - Perché è definito 'stabilizzatore del sistema dopaminergico'?", a: "Perché è un agonista parziale dei recettori D2 (riduce l'attività dove è troppa, la aumenta dove è poca)" },
-    { q: "Quetiapina - Caratteristica della sua interazione con i recettori D2:", a: "Ha una bassa affinità e una dissociazione molto rapida dal recettore (riduce il rischio di effetti extrapiramidali)" },
-    { q: "Quale recettore è responsabile dell'effetto antiemetico di molti antipsicotici?", a: "Il blocco dei recettori D2 nella zona chemiocettrice (CTZ) del bulbo" },
-    { q: "Perché gli antipsicotici atipici migliorano anche i sintomi negativi della schizofrenia?", a: "Grazie al blocco dei recettori 5-HT2A che favorisce il rilascio di dopamina nella corteccia prefrontale" },
-    { q: "Effetto collaterale della 'iperprolattinemia' da antipsicotici è dovuto al blocco D2 in quale via?", a: "Via tubero-infundibolare" },
-
-    // --- OPPIOIDI (SPECIFICITÀ) ---
-    { q: "Metadone - Caratteristiche farmacocinetiche e meccanismo:", a: "Lunga emivita, agonista Mu (μ) e antagonista dei recettori NMDA del glutammato" },
-    { q: "Buprenorfina - Meccanismo d'azione:", a: "Agonista parziale del recettore Mu (μ) e antagonista del recettore Kappa (κ)" },
-    { q: "Perché la Codeina è considerata un profarmaco?", a: "Perché deve essere demetilata in Morfina dal citocromo CYP2D6 per essere efficace" },
-    { q: "Tramadolo - Duplice meccanismo d'azione:", a: "Debole agonista Mu (μ) + inibitore del reuptake di Noradrenalina e Serotonina" },
-    { q: "Effetto degli oppioidi sui recettori Kappa (κ):", a: "Analgesia spinale, ma spesso associata a disforia ed effetti psicotomimetici" },
-    { q: "Quale oppioide si usa comunemente per la tosse (antitussigeno)?", a: "Destrometorfano (non ha effetti analgesici o di dipendenza significativi)" },
-
-    // --- FANS E ANALGESICI (DETTAGLI) ---
-    { q: "Ketorolac (Toradol) - Caratteristica principale:", a: "Elevatissima potenza analgesica (usato nel post-operatorio) ma alta tossicità renale e gastrica se usato > 5 giorni" },
-    { q: "Indometacina - Usi specifici non analgesici:", a: "Chiusura del dotto arterioso di Botallo pervio nei neonati e trattamento della gotta acuta" },
-    { q: "Perché l'Aspirina a dosi tossiche segue una cinetica di ordine zero?", a: "Perché i sistemi enzimatici di coniugazione epatica si saturano" },
-    { q: "Quale FANS è preferibile in pazienti con alto rischio cardiovascolare?", a: "Naprossene (sembra avere il profilo di rischio trombotico più basso)" },
-
-    // --- CARDIOVASCOLARE E RENALE (NICCHIE) ---
-    { q: "Acetazolamide - Meccanismo e uso:", a: "Inibitore dell'anidrasi carbonica; usato per il glaucoma e il mal di montagna (causa acidosi metabolica)" },
-    { q: "Idralazina - Meccanismo d'azione:", a: "Vasodilatatore diretto delle arteriole (poco sulle vene); rischio di sindrome Lupus-simile" },
-    { q: "Sacubitril - Meccanismo d'azione:", a: "Inibitore della neprilisina (enzima che degrada i peptidi natriuretici); usato in associazione con Valsartan" },
-    { q: "Nitroprussiato di sodio - Rischio tossico:", a: "Liberazione di Cianuro se somministrato per tempi lunghi o ad alte dosi" },
-    
-    // --- FARMACODINAMICA TECNICA E BINDING ---
-    { q: "Cosa stima il parametro pA2 nel grafico di Schild?", a: "La potenza di un antagonista competitivo (corrisponde all'intercetta sull'asse X)" },
-    { q: "Scala temporale: Recettori canale vs GPCR/Enzima:", a: "Canali: millisecondi. GPCR e recettori enzima: secondi o minuti." },
-    { q: "Cosa indica la presenza di 'recettori di riserva' (spare receptors)?", a: "Quando la EC50 è minore della Kd (la curva dose-risposta è a sinistra della curva di binding)" },
-    { q: "Quali parametri definiscono univocamente una curva concentrazione-risposta?", a: "EC50, pendenza (slope), valore minimo (bottom) e valore massimo (top/Emax)" },
-    { q: "Definizione di Agonista Inverso:", a: "Farmaco che si lega al recettore e ne riduce l'attività costitutiva (basale)" },
-
-    // --- ANTICORPI MONOCLONALI (mAb) ---
-    { q: "Significato suffissi mAb (-omab, -ximab, -zumab, -umab):", a: "Topino (0% umano), Chimerico (65%), Umanizzato (>90%), Umano (100%)" },
-    { q: "Bersaglio e uso del Rituximab:", a: "Anticorpo chimerico anti-CD20; usato in oncologia e malattie autoimmuni" },
-    { q: "Uso clinico dell'Erenumab:", a: "Profilassi dell'emicrania (agisce sul recettore del CGRP)" },
-    { q: "Bersaglio del Dupilumab:", a: "Recettore IL-4 alfa (usato per asma grave e dermatite atopica)" },
-    { q: "Meccanismo di eliminazione principale dei mAb:", a: "Degradazione proteolitica nel sistema reticolo-endoteliale (non renale)" },
-
-    // --- FARMACI PEPTIDICI ---
-    { q: "Perché i farmaci peptidici hanno bassa biodisponibilità orale?", a: "Degradazione da proteasi gastriche e grandi dimensioni molecolari" },
-    { q: "Metodo per aumentare l'emivita di un peptide:", a: "Sostituzione di L-aminoacidi con D-aminoacidi o pegilazione" },
-    { q: "Via di trasporto dei peptidi attraverso le barriere:", a: "Prevalentemente trasporto paracellulare" },
-
-    // --- INFETTIVOLOGIA AVANZATA ---
-    { q: "Perché la Bacitracina si usa solo per via topica?", a: "Per l'elevata nefrotossicità se somministrata per via sistemica" },
-    { q: "Quale farmaco per la TBC richiede l'attivazione da KatG?", a: "Isoniazide" },
-    { q: "Nirmatrelvir (Paxlovid) meccanismo:", a: "Inibitore della proteasi virale 3CL del SARS-CoV-2" },
-    { q: "Resistenza agli Aminoglicosidi: meccanismo principale:", a: "Produzione di enzimi batterici inattivanti (acetilasi, fosforilasi)" },
-    { q: "Effetto collaterale 'Grey Baby Syndrome' (Sindrome del bambino grigio):", a: "Causata dal Cloramfenicolo per incapacità neonatale di coniugazione" },
-
-    // --- GASTROENTEROLOGIA E RESPIRATORIO ---
-    { q: "Ciclesonide - Caratteristica farmacocinetica:", a: "È un profarmaco corticosteroideo attivato dalle esterasi polmonari (riduce effetti sistemici)" },
-    { q: "Farmaco per trattare l'encefalopatia epatica:", a: "Lattulosio (acidifica il colon e riduce l'assorbimento di ammoniaca)" },
-    { q: "Antagonismo fisiologico (definizione):", a: "Due farmaci su recettori diversi con effetti opposti (es. Salbutamolo vs Leucotrieni)" },
-
-    // --- TOSSICOLOGIA ---
-    { q: "Rapporto ottimale Carbone Attivo / Tossico nell'emergenza:", a: "Rapporto di 10:1" },
-    { q: "Perché l'atropina non è un antidoto 'competitivo' per gli organofosforici?", a: "Perché l'atropina blocca i recettori, non compete direttamente con il legame covalente del tossico all'enzima" },
-    { q: "Quale organo è più sensibile al rischio teratogeno nel feto?", a: "Il Sistema Nervoso Centrale (SNC)" },
-    
-    // --- ANTITUMORALI (SPECIFICITÀ E TOSSICITÀ) ---
-    { q: "Ciclofosfamide (Alchilante) - Tossicità specifica:", a: "Cistite emorragica (prevenuta con somministrazione di MESNA)" },
-    { q: "Antracicline (es. Doxorubicina) - Tossicità specifica:", a: "Cardiotossicità (dilatativa) correlata alla dose cumulativa" },
-    { q: "Metotressato - Meccanismo e 'Rescue':", a: "Inibisce la Diidrofolato reduttasi; si usa il Leucovorina (acido folinico) per salvare le cellule sane" },
-    { q: "5-Fluorouracile (5-FU) - Meccanismo:", a: "Inibitore della timidilato sintasi (blocca la sintesi di pirimidine)" },
-    { q: "Bleomicina - Effetto collaterale tipico:", a: "Fibrosi polmonare" },
-    { q: "Trastuzumab (Herceptin) - Bersaglio:", a: "Recettore HER2 (specifico per tumori mammari HER2 positivi)" },
-    { q: "L-Asparaginasi - Uso e meccanismo:", a: "Leucemia Linfoblastica Acuta; depleta l'asparagina circolante di cui le cellule leucemiche sono dipendenti" },
-
-    // --- ENDOCRINOLOGIA E ORMONI ---
-    { q: "Etinilestradiolo - Importanza:", a: "È l'estrogeno sintetico presente nella quasi totalità dei contraccettivi orali combinati" },
-    { q: "Levonorgestrel (nella pillola del giorno dopo) - Dose:", a: "Singola dose da 1.5 mg (o due da 0.75 mg)" },
-    { q: "Propiltiouracile vs Metimazolo in gravidanza:", a: "Si preferisce il Propiltiouracile nel primo trimestre (minor rischio teratogeno)" },
-    { q: "Meccanismo d'azione del Radioiodio (I-131):", a: "Emette particelle beta che distruggono il parenchima tiroideo (trattamento definitivo ipertiroidismo)" },
-    { q: "Quale farmaco sopprime permanentemente la funzione tiroidea?", a: "Iodio radioattivo" },
-    { q: "Calcitonina - Uso clinico:", a: "Ipercalcemia e Malattia di Paget (inibisce il riassorbimento osseo)" },
-    { q: "Vitamina D attiva (Calcitriolo) - Funzione:", a: "Aumenta l'assorbimento intestinale di Calcio e Fosfato" },
-
-    // --- DISLIPIDEMIE E METABOLISMO ---
-    { q: "Statine - Meccanismo d'azione:", a: "Inibizione competitiva dell'enzima HMG-CoA reduttasi (bloccano sintesi endogena colesterolo)" },
-    { q: "Effetto avverso più temuto delle Statine:", a: "Miopatia e Rabdomiolisi (rischio aumenta se associate a fibrati)" },
-    { q: "Fibrati - Quale parametro lipidico riducono maggiormente?", a: "I trigliceridi (VLDL)" },
-    { q: "Acido Nicotinico (Niacina) - Effetto collaterale tipico:", a: "Flush cutaneo (arrossamento) mediato dalle prostaglandine" },
-    { q: "Resine sequestranti gli acidi biliari (es. Colestiramina) - Meccanismo:", a: "Legano gli acidi biliari nell'intestino impedendone il riassorbimento e forzando il fegato a usare colesterolo per produrne di nuovi" },
-
-    // --- FARMACOLOGIA OCULARE (GLAUCOMA) ---
-    { q: "Latanoprost (Analoghi Prostaglandine) - Meccanismo nel glaucoma:", a: "Aumenta il deflusso dell'umore acqueo per via uveo-sclerale" },
-    { q: "Timololo (Beta-bloccante) - Uso nel glaucoma:", a: "Riduce la produzione di umore acqueo dai processi ciliari" },
-    { q: "Pilocarpina - Effetto sull'occhio:", a: "Miosi e contrazione del muscolo ciliare (facilita il deflusso dell'umore acqueo)" },
-
-    // --- ALTRI DETTAGLI DAI DOCUMENTI ---
-    { q: "Darbepoetina alfa - Uso specifico:", a: "Trattamento dell'anemia in pazienti con insufficienza renale cronica (emivita più lunga dell'eritropoietina)" },
-    { q: "Canrenone - Meccanismo:", a: "Metabolita attivo dello spironolattone; antagonista del recettore dei mineralcorticoidi (Aldosterone)" },
-    { q: "Ottreotide - Uso clinico principale:", a: "Acromegalia e tumori neuroendocrini (analogo della somatostatina)" },
-    
-    // --- SPERIMENTAZIONE CLINICA E FARMACOVIGILANZA ---
-    { q: "Definizione di Sperimentazione Clinica di Fase I:", a: "Prima somministrazione all'uomo (volontari sani) per valutare sicurezza, tollerabilità e farmacocinetica" },
-    { q: "Definizione di Sperimentazione Clinica di Fase II:", a: "Primi studi su piccoli gruppi di pazienti per determinare l'efficacia terapeutica e il dosaggio ottimale" },
-    { q: "Definizione di Sperimentazione Clinica di Fase III:", a: "Studi su larga scala (multicentrici) per confermare l'efficacia e confrontare il farmaco con terapie esistenti o placebo" },
-    { q: "Cos'è la Fase IV della sperimentazione?", a: "Farmacovigilanza post-marketing per rilevare reazioni avverse rare o effetti a lungo termine su larga popolazione" },
-    { q: "Confronto tra test di mutagenesi e cancerogenesi:", a: "I test di mutagenesi sono più semplici, rapidi e più predittivi rispetto a quelli di cancerogenesi" },
-
-    // --- TOSSICOLOGIA, DIPENDENZA E TOLLERANZA ---
-    { q: "Cosa si intende per 'Dipendenza Fisica'?", a: "Stato adattativo che si manifesta con una sindrome da astinenza alla sospensione del farmaco" },
-    { q: "Cosa si intende per 'Dipendenza Psichica' (Craving)?", a: "Desiderio compulsivo di assumere la sostanza per i suoi effetti gratificanti o per evitare il disagio" },
-    { q: "Definizione di 'Tachiflassi'", a: "Forma di tolleranza che si sviluppa in modo estremamente rapido (es. efedrina)" },
-    { q: "La tolleranza farmacometabolica comporta:", a: "Una riduzione della concentrazione plasmatica del farmaco a causa dell'induzione degli enzimi che lo degradano" },
-    { q: "Cosa si intende per 'Indice Terapeutico' basso?", a: "Piccola differenza tra dose efficace e dose tossica; il farmaco richiede monitoraggio (es. Litio, Warfarin, Digossina)" },
-
-    // --- GASTROENTEROLOGIA E METABOLISMO ---
-    { q: "Rifaximina - Caratteristica e uso:", a: "Antibiotico non assorbito; usato per la diarrea del viaggiatore e per prevenire l'encefalopatia epatica" },
-    { q: "Lattulosio - Meccanismo nell'encefalopatia epatica:", a: "Acidifica il contenuto del colon, convertendo l'ammoniaca (NH3) in ione ammonio (NH4+) non assorbibile" },
-    { q: "Perché gli inibitori di pompa protonica (IPP) si assumono prima dei pasti?", a: "Perché devono essere presenti nel sangue quando le pompe protoniche delle cellule parietali sono attive durante la digestione" },
-    { q: "Misoprostolo - Uso e controindicazione:", a: "Analogo delle PGE1 usato per proteggere lo stomaco dai FANS; controindicato in gravidanza (induce contrazioni uterine)" },
-    { q: "Effetto avverso specifico dell'Allopurinolo:", a: "Manifestazioni cutanee di ipersensibilità che possono variare da rash lieve a Sindrome di Stevens-Johnson" },
-
-    // --- FARMACOLOGIA GENERALE (APPROFONDIMENTI) ---
-    { q: "Legame alle proteine plasmatiche - Cosa succede in caso di competizione?", a: "Il farmaco con minore affinità viene spiazzato, aumentando la sua quota libera e potenzialmente la sua tossicità" },
-    { q: "Effetto del pH urinario sull'escrezione dei farmaci:", a: "L'alcalinizzazione delle urine (es. con bicarbonato) favorisce l'escrezione dei farmaci acidi come l'aspirina" },
-    { q: "Qual è il principale meccanismo di eliminazione per i farmaci idrosolubili?", a: "Filtrazione glomerulare renale" },
-    { q: "Cinetica di Ordine Zero:", a: "Velocità di eliminazione costante indipendentemente dalla concentrazione (es. Etanolo, Aspirina ad alte dosi)" },
-    { q: "Antidoto per l'antagonismo dei curari non depolarizzanti:", a: "Inibitori dell'acetilcolinesterasi (Neostigmina) o Sugammadex" },
-
-    // --- CARDIOVASCOLARE (NICCHIE) ---
-    { q: "Perché l'Idralazina può causare tachicardia e ritenzione idrica?", a: "A causa della potente vasodilatazione arteriolare che attiva i barocettori e il sistema renina-angiotensina" },
-    { q: "Meccanismo d'azione della Clonidina:", a: "Agonista dei recettori alfa-2 adrenergici centrali (riduce il tono simpatico in uscita)" },
-    { q: "Quale diuretico è preferibile per ridurre la pressione intracranica o intraoculare?", a: "Mannitolo (diuretico osmotico)" },
-    
-    // --- NEUROTRASMISSIONE E RECETTORI (DETTAGLI MOLECOLARI) ---
-    { q: "Qual è l'azione dell'enzima Adenilato Ciclasi?", a: "Trasforma l'ATP in AMP ciclico (cAMP), agendo come secondo messaggero" },
-    { q: "Quale sistema di trasporto è coinvolto nel reuptake della Serotonina?", a: "Il trasportatore SERT (bersaglio degli SSRI)" },
-    { q: "La Sostanza P è un neurotrasmettitore di tipo:", a: "Peptidico, coinvolto nella trasmissione del dolore (sistema NANC)" },
-    { q: "I recettori NMDA del glutammato sono permeabili a:", a: "Cationi, in particolare Calcio (Ca2+) e Sodio (Na+)" },
-    { q: "Quale subunità delle proteine G lega il GTP?", a: "La subunità alfa (α)" },
-
-    // --- ANTIVIRALI EPATITE C (HCV) E B (HBV) ---
-    { q: "Sofosbuvir - Meccanismo d'azione:", a: "Inibitore della polimerasi NS5B del virus dell'epatite C (HCV)" },
-    { q: "Simeprevir - Meccanismo d'azione:", a: "Inibitore della proteasi NS3/4A del virus dell'epatite C (HCV)" },
-    { q: "Ribavirina - Uso principale e tossicità:", a: "Usata in combinazione per HCV; causa anemia emolitica dose-dipendente" },
-    { q: "Entecavir - Uso clinico:", a: "Trattamento dell'epatite B cronica (HBV), inibisce la DNA polimerasi virale" },
-
-    // --- VITAMINE E SANGUE ---
-    { q: "Acido Folico (Vit. B9) - Perché è fondamentale in gravidanza?", a: "Per prevenire i difetti del tubo neurale (es. spina bifida) nel feto" },
-    { q: "Carenza di Vitamina B12 - Quale tipo di anemia provoca?", a: "Anemia megaloblastica (o perniciosa se manca il fattore intrinseco)" },
-    { q: "Ferro per via endovenosa - Quando si usa?", a: "Quando l'assorbimento orale è compromesso o in caso di intolleranza grave ai sali di ferro" },
-    { q: "Fitomenadione - Cos'è?", a: "Vitamina K1, usata come antidoto per il sovradosaggio di anticoagulanti orali (Warfarin)" },
-
-    // --- FARMACOLOGIA GENERALE (ULTIME DEFINIZIONI) ---
-    { q: "Cosa si intende per 'Reserva Funzionale' in tossicologia?", a: "La capacità di un organo di mantenere la sua funzione nonostante il danno indotto da un tossico" },
-    { q: "I farmaci possono essere mutageni (Test di Ames):", a: "Sì, se sono in grado di modificare stabilmente la sequenza del DNA" },
-    { q: "Qual è il principale meccanismo di trasporto transmembrana per la maggior parte dei farmaci?", a: "Diffusione passiva (secondo il gradiente di concentrazione)" },
-    { q: "Definizione di 'Affinità' di un farmaco:", a: "La capacità del farmaco di legarsi al suo recettore specifico (misurata dalla Kd)" },
-    { q: "Definizione di 'Efficacia' (Attività Intrinseca):", a: "La capacità del complesso farmaco-recettore di produrre una risposta biologica" },
-
-    // --- VARIE E CHIUSURA ---
-    { q: "L'atropina per gli organofosforici è un antidoto:", a: "Sintomatico/Fisiologico (blocca i recettori muscarinici ma non riattiva l'acetilcolinesterasi)" },
-    { q: "La tolleranza 'comportamentale' si verifica quando:", a: "L'individuo impara a compensare gli effetti del farmaco (comune con l'alcol)" },
-    { q: "Cosa si intende per 'Biofase'?", a: "Il microambiente immediato che circonda il recettore dove il farmaco esplica l'azione" }
+<script>
+// La sezione DATA è ora pronta per essere riempita
+const questions = [
+    {q: "Esempio: Meccanismo Statine?", a: "Inibizione HMG-CoA reduttasi"},
+    {q: "Esempio: Antidoto Oppioidi?", a: "Naloxone"},
+    {q: "Esempio: Antidoto Benzodiazepine?", a: "Flumazenil"},
+    {q: "Esempio: Meccanismo Aspirina?", a: "Inibizione irreversibile COX"}
 ];
 
-        // --- STATO DELL'APP ---
-        let cards = [...originalData];
-        let currentIndex = 0;
-        let isFlipped = false;
-        let isShuffle = false;
-        
-        let stats = {
-            right: 0,
-            wrong: 0,
-            evaluated: {} // tiene traccia delle card già votate { index: 'right'/'wrong' }
-        };
+let score = 0;
+let currentCorrectAnswer = "";
 
-        // --- ELEMENTI DOM ---
-        const flashcardEl = document.getElementById('flashcard');
-        const questionText = document.getElementById('question-text');
-        const answerText = document.getElementById('answer-text');
-        const cardCounter = document.getElementById('card-counter');
-        const scoreRight = document.getElementById('score-right');
-        const scoreWrong = document.getElementById('score-wrong');
-        const evalButtons = document.getElementById('eval-buttons');
-        const shuffleStatus = document.getElementById('shuffle-status');
-        const progressBar = document.getElementById('progress-fill');
-        const rightBtn = document.querySelector('.btn-success');
-        const wrongBtn = document.querySelector('.btn-danger');
+function loadNewQuestion() {
+    // Reset interfaccia
+    document.getElementById('feedback').innerText = "";
+    document.getElementById('next-btn').style.display = "none";
+    const optionsDiv = document.getElementById('options');
+    optionsDiv.innerHTML = "";
 
-        // --- INIZIALIZZAZIONE ---
-        function init() {
-            loadProgress();
-            loadCard();
-        }
+    // Scegli domanda casuale
+    const qObj = questions[Math.floor(Math.random() * questions.length)];
+    document.getElementById('question').innerText = qObj.q;
+    currentCorrectAnswer = qObj.a;
 
-        function loadCard() {
-            const data = cards[currentIndex];
-            questionText.textContent = data.q;
-            answerText.textContent = data.a;
-            
-            // Reset visuale
-            isFlipped = false;
-            flashcardEl.classList.remove('flipped');
-            toggleEvalButtons(false);
-            
-            updateUI();
-        }
+    // Crea lista di risposte (1 corretta + 3 casuali dal database)
+    let answers = [qObj.a];
+    while(answers.length < 4) {
+        let randomA = questions[Math.floor(Math.random() * questions.length)].a;
+        if(!answers.includes(randomA)) answers.push(randomA);
+    }
 
-        function flipCard() {
-            isFlipped = !isFlipped;
-            flashcardEl.classList.toggle('flipped');
-            toggleEvalButtons(isFlipped);
-        }
+    // Mischia le risposte
+    answers.sort(() => Math.random() - 0.5);
 
-        function toggleEvalButtons(show) {
-            if (show) {
-                const btns = evalButtons.querySelectorAll('button');
-                btns.forEach(b => {
-                    b.classList.remove('hidden');
-                    b.classList.add('visible');
-                    // Riabilita bottoni se era già stato votato
-                    b.disabled = false;
-                    b.style.opacity = "1";
-                });
+    // Genera bottoni
+    answers.forEach(text => {
+        const btn = document.createElement('button');
+        btn.className = 'option';
+        btn.innerText = text;
+        btn.onclick = () => checkAnswer(btn, text);
+        optionsDiv.appendChild(btn);
+    });
+}
 
-                // Se la card corrente è già stata votata, disabilita i bottoni
-                /* (Opzionale: se vuoi impedire di cambiare voto. Per ora lascio libero il voto multiplo o lo sovrascrivo) */
-            } else {
-                const btns = evalButtons.querySelectorAll('button');
-                btns.forEach(b => {
-                    b.classList.remove('visible');
-                    b.classList.add('hidden');
-                });
-            }
-        }
+function checkAnswer(selectedBtn, text) {
+    const allOptions = document.querySelectorAll('.option');
+    allOptions.forEach(btn => btn.disabled = true); // Disabilita altri click
 
-        // --- LOGICA DI VOTO E NAVIGAZIONE ---
-        function vote(isCorrect) {
-            // Se avevamo già votato questa card, aggiorniamo il conteggio rimuovendo il voto vecchio
-            // (Per semplicità in questa versione base, sommiamo e basta, oppure usiamo un ID univoco).
-            // Usiamo l'indice originale per tracciare
-            
-            // Incrementa score
-            if (isCorrect) {
-                stats.right++;
-            } else {
-                stats.wrong++;
-            }
-            
-            saveProgress();
-            updateUI();
+    if(text === currentCorrectAnswer) {
+        selectedBtn.classList.add('correct');
+        document.getElementById('feedback').innerText = "Corretto! 🎉";
+        document.getElementById('feedback').style.color = "#34c759";
+        score++;
+    } else {
+        selectedBtn.classList.add('wrong');
+        document.getElementById('feedback').innerText = "Sbagliato. La risposta corretta era: " + currentCorrectAnswer;
+        document.getElementById('feedback').style.color = "#ff3b30";
+        // Evidenzia quella corretta
+        allOptions.forEach(btn => {
+            if(btn.innerText === currentCorrectAnswer) btn.classList.add('correct');
+        });
+    }
 
-            // Passa automaticamente alla prossima dopo un breve ritardo
-            setTimeout(() => {
-                nextCard();
-            }, 300);
-        }
+    document.getElementById('points').innerText = score;
+    document.getElementById('next-btn').style.display = "block";
+}
 
-        function nextCard() {
-            if (currentIndex < cards.length - 1) {
-                currentIndex++;
-            } else {
-                // Fine del mazzo, ricomincia
-                if(confirm("Hai finito il mazzo! Vuoi ricominciare?")) {
-                    currentIndex = 0;
-                    if(isShuffle) shuffleCards();
-                } else {
-                    return;
-                }
-            }
-            loadCard();
-            saveProgress();
-        }
+// Avvio
+window.onload = loadNewQuestion;
+</script>
 
-        function prevCard() {
-            if (currentIndex > 0) {
-                currentIndex--;
-                loadCard();
-                saveProgress();
-            }
-        }
-
-        function toggleShuffle() {
-            isShuffle = !isShuffle;
-            shuffleStatus.textContent = isShuffle ? "(On)" : "(Off)";
-            
-            if (isShuffle) {
-                // Mescola
-                shuffleCards();
-            } else {
-                // Ripristina ordine originale
-                // Nota: se ripristiniamo, potremmo perdere la posizione relativa, 
-                // quindi resettiamo l'indice o cerchiamo di mappare (reset è più semplice).
-                cards = [...originalData];
-                currentIndex = 0;
-                alert("Ordine ripristinato. Si ricomincia dalla 1.");
-            }
-            loadCard();
-        }
-
-        function shuffleCards() {
-            // Algoritmo Fisher-Yates
-            for (let i = cards.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [cards[i], cards[j]] = [cards[j], cards[i]];
-            }
-            currentIndex = 0;
-        }
-
-        function updateUI() {
-            cardCounter.textContent = `${currentIndex + 1} / ${cards.length}`;
-            scoreRight.textContent = stats.right;
-            scoreWrong.textContent = stats.wrong;
-            
-            const progress = ((currentIndex + 1) / cards.length) * 100;
-            progressBar.style.width = `${progress}%`;
-        }
-
-        // --- SALVATAGGIO LOCALE ---
-        function saveProgress() {
-            const state = {
-                stats: stats,
-                currentIndex: currentIndex,
-                isShuffle: isShuffle,
-                // Salviamo anche l'ordine delle carte se siamo in shuffle, altrimenti al reload si perde l'ordine
-                cards: isShuffle ? cards : null 
-            };
-            localStorage.setItem('flashcardsPharma_v1', JSON.stringify(state));
-        }
-
-        function loadProgress() {
-            const saved = localStorage.getItem('flashcardsPharma_v1');
-            if (saved) {
-                const state = JSON.parse(saved);
-                stats = state.stats || { right: 0, wrong: 0 };
-                currentIndex = state.currentIndex || 0;
-                isShuffle = state.isShuffle || false;
-                shuffleStatus.textContent = isShuffle ? "(On)" : "(Off)";
-                
-                if (state.cards && isShuffle) {
-                    cards = state.cards;
-                }
-            }
-        }
-
-        function resetProgress() {
-            if(confirm("Sei sicuro di voler azzerare il punteggio?")) {
-                stats = { right: 0, wrong: 0 };
-                currentIndex = 0;
-                localStorage.removeItem('flashcardsPharma_v1');
-                cards = [...originalData]; // Reset ordine
-                isShuffle = false;
-                shuffleStatus.textContent = "(Off)";
-                loadCard();
-            }
-        }
-
-        // Avvio
-        init();
-
-    </script>
 </body>
 </html>
