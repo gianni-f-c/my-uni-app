@@ -70,875 +70,134 @@
 const allQuestions = [
     // --- PATOLOGIA GENERALE: Danno Cellulare e Adattamento ---
     {
-        q: "Nel contesto dell'adattamento cellulare, come viene definita la 'metaplasia'?",
+        q: "legge casati",
         options: [
-            "Aumento delle dimensioni delle cellule con conseguente aumento del volume dell'organo",
-            "Sostituzione reversibile di un tipo cellulare adulto (epiteliale o mesenchimale) con un altro tipo cellulare adulto",
-            "Aumento del numero di cellule in un organo o tessuto",
-            "Riduzione delle dimensioni cellulari per perdita di sostanza cellulare"
+            "1904",
+            "1859",
+            "1888",
+            "1877"
         ],
-        correct: "Sostituzione reversibile di un tipo cellulare adulto (epiteliale o mesenchimale) con un altro tipo cellulare adulto"
+        correct: "1859"
     },
     {
-        q: "Qual è il segno distintivo morfologico irreversibile che indica il passaggio da danno reversibile a necrosi?",
+        q: "legge coppino ",
         options: [
-            "Rigonfiamento cellulare (swelling)",
-            "Distacco dei ribosomi dal RER",
-            "Deplezione dell'ATP",
-            "Danno severo alle membrane cellulari e lisosomiali con picnosi/cariolisi nucleare"
+            "1859",
+            "1888",
+            "1923",
+            "1877"
         ],
-        correct: "Danno severo alle membrane cellulari e lisosomiali con picnosi/cariolisi nucleare"
+        correct: "1877"
     },
-    {
-        q: "Quale delle seguenti affermazioni descrive correttamente l'apoptosi rispetto alla necrosi?",
-        options: [
-            "L'apoptosi induce sempre una forte risposta infiammatoria",
-            "L'apoptosi comporta il rigonfiamento della cellula e la rottura della membrana",
-            "L'apoptosi è un processo geneticamente programmato che mantiene l'integrità della membrana plasmatica",
-            "L'apoptosi è sempre un processo patologico causato da ipossia"
-        ],
-        correct: "L'apoptosi è un processo geneticamente programmato che mantiene l'integrità della membrana plasmatica"
-    },
-
-    // --- INFIAMMAZIONE E RIPARAZIONE ---
-    {
-        q: "Quali sono i primi leucociti a essere reclutati nel sito di infiammazione acuta (nelle prime 6-24 ore)?",
-        options: [
-            "Macrofagi",
-            "Linfociti T",
-            "Granulociti neutrofili",
-            "Eosinofili"
-        ],
-        correct: "Granulociti neutrofili"
-    },
-    {
-        q: "Il granuloma è la lesione istologica caratteristica di:",
-        options: [
-            "Infiammazione acuta purulenta",
-            "Infiammazione cronica specifica",
-            "Edema trasudatizio",
-            "Reazione anafilattica di tipo I"
-        ],
-        correct: "Infiammazione cronica specifica"
-    },
-    {
-        q: "Quale mediatore chimico, derivato dall'acido arachidonico tramite la via della ciclossigenasi, è fondamentale nella genesi della febbre e del dolore?",
-        options: [
-            "Leucotriene B4",
-            "Prostaglandina E2 (PGE2)",
-            "Fattore attivante le piastrine (PAF)",
-            "Istamina"
-        ],
-        correct: "Prostaglandina E2 (PGE2)"
-    },
-
-    // --- EMODINAMICA E COAGULAZIONE ---
-    {
-        q: "Quali sono i tre elementi della 'Triade di Virchow' che predispongono alla trombosi?",
-        options: [
-            "Ipertensione, iperglicemia, iperlipidemia",
-            "Danno endoteliale, stasi o turbolenza del flusso, ipercoagulabilità",
-            "Infiammazione, necrosi, calcificazione",
-            "Vasocostrizione, aggregazione piastrinica, fibrinolisi"
-        ],
-        correct: "Danno endoteliale, stasi o turbolenza del flusso, ipercoagulabilità"
-    },
-    {
-        q: "Qual è la causa più comune di embolia polmonare?",
-        options: [
-            "Emboli adiposi da fratture ossee",
-            "Trombosi venosa profonda (TVP) degli arti inferiori",
-            "Vegetazioni valvolari cardiache",
-            "Embolia gassosa da decompressione"
-        ],
-        correct: "Trombosi venosa profonda (TVP) degli arti inferiori"
-    },
-    {
-        q: "Lo shock settico è caratterizzato principalmente da:",
-        options: [
-            "Vasocostrizione periferica massiva e aumento della gittata cardiaca",
-            "Vasodilatazione periferica, stasi ematica e attivazione/danno endoteliale diffuso da citochine",
-            "Perdita massiva di sangue (ipovolemia)",
-            "Tamponamento cardiaco"
-        ],
-        correct: "Vasodilatazione periferica, stasi ematica e attivazione/danno endoteliale diffuso da citochine"
-    },
-
-    // --- NEOPLASIE ---
-    {
-        q: "Quale gene è noto come 'il guardiano del genoma' ed è il gene oncosoppressore più frequentemente mutato nei tumori umani?",
-        options: [
-            "RAS",
-            "MYC",
-            "TP53",
-            "BCL-2"
-        ],
-        correct: "TP53"
-    },
-    {
-        q: "Qual è la caratteristica fondamentale che distingue un tumore maligno da uno benigno?",
-        options: [
-            "La capacità di invadere i tessuti circostanti e metastatizzare",
-            "L'alto tasso di proliferazione",
-            "La presenza di capsula fibrosa",
-            "L'assenza di necrosi"
-        ],
-        correct: "La capacità di invadere i tessuti circostanti e metastatizzare"
-    },
-    {
-        q: "Il termine 'carcinoma in situ' si riferisce a:",
-        options: [
-            "Un tumore che ha superato la membrana basale ma non ha dato metastasi",
-            "Una displasia a tutto spessore dell'epitelio che non ha oltrepassato la membrana basale",
-            "Un tumore benigno di origine ghiandolare",
-            "Una metaplasia squamosa"
-        ],
-        correct: "Una displasia a tutto spessore dell'epitelio che non ha oltrepassato la membrana basale"
-    },
-
-    // --- SISTEMICA: CUORE E VASI ---
-    {
-        q: "Qual è l'evento iniziale critico nella patogenesi dell'aterosclerosi secondo l'ipotesi della risposta al danno?",
-        options: [
-            "Accumulo di macrofagi nell'intima",
-            "Proliferazione delle cellule muscolari lisce",
-            "Danno o disfunzione endoteliale cronica",
-            "Calcificazione della media"
-        ],
-        correct: "Danno o disfunzione endoteliale cronica"
-    },
-    {
-        q: "Nell'infarto del miocardio, qual è il range temporale in cui il danno ai miocardiociti diventa irreversibile dopo l'occlusione coronarica?",
-        options: [
-            "1-2 minuti",
-            "20-40 minuti",
-            "6-12 ore",
-            "24-48 ore"
-        ],
-        correct: "20-40 minuti"
-    },
-    {
-        q: "Quale valvulopatia è tipicamente associata alla malattia reumatica cardiaca?",
-        options: [
-            "Stenosi della mitrale (spesso con fusione delle commissure)",
-            "Stenosi della polmonare",
-            "Insufficienza della tricuspide isolata",
-            "Calcificazione senile della valvola aortica"
-        ],
-        correct: "Stenosi della mitrale (spesso con fusione delle commissure)"
-    },
-
-    // --- SISTEMICA: POLMONE ---
-    {
-        q: "Come viene definito l'enfisema polmonare dal punto di vista anatomopatologico?",
-        options: [
-            "Ipertrofia delle ghiandole mucose bronchiali",
-            "Infiammazione cronica delle vie aeree con broncospasmo reversibile",
-            "Dilatazione anomala e permanente degli spazi aerei distali al bronchiolo terminale con distruzione delle loro pareti",
-            "Presenza di essudato purulento negli alveoli"
-        ],
-        correct: "Dilatazione anomala e permanente degli spazi aerei distali al bronchiolo terminale con distruzione delle loro pareti"
-    },
-    {
-        q: "Qual è il tipo istologico più comune di carcinoma polmonare associato al fumo di sigaretta?",
-        options: [
-            "Adenocarcinoma",
-            "Carcinoma a piccole cellule (microcitoma) e Carcinoma squamoso",
-            "Mesotelioma",
-            "Tumore carcinoide"
-        ],
-        correct: "Carcinoma a piccole cellule (microcitoma) e Carcinoma squamoso"
-    },
-
-    // --- SISTEMICA: FEGATO E GI ---
-    {
-        q: "Quale cellula epatica è la principale responsabile della deposizione di collagene (fibrosi) nella cirrosi epatica?",
-        options: [
-            "Epatocita",
-            "Cellula di Kupffer",
-            "Cellula stellata epatica (di Ito)",
-            "Cellula endoteliale sinusoidale"
-        ],
-        correct: "Cellula stellata epatica (di Ito)"
-    },
-    {
-        q: "L'esofago di Barrett è una complicanza del reflusso gastroesofageo cronico definita da:",
-        options: [
-            "Metaplasia intestinale dell'epitelio squamoso distale dell'esofago",
-            "Ulcera peptica perforata",
-            "Presenza di varici esofagee",
-            "Ipertrofia della muscolatura esofagea"
-        ],
-        correct: "Metaplasia intestinale dell'epitelio squamoso distale dell'esofago"
-    },
-    {
-        q: "Nella pancreatite acuta, qual è il meccanismo patogenetico centrale?",
-        options: [
-            "Infezione batterica diretta",
-            "Autodigestione del tessuto pancreatico da parte di enzimi attivati inappropiatamente",
-            "Reazione autoimmune contro le cellule beta",
-            "Ischemia mesenterica"
-        ],
-        correct: "Autodigestione del tessuto pancreatico da parte di enzimi attivati inappropiatamente"
-    },
-
-    // --- SISTEMICA: RENE ---
-    {
-        q: "Qual è la caratteristica clinica distintiva della Sindrome Nefrosica?",
-        options: [
-            "Ematuria macroscopica e ipertensione",
-            "Proteinuria massiva (>3,5 g/die), ipoalbuminemia ed edema",
-            "Oliguria acuta e iperazotemia",
-            "Piuria e batteriuria"
-        ],
-        correct: "Proteinuria massiva (>3,5 g/die), ipoalbuminemia ed edema"
-    },
-    {
-        q: "La necrosi tubulare acuta (NTA) è la causa più comune di:",
-        options: [
-            "Insufficienza renale cronica",
-            "Insufficienza renale acuta intrarenale",
-            "Sindrome nefritica",
-            "Pielonefrite cronica"
-        ],
-        correct: "Insufficienza renale acuta intrarenale"
-    },
-
-    // --- IMMUNOLOGIA E GENETICA ---
-    {
-        q: "Nelle reazioni di ipersensibilità di Tipo I (Immediata), quale immunoglobulina media la risposta legandosi ai mastociti?",
-        options: [
-            "IgG",
-            "IgM",
-            "IgA",
-            "IgE"
-        ],
-        correct: "IgE"
-    },
-    {
-        q: "La fibrosi cistica è causata da una mutazione nel gene CFTR che regola il trasporto di:",
-        options: [
-            "Ioni Sodio e Potassio",
-            "Ioni Cloro",
-            "Glucosio",
-            "Aminoacidi"
-        ],
-        correct: "Ioni Cloro"
-    },
-
-    // --- ENDOCRINO ---
-    {
-        q: "Nel Diabete Mellito di tipo 2, qual è il difetto fisiopatologico primario iniziale?",
-        options: [
-            "Distruzione autoimmune delle cellule beta pancreatiche",
-            "Insulino-resistenza dei tessuti periferici e relativa disfunzione delle cellule beta",
-            "Assenza totale di insulina",
-            "Eccessiva produzione di glucagone"
-        ],
-        correct: "Insulino-resistenza dei tessuti periferici e relativa disfunzione delle cellule beta"
-    },
-    {
-        q: "La Tiroidite di Hashimoto è caratterizzata istologicamente da:",
-        options: [
-            "Infiltrato infiammatorio acuto con ascessi",
-            "Intenso infiltrato linfocitario con formazione di centri germinativi e cellule di Hürthle",
-            "Fibrosi massiva che sostituisce la ghiandola (tiroidite lignea)",
-            "Granulomi con cellule giganti multinucleate"
-        ],
-        correct: "Intenso infiltrato linfocitario con formazione di centri germinativi e cellule di Hürthle"
-    },
-    {
-        q: "Qual è la causa più frequente della sindrome di Cushing endogena?",
-        options: [
-            "Adenoma surrenalico secernente cortisolo",
-            "Carcinoma surrenalico",
-            "Iperproduzione di ACTH da parte di un adenoma ipofisario (Malattia di Cushing)",
-            "Secrezione ectopica di ACTH (es. carcinoma polmonare)"
-        ],
-        correct: "Iperproduzione di ACTH da parte di un adenoma ipofisario (Malattia di Cushing)"
-    },
-
-    // --- EMATOLOGIA E LINFONODI ---
-    {
-        q: "La presenza di cellule di Reed-Sternberg è patognomonica per:",
-        options: [
-            "Linfoma di Burkitt",
-            "Linfoma Follicolare",
-            "Linfoma di Hodgkin",
-            "Leucemia Linfatica Cronica"
-        ],
-        correct: "Linfoma di Hodgkin"
-    },
-    {
-        q: "Nell'anemia megaloblastica, la caratteristica morfologica principale dei precursori eritroidi è:",
-        options: [
-            "Microcitosi e ipocromia",
-            "Asincronia di maturazione nucleo-citoplasmatica (nucleo immaturo, citoplasma maturo)",
-            "Presenza di sferociti",
-            "Presenza di cellule a falce"
-        ],
-        correct: "Asincronia di maturazione nucleo-citoplasmatica (nucleo immaturo, citoplasma maturo)"
-    },
-    {
-        q: "La Leucemia Mieloide Cronica (LMC) è contraddistinta dalla presenza del cromosoma Philadelphia, che risulta dalla traslocazione:",
-        options: [
-            "t(8;14) coinvolgendo c-MYC",
-            "t(9;22) creando il gene di fusione BCR-ABL",
-            "t(15;17) coinvolgendo il recettore dell'acido retinoico",
-            "t(14;18) coinvolgendo BCL-2"
-        ],
-        correct: "t(9;22) creando il gene di fusione BCR-ABL"
-    },
-    // --- PATOLOGIA GENERALE: Accumuli e Invecchiamento ---
-    {
-        q: "Quale pigmento 'da usura', costituito da polimeri di lipidi e fosfolipidi complessati con proteine, si accumula nei lisosomi di cellule senescenti o atrofiche?",
-        options: ["Antracosi", "Lipofuscina", "Emosiderina", "Bilirubina"],
-        correct: "Lipofuscina"
-    },
-    {
-        q: "La calcificazione distrofica si differenzia dalla calcificazione metastatica perché:",
-        options: [
-            "Avviene in tessuti normali a causa di ipercalcemia",
-            "Avviene in tessuti necrotici o danneggiati con livelli sierici di calcio normali",
-            "È causata esclusivamente da un eccesso di Vitamina D",
-            "Si riscontra solo nei calcoli renali"
-        ],
-        correct: "Avviene in tessuti necrotici o danneggiati con livelli sierici di calcio normali"
-    },
-
-    // --- IMMUNOPATOLOGIA AVANZATA ---
-    {
-        q: "Nelle malattie autoimmuni, il fenomeno del 'molecular mimicry' (mimetismo molecolare) consiste nel:",
-        options: [
-            "Fatto che i microbi possiedono epitopi che cross-reagiscono con gli antigeni self",
-            "Il rilascio di antigeni sequestrati dopo un trauma",
-            "L'attivazione dei linfociti B da parte dei superantigeni",
-            "La mutazione somatica dei recettori dei linfociti T"
-        ],
-        correct: "Fatto che i microbi possiedono epitopi che cross-reagiscono con gli antigeni self"
-    },
-    // --- PATOLOGIA GENERALE: Accumuli e Invecchiamento ---
-    {
-        q: "Quale pigmento 'da usura', costituito da polimeri di lipidi e fosfolipidi complessati con proteine, si accumula nei lisosomi di cellule senescenti?",
-        options: ["Antracosi", "Lipofuscina", "Emosiderina", "Bilirubina"],
-        correct: "Lipofuscina"
-    },
-    {
-        q: "La calcificazione distrofica si differenzia dalla calcificazione metastatica perché:",
-        options: [
-            "Avviene in tessuti normali a causa di ipercalcemia",
-            "Avviene in tessuti necrotici o danneggiati con livelli sierici di calcio normali",
-            "È causata esclusivamente da un eccesso di Vitamina D",
-            "Si riscontra solo nei calcoli renali"
-        ],
-        correct: "Avviene in tessuti necrotici o danneggiati con livelli sierici di calcio normali"
-    },
-
-    // --- IMMUNOPATOLOGIA ---
-    {
-        q: "Qual è il meccanismo patogenetico della Miastenia Gravis (Ipersensibilità di tipo II)?",
-        options: [
-            "Lisi cellulare mediata dal complemento",
-            "Anticorpi che bloccano o distruggono i recettori dell'acetilcolina nella giunzione neuromuscolare",
-            "Formazione di complessi immuni circolanti",
-            "Attivazione di linfociti T citotossici contro i muscoli"
-        ],
-        correct: "Anticorpi che bloccano o distruggono i recettori dell'acetilcolina nella giunzione neuromuscolare"
-    },
-    {
-        q: "Quale citochina è considerata il 'master regulator' della fibrosi nell'infiammazione cronica?",
-        options: ["IL-1", "TNF-alpha", "TGF-beta", "IFN-gamma"],
-        correct: "TGF-beta"
-    },
-
-    // --- NEOPLASIE (Meccanismi molecolari) ---
-    {
-        q: "Cosa si intende per 'Effetto Warburg' nelle cellule neoplastiche?",
-        options: [
-            "La capacità di evadere l'apoptosi tramite BCL-2",
-            "Il passaggio al metabolismo glicolitico anche in presenza di ossigeno (glicolisi aerobica)",
-            "La secrezione di fattori angiogenetici come il VEGF",
-            "Il accorciamento dei telomeri dopo ogni divisione"
-        ],
-        correct: "Il passaggio al metabolismo glicolitico anche in presenza di ossigeno (glicolisi aerobica)"
-    },
-    {
-        q: "Quale via di segnalazione oncogenica è attivata dalla mutazione del gene BRAF (comune nel melanoma)?",
-        options: ["Via delle MAPK", "Via Wnt/Beta-catenina", "Via Notch", "Via JAK/STAT"],
-        correct: "Via delle MAPK"
-    },
-
-    // --- MALATTIE GENETICHE E PEDIATRICHE ---
-    {
-        q: "Nella Sindrome di Marfan, la mutazione del gene della Fibrillina-1 porta a un indebolimento del connettivo e a:",
-        options: [
-            "Iperattivazione del segnale del TGF-beta",
-            "Carenza di collagene di tipo I",
-            "Accumulo di glicogeno nel fegato",
-            "Sostituzione ossea con tessuto fibroso"
-        ],
-        correct: "Iperattivazione del segnale del TGF-beta"
-    },
-
-    // --- VASI E CUORE ---
-    {
-        q: "L'aneurisma dell'aorta addominale è più frequentemente causato da:",
-        options: ["Sifilide terziaria", "Aterosclerosi", "Ipertensione maligna", "Difetti congeniti della media"],
-        correct: "Aterosclerosi"
-    },
-    {
-        q: "La cardiomiopatia ipertrofica (HCM) è causata principalmente da mutazioni in geni che codificano per:",
-        options: [
-            "Proteine del citoscheletro (Distrofina)",
-            "Proteine del sarcomero (es. catena pesante della beta-miosina)",
-            "Canali del calcio",
-            "Enzimi lisosomiali"
-        ],
-        correct: "Proteine del sarcomero (es. catena pesante della beta-miosina)"
-    },
-
-    // --- APPARATO RESPIRATORIO ---
-    {
-        q: "Qual è la lesione elementare della sarcoidosi a livello polmonare?",
-        options: [
-            "Granuloma necrotizzante (caseoso)",
-            "Granuloma non necrotizzante (non caseoso)",
-            "Fibrosi interstiziale diffusa (UIP)",
-            "Essudato intra-alveolare"
-        ],
-        correct: "Granuloma non necrotizzante (non caseoso)"
-    },
-    {
-        q: "La sindrome da distress respiratorio acuto (ARDS) è caratterizzata morfologicamente da:",
-        options: [
-            "Iperplasia delle cellule caliciformi",
-            "Formazione di membrane ialine lungo le pareti alveolari",
-            "Infiltrato eosinofilo massivo",
-            "Bronchiettasie diffuse"
-        ],
-        correct: "Formazione di membrane ialine lungo le pareti alveolari"
-    },
-
-    // --- APPARATO DIGERENTE ---
-    {
-        q: "Qual è la differenza istologica chiave tra Morbo di Crohn e Rettocolite Ulcerosa (RCU)?",
-        options: [
-            "La RCU è transmurale, il Crohn è limitato alla mucosa",
-            "Il Crohn presenta infiammazione transmurale e granulomi; la RCU è limitata a mucosa e sottomucosa",
-            "Solo la RCU aumenta il rischio di adenocarcinoma",
-            "Il Crohn colpisce solo il retto"
-        ],
-        correct: "Il Crohn presenta infiammazione transmurale e granulomi; la RCU è limitata a mucosa e sottomucosa"
-    },
-    {
-        q: "Quale microrganismo è il principale fattore eziologico per l'ulcera peptica e l'adenocarcinoma gastrico?",
-        options: ["Escherichia coli", "Helicobacter pylori", "Salmonella typhi", "Giardia lamblia"],
-        correct: "Helicobacter pylori"
-    },
-
-    // --- FEGATO E VIE BILIARI ---
-    {
-        q: "Quale marker sierologico indica una replicazione virale attiva nell'Epatite B?",
-        options: ["HBsAb", "HBeAg", "HBcAb (IgG)", "HBsAg"],
-        correct: "HBeAg"
-    },
-    {
-        q: "L'emocromatosi ereditaria è causata da un eccessivo assorbimento di:",
-        options: ["Rame", "Calcio", "Ferro", "Magnesio"],
-        correct: "Ferro"
-    },
-
-    // --- RENE E VIE URINARIE ---
-    {
-        q: "La glomerulonefrite a lesioni minime (MCD) è caratterizzata al microscopio elettronico da:",
-        options: [
-            "Sdoppiamento della membrana basale",
-            "Scomparsa (effacement) dei processi citoplasmatici dei podociti",
-            "Depositi 'a gobba' (humps) subepiteliali",
-            "Proliferazione extracapillare a semiluna"
-        ],
-        correct: "Scomparsa (effacement) dei processi citoplasmatici dei podociti"
-    },
-    {
-        q: "Il tumore di Wilms (nefroblastoma) è il tumore renale primitivo più comune in:",
-        options: ["Anziani (>70 anni)", "Pazienti in dialisi", "Bambini", "Giovani adulti"],
-        correct: "Bambini"
-    },
-
-    // --- APPARATO GENITALE ---
-    {
-        q: "Quali ceppi di Papillomavirus Umano (HPV) sono considerati ad alto rischio per il carcinoma della cervice?",
-        options: ["6 e 11", "16 e 18", "1 e 2", "21 e 22"],
-        correct: "16 e 18"
-    },
-    {
-        q: "I leiomiomi (fibromi) sono tumori benigni che originano da:",
-        options: ["Epitelio ghiandolare endometriale", "Cellule stromali dell'ovaio", "Cellule muscolari lisce del miometrio", "Tessuto adiposo pelvico"],
-        correct: "Cellule muscolari lisce del miometrio"
-    },
-
-    // --- MAMMELLA ---
-    {
-        q: "Qual è il sottotipo istologico più comune di tumore maligno della mammella?",
-        options: [
-            "Carcinoma lobulare in situ",
-            "Carcinoma duttale infiltrante (NOS)",
-            "Carcinoma midollare",
-            "Tumore filloide"
-        ],
-        correct: "Carcinoma duttale infiltrante (NOS)"
-    },
-
-    // --- SISTEMA ENDOCRINO ---
-    {
-        q: "Qual è il carcinoma tiroideo più comune, spesso associato a radiazioni ionizzanti e caratterizzato da nuclei 'a vetro smerigliato'?",
-        options: ["Midollare", "Follicolare", "Papillare", "Anaplastico"],
-        correct: "Papillare"
-    },
-    {
-        q: "Il Feocromocitoma è un tumore che origina da:",
-        options: [
-            "Corteccia surrenale",
-            "Cellule cromaffini della midollare del surrene",
-            "Ipofisi anteriore",
-            "Cellule C della tiroide"
-        ],
-        correct: "Cellule cromaffini della midollare del surrene"
-    },
-
-    // --- SISTEMA NERVOSO ---
-    {
-        q: "Le placche neuritiche (amiloidi) e i grovigli neurofibrillari (proteina Tau) sono tipici di:",
-        options: ["Morbo di Parkinson", "Sclerosi Multipla", "Malattia di Alzheimer", "Sclerosi Laterale Amiotrofica"],
-        correct: "Malattia di Alzheimer"
-    },
-    {
-        q: "Qual è il tumore cerebrale primitivo più aggressivo nell'adulto?",
-        options: ["Meningioma", "Ependimoma", "Glioblastoma multiforme", "Oligodendroglioma"],
-        correct: "Glioblastoma multiforme"
-    },
-
-    // --- SISTEMA MUSCOLO-SCHELETRICO ---
-    {
-        q: "L'Osteosarcoma colpisce tipicamente quale regione delle ossa lunghe?",
-        options: ["Diafisi", "Metafisi", "Epifisi", "Solo le piccole ossa del carpo"],
-        correct: "Metafisi"
-    },
-    {
-        q: "La gotta è causata dal deposito di cristalli di:",
-        options: ["Pirofosfato di calcio", "Urato monosodico", "Ossalato di calcio", "Colesterolo"],
-        correct: "Urato monosodico"
-    },
-
-    // --- CUTE ---
-    {
-        q: "Qual è il principale fattore prognostico per il Melanoma cutaneo?",
-        options: [
-            "Il diametro orizzontale",
-            "Lo spessore di invasione verticale (Indice di Breslow)",
-            "Il colore della lesione",
-            "L'età del paziente"
-        ],
-        correct: "Lo spessore di invasione verticale (Indice di Breslow)"
-    },
-
-    // --- MALATTIE INFETTIVE ---
-    {
-        q: "Nella tubercolosi secondaria, la localizzazione tipica delle lesioni è:",
-        options: ["Basi polmonari", "Apici polmonari", "Linfonodi ilari isolati", "Pleura"],
-        correct: "Apici polmonari"
-    },
-    {
-        q: "Qual è l'effetto citopatico tipico dell'infezione da Cytomegalovirus (CMV)?",
-        options: [
-            "Corpi inclusi a 'occhio di bue'",
-            "Sincizi multinucleati",
-            "Corpi di Negri",
-            "Corpi di Councilman"
-        ],
-        correct: "Corpi inclusi a 'occhio di bue'"
-    },
-    {
-        q: "La fase terziaria della sifilide è caratterizzata da lesioni chiamate:",
-        options: ["Sifiloma iniziale", "Gomme sifilitiche", "Condilomi piani", "Roseola"],
-        correct: "Gomme sifilitiche"
-    },
-    // --- PATOLOGIA GENERALE (70%) ---
-    {
-        q: "Qual è il meccanismo biochimico fondamentale che porta al rigonfiamento cellulare (edema citoplasmatico) durante il danno ipossico?",
-        options: [
-            "Aumento dell'efflusso di potassio dalla cellula",
-            "Inattivazione della pompa Na+/K+-ATPasi per carenza di ATP",
-            "Aumento della sintesi proteica",
-            "Attivazione delle caspasi"
-        ],
-        correct: "Inattivazione della pompa Na+/K+-ATPasi per carenza di ATP"
-    },
-    {
-        q: "La necrosi fibrinode è tipicamente osservata in quale di queste condizioni?",
-        options: [
-            "Infarto del miocardio",
-            "Pancreatite acuta",
-            "Reazioni immunitarie nei vasi sanguigni (vasculiti)",
-            "Ascesso batterico"
-        ],
-        correct: "Reazioni immunitarie nei vasi sanguigni (vasculiti)"
-    },
-    {
-        q: "Quale delle seguenti proteine è coinvolta nella fase di 'esecuzione' dell'apoptosi sia nella via intrinseca che estrinseca?",
-        options: ["Caspasi 9", "Caspasi 8", "Caspasi 3", "Cytochrome c"],
-        correct: "Caspasi 3"
-    },
-    {
-        q: "Quale componente della cascata del complemento funge da potente anafilatossina e fattore chemiotattico per i neutrofili?",
-        options: ["C1q", "C3b", "C5a", "C9"],
-        correct: "C5a"
-    },
-    {
-        q: "Nella riparazione delle ferite, la 'contrazione della ferita' è mediata principalmente da:",
-        options: ["Endotelio", "Miofibroblasti", "Macrofagi M1", "Linfociti T"],
-        correct: "Miofibroblasti"
-    },
-    {
-        q: "Cosa caratterizza l'essudato rispetto al trasudato?",
-        options: [
-            "Bassa densità e scarso contenuto proteico",
-            "Alta densità, alto contenuto proteico e presenza di detriti cellulari",
-            "Assenza di cellule infiammatorie",
-            "Origine esclusiva da aumento della pressione idrostatica"
-        ],
-        correct: "Alta densità, alto contenuto proteico e presenza di detriti cellulari"
-    },
-    {
-        q: "Quale difetto genetico è alla base della Malattia Granulomatosa Cronica (CGD)?",
-        options: [
-            "Deficit di adesione leucocitaria (LAD)",
-            "Mutazioni nei geni del complesso della NADPH ossidasi",
-            "Deficit di mieloperossidasi",
-            "Mancata fusione fagosoma-lisosoma (Sindrome di Chédiak-Higashi)"
-        ],
-        correct: "Mutazioni nei geni del complesso della NADPH ossidasi"
-    },
-    {
-        q: "Il sistema del killing intracellulare 'ossigeno-indipendente' dei neutrofili utilizza:",
-        options: ["Anione superossido", "Perossido di idrogeno", "Lisozima e lattoferrina", "Acido ipocloroso"],
-        correct: "Lisozima e lattoferrina"
-    },
-    {
-        q: "Qual è il ruolo principale della proteina pRb (proteina del retinoblastoma) nel ciclo cellulare?",
-        options: [
-            "Attiva la trascrizione dei geni della fase S",
-            "Inibisce il passaggio dalla fase G1 alla fase S legando il fattore E2F",
-            "Induce la degradazione di p53",
-            "Riparazione del DNA tramite escissione di basi"
-        ],
-        correct: "Inibisce il passaggio dalla fase G1 alla fase S legando il fattore E2F"
-    },
-    {
-        q: "L'amiloidosi sistemica secondaria (AA) è spesso una complicanza di:",
-        options: [
-            "Mieloma multiplo",
-            "Malattie infiammatorie croniche (es. Artrite Reumatoide)",
-            "Invecchiamento cardiaco",
-            "Dialisi a lungo termine"
-        ],
-        correct: "Malattie infiammatorie croniche (es. Artrite Reumatoide)"
-    },
-
-    // --- ONCOLOGIA (20%) ---
-    {
-        q: "Cosa si intende per 'eterogeneità tumorale'?",
-        options: [
-            "Il tumore è composto da cellule epiteliali e mesenchimali",
-            "La presenza di sottopopolazioni cellulari con diverse mutazioni e comportamenti all'interno dello stesso tumore",
-            "La capacità del tumore di diffondere in organi diversi",
-            "Il fatto che ogni tumore è diverso da paziente a paziente"
-        ],
-        correct: "La presenza di sottopopolazioni cellulari con diverse mutazioni e comportamenti all'interno dello stesso tumore"
-    },
-    {
-        q: "Le sindromi paraneoplastiche sono:",
-        options: [
-            "Sintomi causati dalla compressione locale del tumore",
-            "Sintomi a distanza non spiegabili con la diffusione del tumore o con la produzione di ormoni tipici del tessuto d'origine",
-            "Effetti collaterali della chemioterapia",
-            "Infezioni opportunistiche nel paziente oncologico"
-        ],
-        correct: "Sintomi a distanza non spiegabili con la diffusione del tumore o con la produzione di ormoni tipici del tessuto d'origine"
-    },
-    {
-        q: "Quale di queste molecole è un oncosoppressore che agisce inibendo la via di Wnt/beta-catenina?",
-        options: ["APC", "HER2", "MYC", "K-RAS"],
-        correct: "APC"
-    },
-    {
-        q: "Il processo di transizione epitelio-mesenchimale (EMT) favorisce:",
-        options: [
-            "La guarigione delle ferite per prima intenzione",
-            "L'acquisizione di mobilità e capacità invasiva da parte delle cellule carcinomatose",
-            "La differenziazione terminale delle cellule staminali",
-            "La morte cellulare per autofagia"
-        ],
-        correct: "L'acquisizione di mobilità e capacità invasiva da parte delle cellule carcinomatose"
-    },
-    {
-        q: "L'instabilità microsatellitare (MSI) è un marker di:",
+   {
+        q: "unità d’Italia",
         options: [
-            "Danni da radiazioni UV",
-            "Difetto nel sistema di riparazione del mismatch del DNA (MMR)",
-            "Mutazioni puntiformi nel gene RAS",
-            "Amplificazione di HER2/neu"
+            "1861",
+            "1877",
+            "1859",
+            "1904"
         ],
-        correct: "Difetto nel sistema di riparazione del mismatch del DNA (MMR)"
+        correct: "1861"
     },
-
-    // --- PATOLOGIA CLINICA / CASI (10%) ---
     {
-        q: "CASO CLINICO: Un uomo di 65 anni presenta tosse persistente e ipercalcemia. La radiografia mostra una massa ilare. Quale sindrome paraneoplastica è più probabile?",
+        q: "programmi gabelli",
         options: [
-            "Secrezione di ACTH (S. di Cushing)",
-            "Produzione di PTHrP (proteina correlata all'ormone paratiroideo) da carcinoma squamoso",
-            "Sindrome di Lambert-Eaton",
-            "Sindrome da inappropriata secrezione di ADH (SIADH)"
+            "1888 (12 anni obbligo scolastico)",
+            "1877 (12 anni obbligo scolastico)",
+            "1888 (positivismo didattico)",
+            "1877 (positivismo didattico)"
         ],
-        correct: "Produzione di PTHrP (proteina correlata all'ormone paratiroideo) da carcinoma squamoso"
+        correct: "1888 (positivismo didattico)"
     },
     {
-        q: "CASO CLINICO: Una donna presenta dolore addominale acuto. Gli esami mostrano livelli di Amilasi e Lipasi sieriche 5 volte superiori alla norma. Qual è il reperto morfologico atteso nel tessuto colpito?",
+        q: "legge orlando ",
         options: [
-            "Necrosi coagulativa",
-            "Necrosi steatogena (enzimatica) con formazione di saponi di calcio",
-            "Necrosi colliquativa",
-            "Atrofia bruna"
+            "1904 (12 anni obbligo scolastico)",
+            "1877 (scuole affidate allo stato)",
+            "1888 (12 anni obbligo scolastico)",
+            "1911 (positivismo didattico)"
         ],
-        correct: "Necrosi steatogena (enzimatica) con formazione di saponi di calcio"
+        correct: "1904 (12 anni obbligo scolastico)"
     },
     {
-        q: "Un aumento isolato della Bilirubina Indiretta (non coniugata) nel sangue, in assenza di danno epatico, suggerisce più probabilmente:",
+        q: "legge dando-credaro",
         options: [
-            "Ostruzione delle vie biliari",
-            "Emolisi eccessiva o Sindrome di Gilbert",
-            "Epatite virale acuta",
-            "Cirrosi biliare primaria"
+            "1923 (12 anni obbligo scolastico)",
+            "1911 (scuole affidate allo stato)",
+            "1948 (positivismo didattico)",
+            "1904 (scuole affidate allo stato)"
         ],
-        correct: "Emolisi eccessiva o Sindrome di Gilbert"
+        correct: "1911 (scuole affidate allo stato)"
     },
-    {
-        q: "Qual è la causa principale dell'edema nell'insufficienza cardiaca congestizia?",
-        options: [
-            "Aumento della pressione idrostatica venosa e attivazione del sistema renina-angiotensina",
-            "Diminuzione della pressione oncotica plasmatica",
-            "Ostruzione linfatica",
-            "Aumento della permeabilità capillare per danno diretto"
-        ],
-        correct: "Aumento della pressione idrostatica venosa e attivazione del sistema renina-angiotensina"
-    },
-    {
-        q: "Nella cascata della coagulazione, qual è il ruolo del fattore di von Willebrand (vWF)?",
-        options: [
-            "Attiva direttamente la protrombina in trombina",
-            "Media l'adesione delle piastrine al collagene subendoteliale tramite il recettore GpIb",
-            "Inibisce l'aggregazione piastrinica",
-            "Degrada il coagulo di fibrina"
-        ],
-        correct: "Media l'adesione delle piastrine al collagene subendoteliale tramite il recettore GpIb"
-    },
-    {
-        q: "La 'guarigione per seconda intenzione' differisce dalla prima perché:",
-        options: [
-            "Non coinvolge i macrofagi",
-            "È caratterizzata da una ferita con margini ampi, abbondante tessuto di granulazione e contrazione",
-            "È più rapida e non lascia cicatrice",
-            "Avviene in assenza di vasi sanguigni"
-        ],
-        correct: "È caratterizzata da una ferita con margini ampi, abbondante tessuto di granulazione e contrazione"
-    },
-
-    // --- GENETICA E MECCANISMI DI DANNO ---
-    {
-        q: "Quale difetto di riparazione del DNA è alla base dello Xeroderma Pigmentoso?",
+   {
+        q: "riforma gentile",
         options: [
-            "Mismatch repair (MMR)",
-            "Riparazione per escissione di nucleotidi (NER) danneggiati da UV",
-            "Riparazione per ricombinazione omologa (HR)",
-            "Nessuna delle precedenti"
+            "1911",
+            "1904",
+            "1923",
+            "1948"
         ],
-        correct: "Riparazione per escissione di nucleotidi (NER) danneggiati da UV"
+        correct: "1923"
     },
     {
-        q: "Cosa si intende per 'mutazione gain-of-function' di un proto-oncogene?",
+        q: "costituzione",
         options: [
-            "Una mutazione che richiede la perdita di entrambi gli alleli per manifestarsi",
-            "Una mutazione che rende la proteina costitutivamente attiva, favorendo la proliferazione",
-            "Una mutazione che impedisce la sintesi della proteina",
-            "Una mutazione che induce solo l'apoptosi"
+            "1904",
+            "1948",
+            "1911",
+            "1923"
         ],
-        correct: "Una mutazione che rende la proteina costitutivamente attiva, favorendo la proliferazione"
+        correct: "1948"
     },
-
-    // --- ONCOLOGIA: Invasione e Metastasi ---
-    {
-        q: "Qual è la principale funzione delle Metalloproteasi della Matrice (MMP) nell'invasione tumorale?",
+      {
+        q: "scuola media unica",
         options: [
-            "Inibire l'angiogenesi",
-            "Degradare la membrana basale e la matrice extracellulare per permettere il passaggio delle cellule",
-            "Indurre la produzione di anticorpi anti-tumorali",
-            "Riparare i danni al DNA della cellula ospite"
+            "1948",
+            "1968",
+            "1974",
+            "1962"
         ],
-        correct: "Degradare la membrana basale e la matrice extracellulare per permettere il passaggio delle cellule"
+        correct: "1962"
     },
     {
-        q: "Il fenomeno del 'seeding' (seminagione) nelle cavità corporee è tipico di quale neoplasia?",
+        q: "materne statali",
         options: [
-            "Carcinoma della mammella",
-            "Carcinoma dell'ovaio",
-            "Osteosarcoma",
-            "Leucemia mieloide"
+            "1968",
+            "1962",
+            "1974",
+            "1977"
         ],
-        correct: "Carcinoma dell'ovaio"
+        correct: "1968"
     },
-
-    // --- PATOLOGIA CLINICA: Emostasi e Screening ---
     {
-        q: "CASO CLINICO: Un bambino di 5 anni presenta emartri (sangue nelle articolazioni) spontanei. Il tempo di tromboplastina parziale (aPTT) è prolungato, mentre il tempo di protrombina (PT) è normale. Qual è la diagnosi più probabile?",
+        q: "decreti delegati (incontri collegiali) ",
         options: [
-            "Emofilia A o B",
-            "Carenza di Vitamina K",
-            "Piastrinopenia",
-            "Malattia di von Willebrand tipo I"
+            "1983",
+            "1974",
+            "1979",
+            "1977"
         ],
-        correct: "Emofilia A o B"
+        correct: "1974"
     },
-    {
-        q: "Qual è il marker biochimico d'elezione per monitorare la recidiva del carcinoma midollare della tiroide?",
-        options: ["CEA", "Calcitonina", "Alfafetoproteina (AFP)", "PSA"],
-        correct: "Calcitonina"
-    },
-
-    // --- PATOLOGIA GENERALE: Infiammazione ---
-    {
-        q: "Le selectine sono molecole di adesione coinvolte in quale fase del reclutamento leucocitario?",
+   {
+        q: "legge 517/1977 (insegnante di sostegno e BES)",
         options: [
-            "Adesione salda (firm adhesion)",
-            "Rotolamento (rolling)",
-            "Diapedesi (transmigrazione)",
-            "Chemiotassi"
+            "1977",
+            "1972",
+            "1981",
+            "1968"
         ],
-        correct: "Rotolamento (rolling)"
+        correct: "1977"
     },
-    
-
-    //[Image of the leukocyte adhesion cascade]
-
     {
-        q: "I NETs (Neutrophil Extracellular Traps) sono composti principalmente da:",
+        q: "indicazioni nazionali",
         options: [
-            "Solo enzimi lisosomiali",
-            "Cromatina estrusa associata a proteine granulari antimicrobiche",
-            "Immunoglobuline G",
-            "Fibrina e piastrine"
+            "2011",
+            "2010",
+            "2002",
+            "2012"
         ],
-        correct: "Cromatina estrusa associata a proteine granulari antimicrobiche"
+        correct: "2012"
     }
 
 ];
@@ -1077,6 +336,7 @@ function endAttempt(reason) {
 </script>
 </body>
 </html>
+
 
 
 
