@@ -750,26 +750,241 @@ correct su 0, 1, 2 oppure 3.
 
 const fisiopatologia = [
 
-    // DOMANDA GIÀ COMPILATA
     {
         question:
-            "Quale delle seguenti è una caratteristica tipica dell'infiammazione acuta?",
+            "quali trasportano trigliceridi",
 
         options: [
-            "Prevalenza della risposta fibrotica",
-            "Accumulo predominante di linfociti",
-            "Vasodilatazione e aumento della permeabilità vascolare",
-            "Formazione obbligatoria di granulomi"
+            "HDL",
+            "VLDL",
+            "LDL",
+            "chilomicroni"
+        ],
+
+        correct: 3
+    },
+     {
+        question:
+            "quali trasportano lipidi",
+
+        options: [
+            "HDL",
+            "VLDL",
+            "LDL",
+            "lipoproteine"
+        ],
+
+        correct: 3
+    },
+     {
+        question:
+            "le piastrine agli EE sono nell'ordine di",
+
+        options: [
+            "10^9",
+            "10^6",
+            "10^3",
+            "nessuna"
         ],
 
         correct: 2
     },
+     {
+        question:
+            "in caso di SC sx si ha",
 
-    // DOMANDE DA INSERIRE
-    ...createPlaceholders(
-        "FISIOPATOLOGIA E PATOLOGIA GENERALE",
-        42
-    )
+        options: [
+            "edema polmonare",
+            "fegato a noce",
+            "turgore vena giugulare",
+            "tutte le precedenti"
+        ],
+
+        correct: 0
+    },
+     {
+        question:
+            "area extramidollare di eritropoiesi",
+
+        options: [
+            "polmone",
+            "cuore",
+            "cervello",
+            "fegato e milza"
+        ],
+
+        correct: 3
+    },
+     {
+        question:
+            "nell'anemia megaloblastica si ha macrocitosi e una riduzione del numero di GR perchè...",
+
+        options: [
+            "perdono il nucleo",
+            "le dimensioni sono troppo grandi e vengono degradati nella milza",
+            "vanno in apoptosi",
+            "nessuna"
+        ],
+
+        correct: 1
+    },
+     {
+        question:
+            "quali sono le anemie del tipo 1",
+
+        options: [
+            "eritropoiesi inefficace",
+            "emolitiche",
+            "ridotta sopravvivenza",
+            "ridotta sintesi Hb"
+        ],
+
+        correct: 0
+    },
+         {
+        question:
+            "quale *non* è un effetto dell'insulina sul tessuto muscolare",
+
+        options: [
+            "stimola la captazione di glucosio (tGLUT4)",
+            "favorisce l'azione anticatabolica",
+            "favorisce la glicogenosintesi",
+            "riduce le riserve di glicogeno"
+        ],
+
+        correct: 3
+    },
+         {
+        question:
+            "quale di queste non è un'area prediletta di formazione di trombi",
+
+        options: [
+            "varicosità",
+            "diramazioni",
+            "aneurismi",
+            "endotelio danneggiato"
+        ],
+
+        correct: 1
+    },
+         {
+        question:
+            "nell'insufficienza intrarenale il danno ischemico tubulare è dovuto a",
+
+        options: [
+            "agenti infettivi",
+            "microangiopatia",
+            "danno glomerulare",
+            "nessuna"
+        ],
+
+        correct: 1
+    },
+         {
+        question:
+            "i cristalli di charcot leyden si riscontrano in",
+
+        options: [
+            "asma",
+            "polmonite",
+            "patologie cardiache",
+            "BPCO"
+        ],
+
+        correct: 0
+    },
+         {
+        question:
+            "il diabete di tipo 2 è caratterizzato da",
+
+        options: [
+            "rapida iperglicemia",
+            "lunga, insidiosa e lenta instaurazione di iperglicemia",
+            "entrambe le forme",
+            "nessuna delle due"
+        ],
+
+        correct: 1
+    },
+         {
+        question:
+            "quali Ac nella patogenesi della malattia celiaca",
+
+        options: [
+            "anti gliadina",
+            "anti transglutaminasi",
+            "anti endomisio",
+            "tutte le precedenti"
+        ],
+
+        correct: 3
+    },
+    {
+        question:
+            "il diabete tipo 2 è caratterizzato da",
+
+        options: [
+            "problemi trasporto GLUT2 pancreas",
+            "mancata secrezione di insulina",
+            "perdità di sensibilità per l'insulina dei recettori del fegato",
+            "mancata espressione dei recettori"
+        ],
+
+        correct: 2
+    },
+        {
+        question:
+            "quale patologia causa erosione delle coste",
+
+        options: [
+            "stenosi aortica",
+            "stenosi polmonare",
+            "coartazione aortica",
+            "endocardite"
+        ],
+
+        correct: 2
+    },
+        {
+        question:
+            "quale di queste patologie non provoca innalzamento di IL-6",
+
+        options: [
+            "setticemia",
+            "osteoporosi",
+            "autoimmuni",
+            "ictus"
+        ],
+
+        correct: 1
+    },
+    {
+        question:
+            "differenza eritrocita reticolocita",
+
+        options: [
+            "Ret è un GR quasi maturo",
+            "Ret possiede ancora il nucleo",
+            "Ret non è nel circolo",
+            "Ret non trasporta ossigeno"
+        ],
+
+        correct: 0
+    },
+    {
+        question :
+            "cos'è l'eritrone",
+
+        options: [
+            "insieme delle cellule che fanno parte del ciclo differenziativo dei GR",
+            "insieme delle aree del midollo osseo di produzione dei GR",
+            "nome del progenitore dei GR",
+            "tipo di esame ematochimico"
+        ],
+
+        correct: 0
+    },
+
 ];
 
 
@@ -784,23 +999,44 @@ const patologiaClinica = [
     // DOMANDA GIÀ COMPILATA
     {
         question:
-            "Quale parametro viene comunemente utilizzato per valutare il controllo glicemico medio nei mesi precedenti?",
+            "come si calcola Hct",
 
         options: [
-            "Emoglobina glicata (HbA1c)",
-            "Bilirubina totale",
-            "Troponina I",
-            "Fosfatasi alcalina"
+            "MCV x MCH",
+            "RBC x Hb",
+            "RBC x MCH",
+            "RBC x MCV"
         ],
+
+        correct: 3
+    },
+      {
+        question :
+            "la provetta tappo viola contiene",
+
+        options: [
+            "siero",
+            "EDTA",
+            "litio eparina",
+            "sodio citrato",
+        ],
+
+        correct: 1
+    },
+    {
+        question :
+            "la provetta tappo azzurro contiene",
+
+        options: [
+            "sodio citrato",
+            "EDTA",
+            "gel acrilico",
+            "litio eparina",
+            ],
 
         correct: 0
     },
-
-    // DOMANDE DA INSERIRE
-    ...createPlaceholders(
-        "PATOLOGIA CLINICA",
-        9
-    )
+    
 ];
 
 
@@ -812,26 +1048,666 @@ const patologiaClinica = [
 
 const oncologia = [
 
-    // DOMANDA GIÀ COMPILATA
-    {
+        {
         question:
-            "Quale caratteristica distingue principalmente una neoplasia maligna da una neoplasia benigna?",
+            "quale fra questi è un fattore ambientale per lo sviluppo dei tumori",
 
         options: [
-            "La capacità di metastatizzare",
-            "La presenza di cellule di grandi dimensioni",
-            "La presenza obbligatoria di necrosi",
-            "La presenza di una capsula fibrosa"
+            "ereditarietà",
+            "fumo",
+            "attività fisica",
+            "nessuna"
         ],
 
-        correct: 0
+        correct: 1
     },
-
-    // DOMANDE DA INSERIRE
-    ...createPlaceholders(
-        "ONCOLOGIA",
-        14
-    )
+    {"id": 1,
+        "category": "Nomenclatura e Morfologia",
+        "question": "Quale tra le seguenti caratteristiche citofisiologiche e morfologiche costituisce il criterio più affidabile per definire un tumore maligno come 'anaplastico'?",
+        "options": [
+            "A) Presenza di stroma fibroso desmoplastico abbondante intorno ai nidi epiteliali",
+            "B) Completa perdita della differenziazione strutturale e funzionale con marcato pleomorfismo, ipercro matismo nucleare e mitosi atipiche tri- o multipolari",
+            "C) Elevato indice mitotico con mitosi esclusivamente bipolari e conservata polarità cellulare",
+            "D) Presenza di focolai di necrosi colliquativa circoscritti da una capsula fibrosa continua"
+        ],
+        "correct": 1,
+        "explanation": "L'anaplasia indica la totale assenza di differenziazione. I suoi caratteri cardinali secondo Robbins (Cap. 7) includono pleomorfismo nucleare e cellulare, ipercro matismo per aumento del contenuto di DNA, alterazione del rapporto nucleo/citoplasma (prossimo a 1:1), perdita della polarità e la presenza di figure mitotiche bizzarre e atipiche (es. mandrini tri- o multipolari)."
+    },
+    {
+        "id": 2,
+        "category": "Nomenclatura e Morfologia",
+        "question": "Un amartoma è correttamente definito come:",
+        "options": [
+            "A) Una neoplasia maligna derivante da tessuto embrionale residuo in sede eterotopica",
+            "B) Una malformazione non neoplastica costituita da un congerie disorganizzato di tessuti maturi autoctoni della sede anatomica in cui si sviluppa",
+            "C) Un eterotopia congenita costituita da tessuto istologicamente normale situato in una sede anomala",
+            "D) Un tumore benigno mesenchimale caratterizzato da elevata tendenza alla trasformazione sarcomatosa"
+        ],
+        "correct": 1,
+        "explanation": "L'amartoma è una lesione pseudoneoplastica composta da elementi tissutali maturi e propri dell'organo di origine, ma disposti in modo disordinato (es. amartoma polmonare contenente cartilagine, epitelio bronchiale e tessuto adiposo). L'eterotopia o coristoma è invece tessuto normale in sede anomala."
+    },
+    {
+        "id": 3,
+        "category": "Nomenclatura e Morfologia",
+        "question": "La definizione di 'Carcinoma in situ' (CIS) implica che le cellule neoplastiche:",
+        "options": [
+            "A) Abbiano superato la membrana basale ma non abbiano ancora invaso i vasi linfatici",
+            "B) Mostrino le caratteristiche citologiche dell'anaplasia ed abbiano invaso unicamente lo stroma papillare superficiale",
+            "C) Presentino tutte le caratteristiche citologiche di malignità nell'intero spessore dell'epitelio, rimanendo rigorosamente all'interno della membrana basale integra",
+            "D) Siano limitate alla sola tonaca sottomucosa senza coinvolgere i linfonodi regionali"
+        ],
+        "correct": 2,
+        "explanation": "Il carcinoma in situ è una lesione pre-invasiva in cui l'epitelio presenta grave displasia/anaplasia a tutto spessore, ma la membrana basale resta perfettamente intatta. Senza penetrazione dello stroma e della membrana basale, non vi è possibilità di metastatizzazione."
+    },
+    {
+        "id": 4,
+        "category": "Nomenclatura e Morfologia",
+        "question": "Quale tra le seguenti affermazioni sulla displasia epiteliale è CORRETTA?",
+        "options": [
+            "A) È una lesione irreversibile che evolve indefettibilmente in carcinoma invasivo",
+            "B) Si caratterizza per disorganizzazione dell'architettura epiteliale, perdita della maturazione e atipie citologiche, mantenendo la reversibilità se la causa scatenante viene rimossa",
+            "C) Si distingue dalla neoplasia intraepiteliale per la presenza di invasione vascolare precoce",
+            "D) È sinonimo di metaplasia, con sostituzione fisiologica di un tipo cellulare adulto con un altro"
+        ],
+        "correct": 1,
+        "explanation": "La displasia è una proliferazione epiteliale disordinata con atipie nucleari e perdita di orientamento. Sebbene sia una lesione preneoplastica, le displasie lievi o moderate possono regredire spontaneamente se cessa lo stimolo causale (es. fumo di sigaretta o infezione da HPV)."
+    },
+    {
+        "id": 5,
+        "category": "Nomenclatura e Morfologia",
+        "question": "Il fenomeno della 'desmoplasia' associato a molti carcinomi (es. adenocarcinoma del pancreas o mammario scirroso) si riferisce a:",
+        "options": [
+            "A) La transizione epitelio-mesenchimale delle cellule tumorali nel fronte d'avanzamento",
+            "B) La formazione di abbondante stroma fibroso denso e collagenizzato indotto da citochine (es. TGF-beta) secrete dal tumore o dai fibroblasti associati",
+            "C) La necrosi ischemica centrale provocata da insufficiente neoangiogenesi",
+            "D) La migrazione di linfociti T citotossici all'interno del parenchima tumorale"
+        ],
+        "correct": 1,
+        "explanation": "La desmoplasia è la reazione stromale fibrosa prodotta dal microambiente tumorale in risposta a segnali paracrini (come TGF-β e PDGF). Conferisce al tumore una consistenza dura ('scirrosa') e costituisce una barriera fisica e biochimica alla diffusione dei farmaci."
+    },
+    {
+        "id": 6,
+        "category": "Nomenclatura e Morfologia",
+        "question": "Quale tra i seguenti tumori, pur presentando la terminologia con suffisso '-oma', ha sempre un comportamento biologicamente MALIGNO?",
+        "options": [
+            "A) Osteoma",
+            "B) Leiomioma",
+            "C) Melanoma",
+            "D) Fibroma"
+        ],
+        "correct": 2,
+        "explanation": "Nonostante il suffisso '-oma' indichi storicamente tumori benigni, termini come melanoma, linfoma, seminoma, e epatoma (carcinoma epatocellulare) designano neoplasie maligne gravissime."
+    },
+    {
+        "id": 7,
+        "category": "Oncogeni e Segnali Proliferativi",
+        "question": "Le mutazioni attivanti a carico della famiglia dei proto-oncogeni RAS (es. KRAS) provocano la trasformazione neoplastica principalmente attraverso quale meccanismo molecolare?",
+        "options": [
+            "A) Blocco permanente della proteina RAS nello stato legato a GDP",
+            "B) Compromissione dell'attività GTPasica intrinseca o resistenza alle proteine GAP (GTPase-Activating Proteins), mantenendo RAS costitutivamente legato a GTP",
+            "C) Degradazione proteasomiale accelerata della subunità catalitica della chinasi RAF",
+            "D) Inibizione dell'autofosforilazione dei recettori tirosin-chinasici di membrana"
+        ],
+        "correct": 1,
+        "explanation": "RAS è attivo quando è legato a GTP e inattivo con GDP. Le mutazioni oncogeniche puntiformi (spesso ai codoni 12, 13 o 61) bloccano l'idrolisi del GTP a GDP ed impediscono l'azione delle GAP, bloccando RAS in una conformazione perennemente 'accesa' che stimola continuamente la via MAP-chinasi (RAF-MEK-ERK)."
+    },
+    {
+        "id": 8,
+        "category": "Oncogeni e Segnali Proliferativi",
+        "question": "La traslocazione t(9;22)(q34;q11), caratteristica della Leucemia Mieloide Cronica (LMC), genera quale alterazione molecolare responsiva all'inibitore Imatinib?",
+        "options": [
+            "A) Formazione del gene di fusione BCR-ABL1 codificante per una tirosina-chinasi costitutivamente attiva",
+            "B) Sovraespressione dell'oncosoppressore p53 privo del dominio di legame al DNA",
+            "C) Attivazione trascrizionale di BCL2 per giustapposizione al promotore della catena pesante delle immunoglobuline (IgH)",
+            "D) Inattivazione per delezione omozigote del gene p16/INK4a"
+        ],
+        "correct": 0,
+        "explanation": "La traslocazione t(9;22) crea il cromosoma Philadelphia con fusione dei geni BCR e ABL. La proteina chimerica p210 BCR-ABL possiede un'attività tirosin-chinasica costitutiva incontrollata. Imatinib mesilato (Gleevec) si lega selettivamente alla tasca dell'ATP di ABL inibendola."
+    },
+    {
+        "id": 9,
+        "category": "Oncogeni e Segnali Proliferativi",
+        "question": "Quale meccanismo genetico è responsabile della sovraespressione dell'oncogene MYC nel Linfoma di Burkitt?",
+        "options": [
+            "A) Amplificazione genica in doppio minuto (double minutes) o regioni omogeneamente colorate (HSR)",
+            "B) Traslocazione t(8;14)(q24;q32) che pone c-MYC sotto il controllo del forte enhancer del gene IgH",
+            "C) Mutazione puntiforme condizionale nella sequenza segnale di localizzazione nucleare",
+            "D) Inserzione del provirus HTLV-1 a monte del promotore di MYC"
+        ],
+        "correct": 1,
+        "explanation": "Nel Linfoma di Burkitt, il gene c-MYC sul cromosoma 8 viene traslocato adiacente al locus della catena pesante delle immunoglobuline (IgH) sul cromosoma 14 [t(8;14)]. Ciò determina un'iperespressione costitutiva del fattore trascrizionale MYC nei linfociti B."
+    },
+    {
+        "id": 10,
+        "category": "Oncogeni e Segnali Proliferativi",
+        "question": "L'amplificazione dell'oncogene HER2/neu (ERBB2) nel carcinoma della mammella è clinicamente rilevante perché:",
+        "options": [
+            "A) Indica una prognosi favorevole ed elevata sensibilità all'endocrinoterapia con Tamoxifene",
+            "B) È correlata ad aggressività biologica e definisce l'indicazione al trattamento mirato con l'anticorpo monoclonale Trastuzumab (Herceptin)",
+            "C) Determina l'insensibilità primaria a tutti i chemioterapici alchilanti",
+            "D) Causa la completa downregulation della via PI3K/Akt/mTOR"
+        ],
+        "correct": 1,
+        "explanation": "L'amplificazione di HER2/neu (presente nel 15-20% dei carcinomi mammari) comporta l'overespressione del recettore RTK, promuovendo proliferazione e sopravvivenza. Rappresenta il bersaglio terapeutico specifico per l'anticorpo monoclonale Trastuzumab."
+    },
+    {
+        "id": 11,
+        "category": "Oncosoppressori e Ciclo Cellulare",
+        "question": "Secondo l'ipotesi dei 'due colpi' di Knudson per i geni oncosoppressori, lo sviluppo del retinoblastoma ereditario differisce dalla forma sporadica in quanto:",
+        "options": [
+            "A) Nella forma ereditaria sono necessarie tre mutazioni somatiche successive nello stesso allele",
+            "B) Nella forma ereditaria i pazienti ereditano una mutazione germinale in un allele di RB1 e sviluppano il tumore quando si verifica una seconda mutazione somatica (perdita di eterozigosi) nell'altro allele",
+            "C) La forma sporadica è causata dall'inattivazione epigenetica di p53 anziché di RB1",
+            "D) La forma ereditaria coinvolge geni sul cromosoma 17 anziché sul cromosoma 13"
+        ],
+        "correct": 1,
+        "explanation": "Nel retinoblastoma ereditario, la prima mutazione ('primo colpo') è germinale e presente in tutte le cellule dell'organismo. Un singolo evento somatico mutazionale ('secondo colpo', LOH) nella retina porta all'inattivazione completa di RB1, determinando insorgenza precoce e multifocale."
+    },
+    {
+        "id": 12,
+        "category": "Oncosoppressori e Ciclo Cellulare",
+        "question": "In quale stato di fosforilazione la proteina del Retinoblastoma (pRb) esercita il suo ruolo soppressore bloccando la progressione del ciclo cellulare da G1 a S?",
+        "options": [
+            "A) Iperfosforilata dai complessi Ciclina E / CDK2",
+            "B) Ipofosforilata (o de-fosforilata), stato in cui si lega sequesterando i fattori trascrizionali E2F",
+            "C) Poliubiquitinata per interazione con la ligasi MDM2",
+            "D) Fosforilata specificamente dal complesso Ciclina B / CDK1"
+        ],
+        "correct": 1,
+        "explanation": "Nella fase G0/G1 precoce, pRb si trova nella forma ipofosforilata attiva, legata al fattore trascrizionale E2F per inibirne l'attività. Quando le chinasi CDK4/6 e CDK2 fosforilano pRb (iperfosforilazione), E2F viene rilasciato, trascrivendo i geni necessari alla fase S."
+    },
+    {
+        "id": 13,
+        "category": "Oncosoppressori e Ciclo Cellulare",
+        "question": "Qual è il meccanismo primario con cui la proteina p53 induce il blocco del ciclo cellulare nella fase G1 in risposta a un danno al DNA moderato?",
+        "options": [
+            "A) Trascrizione diretta del gene CDKN1A codificante per p21, un inibitore delle chinasi ciclina-dipendenti (CKI)",
+            "B) Attivazione diretta della caspasi-3 e scissione di PARP",
+            "C) Ubiquitinazione e degradazione proteasomiale della Ciclina D1",
+            "D) Downregulation della trascrizione della proteina pro-apoptotica BAX"
+        ],
+        "correct": 0,
+        "explanation": "In risposta a danno al DNA, p53 viene stabilizzata ed agisce come fattore trascrizionale, aumentando la sintesi di p21 (CDKN1A). p21 inibisce i complessi Ciclina/CDK (es. Ciclina E/CDK2), impedendo la fosforilazione di pRb e bloccando le cellule nel punto di controllo G1/S per consentire la riparazione del DNA."
+    },
+    {
+        "id": 14,
+        "category": "Oncosoppressori e Ciclo Cellulare",
+        "question": "In che modo l'oncoproteina E6 dei ceppi ad alto rischio di Papillomavirus Umano (HPV 16 e 18) promuove la trasformazione neoplastica?",
+        "options": [
+            "A) Si lega a pRb e ne stimola la forma ipofosforilata soppressiva",
+            "B) Recluta la ligasi E3 ubiquitinica E6AP provocando il legame, l'ubiquitinazione e la rapida degradazione proteasomiale di p53",
+            "C) Inibisce la telomerasi inducendo catastrofe mitotica nelle cellule epiteliali",
+            "D) Blocca la trascrizione dell'oncogene E7"
+        ],
+        "correct": 1,
+        "explanation": "HPV ad alto rischio produce le oncoproteine E6 ed E7: E6 si lega a p53 promovendone la degradazione proteasomiale via E6AP; E7 si lega a pRb spostando E2F e sequestrando p21/p27. Questo doppio blocco elimina sia il guardiano del genoma (p53) sia il freno sul ciclo cellulare (pRb)."
+    },
+    {
+        "id": 15,
+        "category": "Oncosoppressori e Ciclo Cellulare",
+        "question": "La perdita di funzione del gene oncosoppressore APC (Adenomatous Polyposis Coli) nella via di segnalazione Wnt determina:",
+        "options": [
+            "A) Degradazione proteasomiale costitutiva della beta-catenina",
+            "B) Accumulo citoplasmatico e traslocazione nucleare della beta-catenina, con conseguente attivazione dei geni target MYC e Ciclina D1",
+            "C) Inibizione dell'attività della via PI3K/Akt",
+            "D) Iperattivazione della cascata delle caspasi intrinseche"
+        ],
+        "correct": 1,
+        "explanation": "La proteina APC fa parte del 'complesso di distruzione' della β-catenina. Senza APC funzionale, la β-catenina non viene fosforilata né degradata, si accumula nel citoplasma, migra nel nucleo e si lega a TCF/LEF stimolando la trascrizione dei geni pro-proliferativi MYC e Ciclina D1."
+    },
+    {
+        "id": 16,
+        "category": "Oncosoppressori e Ciclo Cellulare",
+        "question": "Il locus genico CDKN2A codifica per quali DUE importanti proteine oncosoppressorie attraverso l'uso di frame di lettura alternativi (ORF)?",
+        "options": [
+            "A) p16/INK4a (inibitore di CDK4/6) e p14/ARF (che stabilizza p53 inibendo MDM2)",
+            "B) p21/CIP1 e p27/KIP1",
+            "C) ATM e ATR",
+            "D) BAX e BAK"
+        ],
+        "correct": 0,
+        "explanation": "Il locus CDKN2A (cromosoma 9p21) è unico poiché codifica due distinti oncosoppressori: p16/INK4a (che inibisce CDK4/6 mantenendo pRb attivo) e p14/ARF (che sequestra MDM2 impedendo la degradazione di p53). La sua delezione/inattivazione neutralizza simultaneamente sia la via di pRb che di p53."
+    },
+    {
+        "id": 17,
+        "category": "Metabolismo, Telomeri e Apoptosi",
+        "question": "L'effetto Warburg descrive quale riprogrammazione metabolica caratteristica delle cellule tumorali?",
+        "options": [
+            "A) Dipendenza esclusiva dalla beta-ossidazione dei grassi in condizioni di elevata tensione d'ossigeno",
+            "B) Predilezione per la glicolisi aerobica con produzione di lattato anche in presenza di adeguate concentrazioni di ossigeno",
+            "C) Totale inattivazione del consumo di glucosio a favore dell'utilizzo di glutammina nel ciclo di Krebs",
+            "D) Iperattivazione della fosforilazione ossidativa mitocondriale indotta da mutazioni di p53"
+        ],
+        "correct": 1,
+        "explanation": "L'effetto Warburg è il passaggio alla glicolisi aerobica: le cellule tumorali convertono il glucosio in lattato anche in presenza di O2. Ciò fornisce intermedi metabolici (nucleotidi, lipidi, amminoacidi) indispensabili per la rapida sintesi di biomassa cellulare durante la proliferazione."
+    },
+    {
+        "id": 18,
+        "category": "Metabolismo, Telomeri e Apoptosi",
+        "question": "L'evasione dalla senescenza replicativa ed il conseguente ottenimento dell'immortalità replicativa nella maggior parte dei tumori umani (>85%) sono dovuti a:",
+        "options": [
+            "A) Inattivazione completa della ribonucleoproteina Telomerasi",
+            "B) Riattivazione o sovraespressione della Telomerasi (TERT), che mantiene la lunghezza dei telomeri prevenendo la risposta al danno al DNA da accorciamento critico",
+            "C) Ricombinazione omologa sbilanciata a livello dei centromeri",
+            "D) Ipermetilazione dei promotori delle deacetilasi istoniche"
+        ],
+        "correct": 1,
+        "explanation": "Le cellule somatiche normali perdono sequenze telomeriche ad ogni divisione fino al limite di Hayflick. Le cellule tumorali riattivano la telomerasi (TERT) o utilizzano il meccanismo ALT (Alternative Lengthening of Telomeres), prevenendo la crisi mitotica ed acquisendo potenziale replicativo illimitato."
+    },
+    {
+        "id": 19,
+        "category": "Metabolismo, Telomeri e Apoptosi",
+        "question": "Quale proteina appartenente alla famiglia BCL-2 ha una funzione anti-apoptotica (di sopravvivenza) impedendo la permeabilizzazione della membrana mitocondriale esterna?",
+        "options": [
+            "A) BAX",
+            "B) BAK",
+            "C) BCL-2",
+            "D) BIM"
+        ],
+        "correct": 2,
+        "explanation": "La famiglia BCL-2 comprende membri anti-apoptotici (BCL-2, BCL-XL, MCL-1) che sequestrano le proteine pro-apoptotiche ed impediscono l'oligomerizzazione di BAX e BAK sulla membrana mitocondriale esterna, bloccando il rilascio del Citocromo c."
+    },
+    {
+        "id": 20,
+        "category": "Metabolismo, Telomeri e Apoptosi",
+        "question": "Il fattore trascrizionale HIF-1alfa (Hypoxia-Inducible Factor 1-alpha) viene stabilizzato nei tessuti tumorali ipossici poiché in assenza di ossigeno:",
+        "options": [
+            "A) La prolil-idrossilasi non può idrossilare HIF-1alfa, impedendone il riconoscimento da parte della proteina VHL e la successiva degradazione proteasomiale",
+            "B) VHL lega HIF-1alfa con affinità 100 volte superiore promovendone la traslocazione nucleare",
+            "C) HIF-1alfa viene scisso dalle caspasi esecutrici 3 e 7",
+            "D) Si riduce la sintesi di VEGF e GLUT1"
+        ],
+        "correct": 0,
+        "explanation": "In normossia, la prolil-idrossilasi O2-dipendente idrossila HIF-1α, consentendone l'interazione con l'oncosoppressore pVHL e la degradazione proteasomiale. In ipossia (o in mutazioni di VHL), HIF-1α non viene idrossilato, accumulandosi e attivando la trascrizione di VEGF, GLUT1 e geni della glicolisi."
+    },
+    {
+        "id": 21,
+        "category": "Angiogenesi e Metastatizzazione",
+        "question": "L'interruttore angiogenico ('angiogenic switch') durante la progressione tumorale è scatenato principalmente da:",
+        "options": [
+            "A) Prevalenza dei fattori inibitori come la Trombospondina-1 indotta da p53",
+            "B) Sbilanciamento a favore dei fattori pro-angiogenici (es. VEGF, bFGF) rispetto agli inibitori angiogenici, guidato dall'ipossia e dall'attivazione oncogenica",
+            "C) Attivazione esclusiva delle cellule endoteliali mature da parte del TNF-alfa",
+            "D) Invasione diretta delle pareti arteriose da parte dei macrofagi M1"
+        ],
+        "correct": 1,
+        "explanation": "Il tumore non può crescere oltre 1-2 mm senza vascolarizzazione. L'angiogenic switch è lo sbilanciamento del rapporto tra fattori pro-angiogenici (VEGF, bFGF) e inibitori (trombospondina-1, angiostatina), stimolato da ipossia (HIF-1α) e oncogeni mutati."
+    },
+    {
+        "id": 22,
+        "category": "Angiogenesi e Metastatizzazione",
+        "question": "Durante il processo di Transizione Epitelio-Mesenchimale (EMT), fondamentale per l'invasione neoplastica, quale modifica molecolare si osserva tipicamente?",
+        "options": [
+            "A) Marcata sovraespressione di E-caderina e perdita di Vimentina",
+            "B) Perte della molecola di adesione E-caderina (downregulation) e acquisizione di marcatori mesenchimali come la N-caderina e la Vimentina, guidata da fattori quali SNAIL e TWIST",
+            "C) Aumento delle giunzioni occludenti (tight junctions) ed ancoraggio alla lamina basale",
+            "D) Inibizione delle metalloproteinasi della matrice (MMP-2 e MMP-9)"
+        ],
+        "correct": 1,
+        "explanation": "L'EMT comporta la perdita dell'espressione di E-caderina (con perdita delle giunzioni intercellulari e della polarità) e l'acquisizione di un fenotipo fibroblasto-simile con espressione di N-caderina, vimentina e produzione di MMPs. Il processo è orchestrato da fattori di trascrizione come SNAIL, SLUG, TWIST e ZEB."
+    },
+    {
+        "id": 23,
+        "category": "Angiogenesi e Metastatizzazione",
+        "question": "Quale tra le seguenti vie di disseminazione metastatica è la modalità PREVALENTE utilizzata dai sarcomi?",
+        "options": [
+            "A) Via linfatica con interessamento dei linfonodi sentinella",
+            "B) Via ematica, con diffusione attraverso le vene a parete sottile e localizzazione frequente in polmone e fegato",
+            "C) Via transcelomatica o per cavità sierose (peritoneale)",
+            "D) Diffusione perineurale lungo i tronchi nervosi periferici"
+        ],
+        "correct": 1,
+        "explanation": "I carcinomi metastatizzano preferenzialmente per via linfatica (inizialmente ai linfonodi regionali), mentre i sarcomi prediligono la via ematica. Poiché le vene hanno pareti meno spesse delle arterie, le cellule tumorali penetrano nei venuli giungendo al primo letto capillare incontrato (spesso polmonare o epatico)."
+    },
+    {
+        "id": 24,
+        "category": "Angiogenesi e Metastatizzazione",
+        "question": "Le metastasi ossee di tipo prevalentemente OSTEOLITICO associate al carcinoma della mammella sono mediate da:",
+        "options": [
+            "A) Secrezione diretta da parte delle cellule tumorali di acido cloridrico per la dissoluzione della matrice ossea",
+            "B) Produzione da parte del tumore di fattori (es. PTHrP) che stimolano l'espressione di RANKL sugli osteoblasti, inducendo differenziazione ed iperattivazione degli osteoclasti",
+            "C) Inibizione completa dell'attività degli osteoclasti tramite secrezione di Osteoprotegerina (OPG)",
+            "D) Deposito aberrante di idrossiapatite indotto da Endotelina-1"
+        ],
+        "correct": 1,
+        "explanation": "Le cellule di carcinoma mammario secrete PTHrP nel microambiente osseo. Ciò induce gli osteoblasti ad esprimere RANKL, che si lega al recettore RANK sugli osteoclasti attivandoli. Gli osteoclasti riassorbono l'osso (lesione osteolitica) rilasciando fattori di crescita (TGF-β) che ri-alimentano il tumore (circolo vizioso)."
+    },
+    {
+        "id": 25,
+        "category": "Instabilità Genomica",
+        "question": "La sindrome da Xeroderma Pigmentosum è dovuta a un difetto ereditario in quale via di riparazione del DNA?",
+        "options": [
+            "A) Riparazione per escissione di basi (BER)",
+            "B) Riparazione dei disappaiamenti (Mismatch Repair - MMR)",
+            "C) Riparazione per escissione di nucleotidi (NER), responsabile della rimozione dei dimeri di pirimidina indotti da UV",
+            "D) Ricombinazione omologa (HR)"
+        ],
+        "correct": 2,
+        "explanation": "Lo Xeroderma Pigmentosum è causato da mutazioni nei geni del sistema NER (Nucleotide Excision Repair). I pazienti non riescono a riparare i dimeri di timina/pirimidina formati dalla radiazione UV del sole, sviluppando un rischio estremamente elevato di tumori cutanei (melanomi, BCC, SCC)."
+    },
+    {
+        "id": 26,
+        "category": "Instabilità Genomica",
+        "question": "La Sindrome di Lynch (Carcinoma del colon-retto ereditario non poliposico - HNPCC) è causata da mutazioni nei geni del Mismatch Repair (MMR come MSH2, MLH1) ed è caratterizzata fenotipicamente da:",
+        "options": [
+            "A) Presenza di migliaia di polipi adenomatosi nel colon in età giovanile",
+            "B) Instabilità dei microsatelliti (MSI) dovuta all'accumulo di errori nelle sequenze di DNA ripetitive durante la replicazione",
+            "C) Formazione spontanea di dimeri di pirimidina nei cheratinociti",
+            "D) Traslocazioni cromo somiche multiple e aberrazioni numeriche imponenti (aneuploidia severa)"
+        ],
+        "correct": 1,
+        "explanation": "Il difetto del sistema MMR (MSH2, MLH1, PMS2, MSH6) impedisce la correzione degli errori di appaiamento e slippage della DNA polimerasi. Ciò porta all'accumulo di mutazioni nelle regioni ipervariabili ripetitive chiamate microsatelliti (fenotipo MSI-High)."
+    },
+    {
+        "id": 27,
+        "category": "Instabilità Genomica",
+        "question": "Qual è il principio biologico alla base dell'uso degli inibitori di PARP (es. Olaparib) nei tumori con mutazioni dei geni BRCA1 o BRCA2?",
+        "options": [
+            "A) Inibizione dell'angiogenesi tumorale indotta da VEGF",
+            "B) Letalità sintetica: l'inibizione di PARP blocca la riparazione delle rotture a singolo filamento, che si convertono in rotture a doppio filamento non riparabili nei tumori privi di ricombinazione omologa (HR-deficient)",
+            "C) Stimolazione diretta dell'espressione dell'oncosoppressore p53 mutato",
+            "D) Inattivazione della via metabolica di Warburg"
+        ],
+        "correct": 1,
+        "explanation": "La 'letalità sintetica' sfrutta due difetti di riparazione: i tumori BRCA-mutati sono privi di Ricombinazione Omologa (HR). Inibendo PARP (fondamentale per riparare i danni al singolo filamento SSBR), le lesioni si accumulano e diventano rotture a doppio filamento (DSB). Le cellule tumorali non riescono a ripararle e vanno incontro a morte, mentre le cellule sane (BRCA-proficienti) sopravvivono."
+    },
+    {
+        "id": 28,
+        "category": "Cancerogenesi",
+        "question": "Nella cancerogenesi chimica a due fasi (Iniziazione e Promozione), quale caratteristica definisce la fase di INIZIAZIONE?",
+        "options": [
+            "A) È un processo reversibile indotto da agenti che stimolano la proliferazione cellulare senza alterare il DNA",
+            "B) È provocata da dosi sub-neoplastiche di un agente elettrofilo che causa un danno permanente ed irreversibile al DNA (mutazione)",
+            "C) Deve necessariamente precedere l'esposizione all'agente promotore per un lasso di tempo massimo di 24 ore",
+            "D) È caratterizzata dall'espansione clonale di cellule preneoplastiche indotta da esteri del forbolo"
+        ],
+        "correct": 1,
+        "explanation": "L'iniziazione è rapida, irreversibile e provoca una mutazione genomica (danno al DNA) a seguito dell'interazione con un cancerogeno elettrofilo. La promozione è invece lenta, reversibile e richiede somministrazioni ripetute di agenti mitogeni/promotori che stimolano la proliferazione della cellula iniziata."
+    },
+    {
+        "id": 29,
+        "category": "Cancerogenesi",
+        "question": "L'Aflatossina B1, una micotossina prodotta da Aspergillus flavus presente in cibi mal conservati, è un noto pro-cancerogeno epatico che causa tipicamente quale alterazione molecolare?",
+        "options": [
+            "A) Traslocazione t(11;14) nel gene della Ciclina D1",
+            "B) Mutazione con trasversione G:C -> T:A al codone 249 del gene TP53, predisponendo all'epatocarcinoma (HCC)",
+            "C) Amplificazione genica di N-MYC",
+            "D) Inattivazione del gene del Mismatch Repair MLH1 per ipermetilazione"
+        ],
+        "correct": 1,
+        "explanation": "L'Aflatossina B1 viene metabolizzata dal citocromo P450 nel fegato a epossido reattivo. Quest'ultimo si lega al DNA causando una mutazione caratteristica 'hotspot': la trasversione G->T al codone 249 di TP53 (sostituzione di arginina con serina), fattore eziologico chiave dell'epatocarcinoma nelle aree endemiche."
+    },
+    {
+        "id": 30,
+        "category": "Cancerogenesi",
+        "question": "Il virus di Epstein-Barr (EBV) è eziologicamente associato a quali tra le seguenti patologie neoplastiche?",
+        "options": [
+            "A) Carcinoma spinocellulare della cervice uterina e Sarcoma di Kaposi",
+            "B) Linfoma di Burkitt (forma endemica), Linfoma Hodgkin e Carcinoma Nasofaringeo",
+            "C) Epatocarcinoma ed Adenocarcinoma gastrico di tipo intestinale",
+            "D) Leucemia a cellule T dell'adulto e Melanoma maligno"
+        ],
+        "correct": 1,
+        "explanation": "EBV è un gamma-herpesvirus oncogeno che infetta i linfociti B ed il rinofaringe. È fortemente correlato al Linfoma di Burkitt endemico, al Linfoma di Hodgkin (variante a cellularità mista), al Carcinoma Nasofaringeo ed a linfomi B in pazienti immunodepressi."
+    },
+    {
+        "id": 31,
+        "category": "Cancerogenesi",
+        "question": "L'infezione cronica da Helicobacter pylori promuove lo sviluppo di adenocarcinoma gastrico e MALToma attraverso quali meccanismi principali?",
+        "options": [
+            "A) Integrazione del genoma batterico nel cromosoma 11 dell'ospite",
+            "B) Induzione di gastrite cronica atrofica con metaplasia intestinale (via infiammatoria) e presenza del fattore di virulenza CagA che altera il citoscheletro e le vie di segnalazione epiteliali",
+            "C) Produzione diretta di esteri del forbolo ad azione cancerogena",
+            "D) Inattivazione della proteina Rb mediante secrezione di proteasi litiche"
+        ],
+        "correct": 1,
+        "explanation": "H. pylori causa infiammazione cronica gastrica, generando stress ossidativo e stimolando la proliferazione rigenerativa (gastrite atrofica -> metaplasia -> displasia -> adenocarcinoma). Inoltre, la proteina batterica CagA viene iniettata nelle cellule epiteliali dove altera SHP2 ed e-caderina. L'infezione da H. pylori sostiene anche la proliferazione dei linfociti B antigeno-dipendente nei MALTomi."
+    },
+    {
+        "id": 32,
+        "category": "Immunologia Tumorale",
+        "question": "Cosa si intende per 'Neoantigeni tumorali' (TSA - Tumor-Specific Antigens)?",
+        "options": [
+            "A) Antigeni embrionali normalmente espressi durante lo sviluppo fetale e riespressi nei tumori (es. CEA, AFP)",
+            "B) Proteine mutate uniche derivanti da mutazioni puntiformi o frameshift nel genoma delle cellule neoplastiche, assenti nelle cellule sane ed in grado di elicitare una risposta T-cellulare specifica",
+            "C) Proteine tissutali normali sovraespresse nel tumore (es. PSA nella prostata)",
+            "D) Antigeni virali capsidici derivanti da virus commensali della flora cutanea"
+        ],
+        "correct": 1,
+        "explanation": "I neoantigeni (TSA) sono peptidi aberranti derivati da mutazioni somatiche (passanti o driver) uniche per il tumore del singolo paziente. Poiché non sono stati soggetti alla tolleranza immunitaria centrale nel timo, costituiscono bersagli ideali e fortemente immunogenici per i linfociti T CD8+."
+    },
+    {
+        "id": 33,
+        "category": "Immunologia Tumorale",
+        "question": "Il meccanismo di evasione immunitaria basato sull'asse PD-1 / PD-L1 si esplica attraverso:",
+        "options": [
+            "A) La secrezione di perforine da parte del tumore per lergere i linfociti NK",
+            "B) L'espressione del ligando PD-L1 sulla superficie della cellula tumorale, che lega il recettore inibitorio PD-1 sui linfociti T infiltranti (TIL), conducendo ad 'esaurimento' (exhaustion) o anergia del linfocito T",
+            "C) La degradazione del complesso maggiore di istocompatibilità da parte della caspasi-8",
+            "D) Il blocco dell'attività del complemento tramite espressione di CD59"
+        ],
+        "correct": 1,
+        "explanation": "L'interazione tra PD-L1 (sul tumore o cellule stromali) e PD-1 (sui linfociti T citotossici) trasmette un segnale inibitorio intracellulare che spegne la risposta T citotossica. L'uso di inibitori del checkpoint immunitario (es. Pembrolizumab, Nivolumab) sblocca questo freno, riattivando i linfociti T contro il tumore."
+    },
+    {
+        "id": 34,
+        "category": "Immunologia Tumorale",
+        "question": "I Macrofagi Associati al Tumore (TAM) orientati verso il fenotipo 'M2' favoriscono la progressione neoplastica mediante:",
+        "options": [
+            "A) Elevata produzione di IL-12, ROS ed attività tumoricida diretta",
+            "B) Secrezione di fattori pro-angiogenici (VEGF), citochine immunosoppressive (IL-10, TGF-beta) e matrice metalloproteinasi che promuovono angiogenesi, invasione e soppressione immunitaria",
+            "C) Presentazione ottimale dei neoantigeni ai linfociti CD4+ helper",
+            "D) Induzione di apoptosi diretta nelle cellule endoteliali per stravaso"
+        ],
+        "correct": 1,
+        "explanation": "I TAM si polarizzano nel microambiente tumorale verso il fenotipo M2 (alternativamente attivato). Anziché distruggere le cellule tumorali (come farebbero gli M1), gli M2 secernono fattori di crescita, VEGF per l'angiogenesi, MMPs per la degradazione stromale e citochine immunosoppressive (TGF-β, IL-10)."
+    },
+    {
+        "id": 35,
+        "category": "Clinica e Paraneoplastiche",
+        "question": "Quale tra le seguenti è la causa più frequente di Ipercalcemia Paraneoplastica nei pazienti oncologici non affetti da metastasi ossee diffuse?",
+        "options": [
+            "A) Ingestione eccessiva di vitamina D indotta da iperfagia tumorale",
+            "B) Secrezione sistemica di Peptide Correlato all'Ermone Paratiroideo (PTHrP) da parte di carcinomi epidermoidi (es. polmone, testa-collo)",
+            "C) Eccesso di calcitonina secreto da tumori carcinoidi",
+            "D) Inattivazione completa dei recettori del calcio nei tubuli renali"
+        ],
+        "correct": 1,
+        "explanation": "L'ipercalcemia paraneoplastica è sostenuta nell'80% dei casi dalla secrezione tumorale di PTHrP. Questo peptide mimica le azioni del PTH stimolando il riassorbimento osseo e la ritenzione renale di calcio. È frequente nel carcinoma spinocellulare del polmone."
+    },
+    {
+        "id": 36,
+        "category": "Clinica e Paraneoplastiche",
+        "question": "La Sindrome di Cushing paraneoplastica è comunemente provocata dalla secrezione ectopica di ACTH (o molecole ACTH-like) da parte di quale istotipo tumorale?",
+        "options": [
+            "A) Adenocarcinoma del colon",
+            "B) Carcinoma polmonare a piccole cellule (SCLC / Microcitoma)",
+            "C) Carcinoma basocellulare della cute",
+            "D) Seminoma testicolare"
+        ],
+        "correct": 1,
+        "explanation": "Il carcinoma polmonare a piccole cellule (SCLC), di origine neuroendocrina, è il responsabile principale della sindrome da ACTH ectopico, che determina ipercortisolismo paraneoplastico con ipertensione, debolezza muscolare, ipopotassiemia e iperpigmentazione."
+    },
+    {
+        "id": 37,
+        "category": "Clinica e Paraneoplastiche",
+        "question": "La Tromboflebite Migrante (Sindrome o Segno di Trousseau) è una sindrome paraneoplastica vascolare caratterizzata da trombosi venose ricorrenti in sedi atipiche, frequentemente associata a:",
+        "options": [
+            "A) Carcinoma del pancreas (in particolare dell'adenocarcinoma mucinoso) e di altri adenocarcinomi addominali",
+            "B) Osteosarcoma delle ossa lunghe",
+            "C) Glioblastoma multiforme",
+            "D) Carcinoma basocellulare cutaneo"
+        ],
+        "correct": 0,
+        "explanation": "La sindrome di Trousseau è legata alla secrezione di fattori pro-coagulanti (fattore tissutale, mucine) da parte di adenocarcinomi (soprattutto pancreatici). Ciò causa uno stato di ipercoagulabilità sistemica con episodi trombotici migratori nelle vene superficiali e profonde."
+    },
+    {
+        "id": 38,
+        "category": "Clinica e Paraneoplastiche",
+        "question": "La Cachessia Neoplastica è un grave stato di deperimento organico caratterizzato da perdita progressiva di massa muscolare magra e tessuto adiposo. Qual è il mediatore umorale primario coinvolto nella sua patogenesi?",
+        "options": [
+            "A) Insulina",
+            "B) TNF-alfa (Cachessina), unitamente a citochine pro-infiammatorie quali IL-1, IL-6 e fattori pro-proteolitici come il PIF (Proteolysis-Inducing Factor)",
+            "C) Eritropoietina (EPO)",
+            "D) Ormone della crescita (GH)"
+        ],
+        "correct": 1,
+        "explanation": "La cachessia non è una semplice inedia, ma un disordine metabolico complesso causato da un'infiammazione sistemica cronica. Il TNF-α, l'IL-6 e il PIF attivano la via ubiquitina-proteasoma nel muscolo scheletrico e stimolano la lipolisi, oltre a sopprimere il centro dell'appetito nell'ipotalamo."
+    },
+    {
+        "id": 39,
+        "category": "Grading, Staging e Marcatori",
+        "question": "Qual è la differenza fondamentale tra il 'GRADO' (Grading) ed il 'LIVEL LO / STADIO' (Staging) di una neoplasia maligna?",
+        "options": [
+            "A) Il Grado valuta la dimensione e la diffusione anatomica; lo Stadio valuta le caratteristiche citologiche di anaplasia",
+            "B) Il Grado si basa sulla valutazione istologica del grado di differenziazione e del numero di mitosi; lo Stadio si basa sull'estensione anatomica della malattia (TNM) ed ha un valore prognostico clinico nettamente superiore",
+            "C) Il Grado è calcolato solo mediante PET/TC; lo Stadio si determina unicamente mediante biopsia incisionale",
+            "D) Grado e Stadio sono termini perfettamente sinonimi ed intercambiabili secondo la classificazione WHO"
+        ],
+        "correct": 1,
+        "explanation": "Il GRADO misura l'aggressività istologica del tumore basandosi sull'anaplasia e l'indice mitotico (es. G1, G2, G3). Lo STADIO (TNM) misura la diffusione anatomica ed estensione del tumore (dimensione T, linfonodi N, metastasi M). Lo Stadio clinicamente possiede il maggior valore prognostico ed guida le scelte terapeutiche."
+    },
+    {
+        "id": 40,
+        "category": "Grading, Staging e Marcatori",
+        "question": "Nel sistema di stadiazione TNM (AJCC/UICC), la sigla 'N2' indica genericamente:",
+        "options": [
+            "A) Tumore primitivo non valutabile",
+            "B) Assenza di metastasi a distanza",
+            "C) Coinvolgimento intermedio o progressivo dei linfonodi regionali per numero o stazione anatomica",
+            "D) Presenza di almeno due metastasi viscerali a distanza"
+        ],
+        "correct": 2,
+        "explanation": "Nel sistema TNM: T definisce il tumore primario (T1-T4); N definisce l'impegno dei linfonodi regionali (N0 = nessuno, N1-N3 indicano un progressivo aumento di numero, dimensione o coinvolgimento di stazioni linfonodali più distanti); M definisce le metastasi a distanza (M0 = assenti, M1 = presenti)."
+    },
+    {
+        "id": 41,
+        "category": "Grading, Staging e Marcatori",
+        "question": "L'Antigene Carcino-Embriogenico (CEA) è un marcatore tumorale sierico utilizzato principalmente per:",
+        "options": [
+            "A) Lo screening primario di massa per la diagnosi precoce del carcinoma gastrico nella popolazione sana",
+            "B) Il monitoraggio della risposta terapeutica e l'identificazione di recidive nel carcinoma del colon-retto",
+            "C) La diagnosi differenziale tra seminoma ed osteosarcoma",
+            "D) La conferma istopatologica di melanoma amelanotico"
+        ],
+        "correct": 1,
+        "explanation": "Il CEA manca di specificità e sensibilità per lo screening iniziale della popolazione generale (può essere elevato anche in fumatori o patologie benigne). Il suo uso clinico principale è il follow-up post-operatorio dei carcinomi del colon-retto per intercettare precocemente recidive o metastasi."
+    },
+    {
+        "id": 42,
+        "category": "Grading, Staging e Marcatori",
+        "question": "Un'elevata concentrazione sierica di Alfa-Fetoproteina (AFP) nell'adulto è fortemente orientativa per quale tipo di neoplasia?",
+        "options": [
+            "A) Carcinoma basocellulare o melanoma",
+            "B) Epatocarcinom a (HCC) o tumori germinali non-seminomatosi del testicolo/ovaio (es. tumore del seno endodermico)",
+            "C) Carcinoma spinocellulare del polmone",
+            "D) Feocromocitoma surrenalico"
+        ],
+        "correct": 1,
+        "explanation": "L'AFP è una glicoproteina fetale sintetizzata dal fegato embrionale e dal sacco vitellino. Nell'adulto, livelli significativamente elevati di AFP sono riscontrabili nell'epatocarcinoma e nei tumori germinali del testicolo/ovaio (eccetto il seminoma puro)."
+    },
+    {
+        "id": 43,
+        "category": "Grading, Staging e Marcatori",
+        "question": "Il marcatore siero-ematico CA-125 trova la sua principale applicazione clinica nella gestione di quale neoplasia?",
+        "options": [
+            "A) Carcinoma della prostata",
+            "B) Adenocarcinoma sieroso dell'ovaio",
+            "C) Tumore di Wilms",
+            "D) Medulloblastoma"
+        ],
+        "correct": 1,
+        "explanation": "Il CA-125 è una mucina ad alto peso molecolare sovraespressa dai carcinomi sierosi dell'ovaio. È impiegato per valutare l'efficacia della chemioterapia e monitorare le recidive di malattia."
+    },
+    {
+        "id": 44,
+        "category": "Diagnostica Molecolare",
+        "question": "Cos'è la 'Biopsia Liquida' in oncologia clinica e qual è il suo principale vantaggio?",
+        "options": [
+            "A) Il prelievo chirurgico di liquido cefalorachidiano mediante puntura lombare per la stadiazione di tutti i tumori solidi",
+            "B) L'analisi del DNA tumorale circolante (ctDNA) o cellule tumorali circolanti (CTC) mediante un semplice prelievo ematico venoso, consentendo un monitoraggio non invasivo e dinamico dell'eterogeneità tumorale e delle mutazioni di resistenza",
+            "C) L'aspirazione con ago sottile di versamento pleurico a scopo puramente palliativo",
+            "D) L'analisi istopatologica standard condotta su campioni fissati in formalina ed inclusi in paraffina"
+        ],
+        "correct": 1,
+        "explanation": "La biopsia liquida consente di isolare e sequenziare il ctDNA (DNA libero rilasciato dalle cellule tumorali apoptotiche/necrotiche) o le CTC dal sangue periferico. Permette di tracciare l'evoluzione clonale, identificare mutazioni di resistenza (es. EGFR T790M) e rilevare la malattia residua minima (MRD) senza procedure chirurgiche invasive."
+    },
+    {
+        "id": 45,
+        "category": "Diagnostica Molecolare",
+        "question": "Quale mutazione genica predice la resistenza ai trattamenti con anticorpi monoclonali anti-EGFR (Cetuximab o Panitumumab) nel carcinoma metastatico del colon-retto?",
+        "options": [
+            "A) Mutazioni attivanti nei geni KRAS o NRAS (es. codoni 12, 13, 61)",
+            "B) Delezione omozigote del gene RB1",
+            "C) Silenziamento epigenetico del promotore di BRCA1",
+            "D) Sovraespressione della citochina IL-6"
+        ],
+        "correct": 0,
+        "explanation": "Se KRAS o NRAS sono mutati, la cascata di segnale intracellulare downstream (RAS-RAF-MEK-ERK) è perennemente attiva indipendentemente dal recettore. Di conseguenza, il blocco dell'EGFR upstream con Cetuximab/Panitumumab risulta inefficace. Pertanto, la ricerca di mutazioni RAS è obbligatoria prima di iniziare la terapia."
+    },
+    {
+        "id": 46,
+        "category": "Diagnostica Molecolare",
+        "question": "Il riordinamento del gene ALK (es. fusione EML4-ALK) riscontrabile in una quota di adenocarcinomi polmonari non a piccole cellule (NSCLC) rende il tumore responsivo a quale classe di farmaci?",
+        "options": [
+            "A) Inibitori tirosin-chinasici specifici di ALK come Crizotinib o Alectinib",
+            "B) Ormonoterapia con inibitori dell'aromatasi",
+            "C) Chemioterapia con soli agenti alchilanti nitroso-ureici",
+            "D) Anticorpi monoclonali anti-VEGF-A"
+        ],
+        "correct": 0,
+        "explanation": "La fusione EML4-ALK produce un recettore chinasi iperattivo che guida la proliferazione neoplastica nel NSCLC (spesso in giovani non fumatori). L'uso di inibitori specifici dell'attività chinasica di ALK (Crizotinib, Alectinib) produce risposte cliniche drammatiche ed altamente selettive."
+    },
+    {
+        "id": 47,
+        "category": "Diagnostica Molecolare",
+        "question": "Cosa indica l'espressione 'Driver Mutation' (mutazione guida) in ambito oncologico?",
+        "options": [
+            "A) Una mutazione neutra accumulata casualmente durante le divisioni cellulari che non conferisce alcun vantaggio di crescita",
+            "B) Una mutazione in un gene chiave (oncogene o oncosoppressore) che conferisce direttamente alla cellula un vantaggio di sopravvivenza/proliferazione e sostiene la trasformazione neoplastica",
+            "C) Una mutazione germinale trasmessa esclusivamente per via paterna",
+            "D) Una modifica epigenetica transitoria indotta da ipossia locale"
+        ],
+        "correct": 1,
+        "explanation": "Le mutazioni DRIVER sono quelle direttamente responsabili della genesi e del mantenimento dell'aggressività neoplastica (es. mutazioni EGFR, BRAF V600E, KRAS). Si contrappongono alle mutazioni PASSENGER (passeggere), che sono eventi collaterali neutri causati dall'instabilità genomica."
+    },
+    {
+        "id": 48,
+        "category": "Diagnostica Molecolare",
+        "question": "La mutazione BRAF V600E, riscontrabile in oltre il 50% dei melanomi cutanei, determina la sostituzione dell'amminoacido Valina con Acido Glutammico al codone 600. Qual è la conseguenza funzionale di tale mutazione?",
+        "options": [
+            "A) Inattivazione completa della proteina BRAF e blocco della via MAP-chinasi",
+            "B) Iperattivazione costitutiva monomero-dipendente della chinasi BRAF, con continua stimolazione della cascata MEK-ERK, bersagliabile con Vemurafenib/Dabrafenib",
+            "C) Traslocazione della chinasi nel reticolo endoplasmatico",
+            "D) Sequestro della proteina RAS nell'involucro nucleare"
+        ],
+        "correct": 1,
+        "explanation": "La mutazione V600E simula la fosforilazione dell'anello di attivazione di BRAF, rendendo la chinasi monomerica iperattiva indipendentemente dal segnale di RAS upstream. Ciò attiva costitutivamente MEK ed ERK ed rende il tumore suscettibile agli inibitori selettivi di BRAF (Vemurafenib, Dabrafenib) in combinazione con inibitori di MEK."
+    },
+    {
+        "id": 49,
+        "category": "Diagnostica Molecolare",
+        "question": "L'instabilità dei microsatelliti elevata (MSI-High / dMMR) rappresenta un marcatore agnostico (valido per qualsiasi istotipo tumorale) approvato per l'impiego di quale terapia?",
+        "options": [
+            "A) Terapia ormonale sostitutiva",
+            "B) Immunoterapia con inibitori del checkpoint PD-1 (es. Pembrolizumab)",
+            "C) Radioterapia stereotassica corporea",
+            "D) Chemioterapia ad alte dosi con Fluorouracile da solo"
+        ],
+        "correct": 1,
+        "explanation": "I tumori dMMR / MSI-High accumulano migliaia di mutazioni somatiche e producono una grande quantità di neoantigeni immunogenici. Questo elevato carico mutazionale tumorale (TMB) attira un denso infiltrato linfocitario T, rendendo questi tumori straordinariamente sensibili all'immunoterapia con inibitori di PD-1, indipendentemente dall'organo d'origine (approvazione agnostica)."
+    },
+    {
+        question: "Qual è il ruolo del gene PTEN nella via di segnalazione di PI3K/Akt?",
+        options: [
+            "A) È una chinasi che fosforila direttamente Akt attivandola",
+            "B) È una fosfatasi oncosoppressoria che defosforila il PIP3 in PIP2, antagonizzando la via pro-sopravvivenza di PI3K/Akt; la sua perdita causa iperattivazione di Akt/mTOR",
+            "C) È una proteina adapter del recettore del TSH",
+            "D) È un fattore di trascrizione che induce l'espressione di BCL-2"
+        ],
+        correct: 1,
+        "explanation": "PTEN (Phosphatase and Tensin Homolog) è un fondamentale oncosoppressore dual-specificity lipid phosphatase. Defosforila il PIP3 (prodotto da PI3K) riconvertendolo in PIP2. La perdita di PTEN (frequente in tumori della prostata, endometrio e glioblastomi) causa l'accumulo persistente di PIP3 e l'attivazione costitutiva della via di sopravvivenza Akt/mTOR."
+    }
 ];
 
 
