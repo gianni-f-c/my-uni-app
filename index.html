@@ -1,1 +1,515 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esame a Quiz a Due Parti</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        .btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        .btn:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+        .options {
+            margin-top: 20px;
+        }
+        .option-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: #ecf0f1;
+            border: 2px solid #bdc3c7;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .option-btn:hover:not(:disabled) {
+            background: #e2e8f0;
+            border-color: #94a3b8;
+        }
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+        .feedback.correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .feedback.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .progress {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        .review-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            background-color: #fafafa;
+        }
+        .review-card.correct-card { border-left: 6px solid #2ecc71; }
+        .review-card.incorrect-card { border-left: 6px solid #e74c3c; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
 
+<div class="container">
+    <!-- SCHERMATA INIZIALE -->
+    <div id="start-screen">
+        <h1>Simulazione Esame</h1>
+        <p>L'esame si compone di 2 parti:</p>
+        <ul>
+            <li><strong>Parte 1:</strong> 5 domande generali. Richieste almeno 4 risposte esatte per passare.</li>
+            <li><strong>Parte 2:</strong> 30 domande tecniche divise in vari argomenti.</li>
+        </ul>
+        <button class="btn" onclick="startPart1()">Inizia Parte 1</button>
+    </div>
+
+    <!-- SCHERMATA QUIZ -->
+    <div id="quiz-screen" class="hidden">
+        <h2 id="part-title">Parte 1</h2>
+        <div class="progress" id="progress-text">Domanda 1 di 5</div>
+        <h3 id="question-text">Testo della domanda...</h3>
+        
+        <div class="options" id="options-container">
+            <!-- Pulsanti opzioni generati via JS -->
+        </div>
+
+        <div id="feedback-area" class="feedback hidden"></div>
+        
+        <button id="next-btn" class="btn hidden" onclick="nextQuestion()">Prossima Domanda</button>
+    </div>
+
+    <!-- SCHERMATA REVISIONE E RISULTATI -->
+    <div id="result-screen" class="hidden">
+        <h2 id="result-title">Risultato Finale</h2>
+        <p id="result-desc"></p>
+        <div id="review-container"></div>
+        <button class="btn" onclick="location.reload()">Riprova Esame</button>
+    </div>
+</div>
+
+<script>
+// BATCH DELLE DOMANDE (Puoi aggiungerne quante ne vuoi per ciascun batch)
+const batch0 = [ // Batch per la Parte 1 (minimo 5)
+   {
+       q: "30M trauma globo oculare sx per colpo tappo di champagne, edema + ecchimosi + parestesia lateronasale sx + diplpia",
+       options: [
+           "frattura zigomo sx",
+           "frattura etmoidale sx",
+           "frattura pavimento orbitario sx",
+           "edema tessuto periorbitario"
+       ],
+       answer: 2,
+       
+   }
+   {
+       q: "immagine carie",
+       options: [
+           "carie denti permanenti",
+           "carie denti decidui",
+           "erosione denti permanenti",
+           "erosione denti decidui"
+       ],
+       answer: 1,
+      
+   } 
+   {
+       q: "cosa aiuta a far diagnosi di linfonodo neoplastico",
+       options: [
+           "ipomobilità massa",
+           "mobilità massa",
+           "massa parenchimatosa",
+           "massa con cute ulcerata e arrossata"
+       ],
+       answer: 0,
+       
+    }
+  {
+       q: "pz ipertensione e ipercolesterolemia, otoscopia normale, vertigine e Romberg+, quali esami?",
+       options: [
+           "termico HIT",
+           "Profilo lipidico",
+           "TC",
+           "RM"
+       ],
+       answer: 0,
+       
+   }
+  {
+       q: "donna con trauma pregresso che dopo un mese presenta rinorrea limpida, che fare?",
+       options: [
+           "antibiotico sistemico",
+           "cortisone locale",
+           "cortisone sistemico",
+           "nessuna delle precedenti"
+       ],
+       answer: 0,
+      
+   }
+  {
+       q: "paziente affetto da Mieloma multiplo con infezione rinosinusite fungina acuta, terapia?",
+       options: [
+           "drenaggio chirurgico + terapia sistemica",
+           "antimicotico os",
+           "antimicotivo ev",
+           "antibiotico"
+       ],
+       answer: 0,
+       
+   }
+  {
+       q: "Carcinoma Bethesda TIR4 con mutazione BRAF",
+       options: [
+           "marcatore sensibile k papillare",
+           "impone svuotamento collo",
+           "BRAF non può essere presente con altre mutazioni",
+           "nessuna delle precedenti"
+       ],
+       answer: 0,
+      
+   }
+  {
+       q: "M vertigini, nistagmo orizzontale, terapia?",
+       options: [
+           "steroidi + labirintoplegici",
+           "manovre riposizionamento",
+           "gentamicina intratimpanica",
+           "nessuna delle precedenti"
+       ],
+       answer: 0,
+       
+   }
+  {
+       q: "F familiarità per eventi CV, ipoacusia bilaterale (neurosensoriale), grave a sx , a dx solo per suoni 4kHz, esami?",
+       options: [
+           "TC encefalo, profilo lipidico, coagulazione, sierologia virus",
+           "TC + RM encefalo, eco TSA",
+           "RM encefalo, profilo lipidico, coagulazione, sierologia virus",
+           "altro"
+       ],
+       answer: 1,
+      
+   }
+ {
+       q: "F diagnosi SLA con sintomi disfagia e soffocamento, 10aa fa tiroidectomia (tradioterapia), causa disfagia?",
+       options: [
+           "Radiot",
+           "tiroidectomia",
+           "reflusso gastroesofageo",
+           "SLA"
+       ],
+       answer: 3,
+      
+   }
+ {
+       q: "come si effettua l'esame per la disfagia, nel pz SLA?",
+       options: [
+           "cibo semiosolido",
+           "cibo liquido",
+           "prima semisolido poi liquido",
+           "prima liquido poi semisolido"
+       ],
+       answer: 2,
+       
+   }
+ {
+       q: "manovra per VPPB, canale semicircolare posteriore",
+       options: [
+           "Sermont",
+           "Barbecue",
+           "Epley",
+           "nessuna"
+       ],
+       answer: 2,
+      
+   }
+ {
+       q: "otite media con tumefazione e iperemia dela mastoide",
+       options: [
+           "otite media acuta",
+           "otite media acuta con mastoidite",
+           "otite cronica",
+           "nessuna"
+       ],
+       answer: 1,
+       
+   }
+ {
+       q: "fumatore da 15aa con sostanza gelatinosa corde vocali",
+       options: [
+           "k laringe",
+           "edema di Reinke",
+           "Nodulo",
+           "Papilloma"
+       ],
+       answer: 1,
+      
+   }
+ {
+       q: "pz con episodio vertiginoso acuto, avvenuto anche 5aa prima, con acufene monolaterale ed ipoacusia per toni gravi, dignosi?",
+       options: [
+           "neurite vestibolare",
+           "crisi acuta meniere",
+           "parossistica",
+           "SLA"
+       ],
+       answer: 1,
+       
+   }
+];
+
+const batch1 = [ // Batch 1 per Parte 2 (Servono 12 domande estratte)
+    { q: "B1_Q1: Quale linguaggio si usa per lo stile web?", options: ["HTML", "CSS", "Python", "C++"], answer: 1 },
+    { q: "B1_Q2: Cosa significa HTML?", options: ["HyperText Markup Language", "HighText Machine Language", "Hyperlink Text Mark", "Home Tool Markup"], answer: 0 },
+    { q: "B1_Q3: Quale tag si usa per un link?", options: ["<link>", "<a>", "<href>", "<script>"], answer: 1 },
+    { q: "B1_Q4: Come si seleziona un ID in CSS?", options: [".", "#", "*", "@"], answer: 1 },
+    { q: "B1_Q5: Qual è il tag per l'intestazione principale?", options: ["<h6>", "<head>", "<h1>", "<header>"], answer: 2 },
+    { q: "B1_Q6: Quale proprietà cambia il colore del testo?", options: ["text-color", "color", "fg-color", "font-color"], answer: 1 },
+    { q: "B1_Q7: Quale tag crea una lista non ordinata?", options: ["<ol>", "<li>", "<ul>", "<list>"], answer: 2 },
+    { q: "B1_Q8: Come si va a capo in HTML?", options: ["<break>", "<lb>", "<br>", "<p>"], answer: 2 },
+    { q: "B1_Q9: Quale attributo si usa per immagini?", options: ["url", "src", "link", "path"], answer: 1 },
+    { q: "B1_Q10: Come si commenta in HTML?", options: ["//", "/* */", "<!-- -->", "'"], answer: 2 },
+    { q: "B1_Q11: Quale tag definisce una tabella?", options: ["<table>", "<tab>", "<grid>", "<tr>"], answer: 0 },
+    { q: "B1_Q12: CSS è l'acronimo di...", options: ["Computer Style Sheets", "Cascading Style Sheets", "Creative Style System", "Colorful Style Sheets"], answer: 1 },
+    { q: "B1_Q13: Quale proprietà imposta il margine interno?", options: ["margin", "padding", "spacing", "border"], answer: 1 },
+    { q: "B1_Q14: Quale tag si usa per includere JS?", options: ["<js>", "<script>", "<javascript>", "<code caps>"], answer: 1 }
+];
+
+const batch2 = [ // Batch 2 per Parte 2 (Servono 6 domande estratte)
+    { q: "B2_Q1: Come si dichiara una variabile JS moderna?", options: ["var", "let", "make", "set"], answer: 1 },
+    { q: "B2_Q2: Qual è il risultato di '2' + 2 in JS?", options: ["4", "'22'", "NaN", "Error"], answer: 1 },
+    { q: "B2_Q3: Quale metodo mostra un messaggio di avviso?", options: ["msg()", "alert()", "popup()", "print()"], answer: 1 },
+    { q: "B2_Q4: Come si scrive un array in JS?", options: ["(1,2)", "[1,2]", "{1,2}", "<1,2>"], answer: 1 },
+    { q: "B2_Q5: Quale operatore controlla tipo e valore?", options: ["==", "=", "===", "!="], answer: 2 },
+    { q: "B2_Q6: Come si crea una funzione in JS?", options: ["function f()", "def f()", "void f()", "func f()"], answer: 0 },
+    { q: "B2_Q7: Quale oggetto gestisce le date in JS?", options: ["Time", "Clock", "Date", "Calendar"], answer: 2 }
+];
+
+const batch3 = [ // Batch 3 per Parte 2 (Servono 6 domande estratte)
+    { q: "B3_Q1: Cosa significa SQL?", options: ["Structured Query Language", "Simple Quote Language", "System Quality Logic", "Server Query List"], answer: 0 },
+    { q: "B3_Q2: Quale comando legge i dati in SQL?", options: ["GET", "READ", "SELECT", "OPEN"], answer: 2 },
+    { q: "B3_Q3: Quale comando inserisce nuovi dati?", options: ["ADD", "INSERT INTO", "UPDATE", "CREATE"], answer: 1 },
+    { q: "B3_Q4: Come si eliminano dati in SQL?", options: ["REMOVE", "DELETE", "DROP", "ERASE"], answer: 1 },
+    { q: "B3_Q5: Quale clausola filtra i risultati?", options: ["WHERE", "FILTER", "SEARCH", "HAVING"], answer: 0 },
+    { q: "B3_Q6: Quale comando modifica dati esistenti?", options: ["MODIFY", "CHANGE", "UPDATE", "SAVE"], answer: 2 },
+    { q: "B3_Q7: Cosa identifica univocamente una riga?", options: ["Foreign Key", "Primary Key", "Unique Code", "Index"], answer: 1 }
+];
+
+const batch4 = [ // Batch 4 per Parte 2 (Servono 6 domande estratte)
+    { q: "B4_Q1: Cosa significa HTTP?", options: ["HyperText Transfer Protocol", "High Transfer Text Process", "Hyper Transfer Text Program", "Home Text Test Protocol"], answer: 0 },
+    { q: "B4_Q2: Quale porta usa standard la connessione HTTPS?", options: ["80", "21", "443", "8080"], answer: 2 },
+    { q: "B4_Q3: Quale codice indica 'Not Found'?", options: ["200", "500", "403", "404"], answer: 3 },
+    { q: "B4_Q4: Quale metodo HTTP si usa per inviare dati riservati?", options: ["GET", "POST", "FETCH", "SEND"], answer: 1 },
+    { q: "B4_Q5: Cos'è un indirizzo IP?", options: ["Un protocollo internet", "Un identificativo numerico di rete", "Un linguaggio di programmazione", "Un browser"], answer: 1 },
+    { q: "B4_Q6: Quale formato è ampiamente usato per scambiare dati sul web?", options: ["JSON", "EXE", "DOCX", "PNG"], answer: 0 },
+    { q: "B4_Q7: Cosa fa un server DNS?", options: ["Crea siti web", "Traduce nomi di dominio in IP", "Protegge dai virus", "Aumenta la RAM"], answer: 1 }
+];
+
+// STATO DEL QUIZ
+let currentPart = 1;
+let currentQuestions = [];
+let currentIndex = 0;
+let part1Score = 0;
+let part2History = []; // Per memorizzare i dettagli per la revisione della Parte 2
+
+// Funzione di utilità per estrarre N elementi casuali da un array (senza ripetizioni)
+function getRandomQuestions(batch, count) {
+    let shuffled = [...batch].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+}
+
+// AVVIO PARTE 1
+function startPart1() {
+    currentPart = 1;
+    currentIndex = 0;
+    part1Score = 0;
+    currentQuestions = getRandomQuestions(batch0, 5);
+    
+    document.getElementById("start-screen").classList.add("hidden");
+    document.getElementById("quiz-screen").classList.remove("hidden");
+    document.getElementById("part-title").innerText = "Parte 1 - Selezione";
+    
+    showQuestion();
+}
+
+// AVVIO PARTE 2
+function startPart2() {
+    currentPart = 2;
+    currentIndex = 0;
+    part2History = [];
+    
+    // Composizione 30 domande: 12 da B1, 6 da B2, 6 da B3, 6 da B4
+    const q1 = getRandomQuestions(batch1, 12);
+    const q2 = getRandomQuestions(batch2, 6);
+    const q3 = getRandomQuestions(batch3, 6);
+    const q4 = getRandomQuestions(batch4, 6);
+    
+    // Unione e mescolamento di tutte le domande estratte
+    currentQuestions = [...q1, ...q2, ...q3, ...q4].sort(() => 0.5 - Math.random());
+    
+    document.getElementById("part-title").innerText = "Parte 2 - Esame Finale";
+    showQuestion();
+}
+
+// MOSTRA LA DOMANDA CORRENTE
+function showQuestion() {
+    const q = currentQuestions[currentIndex];
+    
+    // Reset UI
+    document.getElementById("progress-text").innerText = `Domanda ${currentIndex + 1} di ${currentQuestions.length}`;
+    document.getElementById("question-text").innerText = q.q;
+    document.getElementById("feedback-area").className = "feedback hidden";
+    document.getElementById("next-btn").classList.add("hidden");
+    
+    const optionsContainer = document.getElementById("options-container");
+    optionsContainer.innerHTML = "";
+
+    q.options.forEach((opt, index) => {
+        const btn = document.createElement("button");
+        btn.className = "option-btn";
+        btn.innerText = opt;
+        btn.onclick = () => checkAnswer(index);
+        optionsContainer.appendChild(btn);
+    });
+}
+
+// VERIFICA RISPOSTA
+function checkAnswer(selectedIndex) {
+    const q = currentQuestions[currentIndex];
+    const isCorrect = selectedIndex === q.answer;
+    
+    // Disabilita tutti i pulsanti delle opzioni
+    const buttons = document.querySelectorAll(".option-btn");
+    buttons.forEach(btn => btn.disabled = true);
+
+    // Evidenzia scelta grafica
+    buttons[selectedIndex].style.borderColor = isCorrect ? "#2ecc71" : "#e74c3c";
+
+    // Mostra Feedback Immediato
+    const feedbackArea = document.getElementById("feedback-area");
+    feedbackArea.classList.remove("hidden");
+    
+    if (isCorrect) {
+        feedbackArea.className = "feedback correct";
+        feedbackArea.innerText = "Risposta Corretta!";
+        if (currentPart === 1) part1Score++;
+    } else {
+        feedbackArea.className = "feedback incorrect";
+        feedbackArea.innerText = `Risposta Sbagliata! La risposta corretta era: "${q.options[q.answer]}"`;
+    }
+
+    // Salva lo storico se siamo nella Parte 2
+    if (currentPart === 2) {
+        part2History.push({
+            question: q.q,
+            options: q.options,
+            userAnswer: selectedIndex,
+            correctAnswer: q.answer,
+            isCorrect: isCorrect
+        });
+    }
+
+    document.getElementById("next-btn").classList.remove("hidden");
+}
+
+// AVANZA ALLA DOMANDA SUCCESSIVA O CONCLUDI LA PARTE
+function nextQuestion() {
+    currentIndex++;
+    if (currentIndex < currentQuestions.length) {
+        showQuestion();
+    } else {
+        if (currentPart === 1) {
+            evaluatePart1();
+        } else {
+            showFinalReview();
+        }
+    }
+}
+
+// VALUTAZIONE PARTE 1
+function evaluatePart1() {
+    if (part1Score >= 4) {
+        alert(`Complimenti! Hai superato la Parte 1 con ${part1Score}/5 risposte esatte. Ora verrai reindirizzato alla Parte 2.`);
+        startPart2();
+    } else {
+        document.getElementById("quiz-screen").classList.add("hidden");
+        document.getElementById("result-screen").classList.remove("hidden");
+        document.getElementById("result-title").innerText = "Esame Non Superato";
+        document.getElementById("result-desc").innerText = `Hai risposto correttamente a ${part1Score} domande su 5. Erano necessarie almeno 4 risposte esatte per accedere alla Parte 2.`;
+    }
+}
+
+// MOSTRA REVISIONE FINALE (PARTE 2)
+function showFinalReview() {
+    document.getElementById("quiz-screen").classList.add("hidden");
+    document.getElementById("result-screen").classList.remove("hidden");
+    
+    const correctCount = part2History.filter(h => h.isCorrect).length;
+    document.getElementById("result-title").innerText = "Esame Completato!";
+    document.getElementById("result-desc").innerText = `Punteggio Finale Parte 2: ${correctCount} / ${part2History.length} corrette. Di seguito trovi la revisione completa delle tue risposte.`;
+
+    const reviewContainer = document.getElementById("review-container");
+    reviewContainer.innerHTML = "";
+
+    part2History.forEach((item, idx) => {
+        const card = document.createElement("div");
+        card.className = `review-card ${item.isCorrect ? 'correct-card' : 'incorrect-card'}`;
+        
+        card.innerHTML = `
+            <strong>Domanda ${idx + 1}: ${item.question}</strong><br>
+            <span style="color: ${item.isCorrect ? 'green' : 'red'};">
+                Svolta: ${item.options[item.userAnswer]} ${item.isCorrect ? '✓' : '✗'}
+            </span><br>
+            ${!item.isCorrect ? `<span style="color: green;">Risposta Corretta: ${item.options[item.correctAnswer]}</span>` : ''}
+        `;
+        reviewContainer.appendChild(card);
+    });
+}
+</script>
+
+</body>
+</html>
