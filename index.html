@@ -2743,13 +2743,552 @@ const batch2 = [ // Batch 2 per Parte 2 (Servono 6 domande estratte)
 ];
 
 const batch3 = [ // Batch 3 per Parte 2 (Servono 6 domande estratte)
-    { q: "B3_Q1: Cosa significa SQL?", options: ["Structured Query Language", "Simple Quote Language", "System Quality Logic", "Server Query List"], answer: 0 },
-    { q: "B3_Q2: Quale comando legge i dati in SQL?", options: ["GET", "READ", "SELECT", "OPEN"], answer: 2 },
-    { q: "B3_Q3: Quale comando inserisce nuovi dati?", options: ["ADD", "INSERT INTO", "UPDATE", "CREATE"], answer: 1 },
-    { q: "B3_Q4: Come si eliminano dati in SQL?", options: ["REMOVE", "DELETE", "DROP", "ERASE"], answer: 1 },
-    { q: "B3_Q5: Quale clausola filtra i risultati?", options: ["WHERE", "FILTER", "SEARCH", "HAVING"], answer: 0 },
-    { q: "B3_Q6: Quale comando modifica dati esistenti?", options: ["MODIFY", "CHANGE", "UPDATE", "SAVE"], answer: 2 },
-    { q: "B3_Q7: Cosa identifica univocamente una riga?", options: ["Foreign Key", "Primary Key", "Unique Code", "Index"], answer: 1 }
+     {
+       q: "mobilità fisiologica elementi dentali è data da ",
+       options: [
+           "cemento radicolare",
+           "legamento parodontale",
+           "osso alveolare ",
+           "tutte" 
+       ],
+       answer: 1,
+      
+   },
+      {
+       q: "smalto eroso può essere manifestazione di",
+       options: [
+           "carie",
+           "diabete",
+           "celichia",
+           "disturbi comportamento alimentare" 
+       ],
+       answer: 3,
+      
+   },
+      {
+       q: "rischio carie per donna in gravidanza",
+       options: [
+           "diminuisce",
+           "aumenta",
+           "uguale",
+           "n" 
+       ],
+       answer: 1,
+      
+   },
+      {
+       q: "otturazione molari non cariati",
+       options: [
+           "sempre",
+           "mai",
+           "se tendenza carie",
+           "n" 
+       ],
+       answer: 2,
+      
+   },
+      {
+       q: "periodo di vita con maggiore probabilità lesione dei primi molari?",
+       options: [
+           "6-8aa",
+           "adolescenza",
+           "durante trattamento odontoiatrico",
+           "se non si assume fluoroterapia" 
+       ],
+       answer: 0,
+      
+   },
+      {
+       q: "infezione che dalle carie si estende alla polpa",
+       options: [
+           "gengivite",
+           "parodontite",
+           "pulpite",
+           "radicolite" 
+       ],
+       answer: 2,
+      
+   },
+      {
+       q: "maggior incidenza carie solchi primi molari",
+       options: [
+           "fase di eruzione",
+           "dente non ancora occluso",
+           "dente in fase di occluse",
+           "n" 
+       ],
+       answer: 0,
+      
+   },
+      {
+       q: "zuccheri che aumentano incidenza carie",
+       options: [
+           "glucosio",
+           "fruttosio",
+           "saccarosio",
+           "tutte" 
+       ],
+       answer: 3,
+      
+   },
+      {
+       q: "effetti positivi del fluoro",
+       options: [
+           "aumento mineralizzazione",
+           "prevenzione demineralizzazione",
+           "entrambe",
+           "nessuna" 
+       ],
+       answer: 2,
+      
+   },
+      {
+       q: "pulpite è",
+       options: [
+           "complicanza infettiva infiammatoria",
+           "può essere settica o sterile",
+           "reversibile o irreversibile",
+           "tutte" 
+       ],
+       answer: 3,
+      
+   },
+      {
+       q: "test di sensibilità",
+       options: [
+           "verificano la presenza di polpa in grado di recepire stimoli",
+           "sono dolorosi e meno utili di radiografie",
+           "eseguiti sotto diga",
+           "n" 
+       ],
+       answer: 0,
+      
+   },
+      {
+       q: "dolore pulpite",
+       options: [
+           "diffuso, notturno, farmaco resistente",
+           "localizzato",
+           "non sintomatico",
+           "nessuna" 
+       ],
+       answer: 0,
+
+   },
+      {
+       q: "dolore parodontite apicale cronica",
+       options: [
+           "spesso asintomatica",
+           "diffuso notturno resistente ai farmaci",
+           "localizzato",
+           "nessuna" 
+       ],
+       answer: 0,
+      
+   },
+      {
+       q: "Regolamenti ministeriali prevenzione carie",
+       options: [
+           "raccomanda forza A terapia topica",
+           "raccomanda forza A terapia sistemica",
+           "raccomanda forza A terapia in gravidanza",
+           "nessuna" 
+       ],
+       answer: 0,
+      
+   },
+      {
+       q: "quando consigliato dentifricio",
+       options: [
+           "dopo i 6aa",
+           "dopo i 3aa",
+           "appena compare il dente ",
+           "nessuna" 
+       ],
+       answer: 2,
+      
+   },
+      {
+       q: "maggiore incidenza carie dei primi molari",
+       options: [
+           "adolescenza",
+           "6-8aa",
+           "preadolescenza",
+           "in scarsa fluoroprofilassi" 
+       ],
+       answer: 1,
+      
+   },
+      {
+       q: "disordini potenzialmente maligni",
+       options: [
+           "eritroplachia e leucoplachia",
+           "condizioni precancerose",
+           "condizioni e lesioni precancerose",
+           "nessuna" 
+       ],
+       answer: 2,
+      
+   },
+      {
+       q: "Il pemfigoide benigno delle membrane mucose colpisce principalmente",
+       options: [
+           "cute padiglione auricolare e meato acustico esterno",
+           "la mucosa della bocca, la congiuntiva, i genitali",
+           "faringe esofago colon e retto",
+           "" 
+       ],
+       answer: 1,
+      
+   },
+      {
+       q: "stomatite da Herpes Zoster insorge in pz con",
+       options: [
+           "passato reumatismo articolare acuto",
+           "passato morbillo",
+           "passata varicella",
+           "passata rosolia" 
+       ],
+       answer: 2,
+      
+   },
+      {
+       q: "pemfigo - malattia autoimm caratterizzata dalla presenza di ac",
+       options: [
+           "anti memb basale",
+           "anti desmosomi intraepiteliali",
+           "anti cheratina",
+           "anti endotelio" 
+       ],
+       answer: 1,
+      
+   },
+      {
+       q: "diagnosi strumentale pemfigo",
+       options: [
+           "patch test",
+           "intradermoreazione alla tubercolina",
+           "ricerca di ac anti frazione del complemento ",
+           "immuno fluorescenza" 
+       ],
+       answer: 3,
+      
+   },
+      {
+       q: "anticorpi pemfigoide benigno delle membrane mucose",
+       options: [
+           "anti memb basale",
+           "anti desmosomi intraepiteliali",
+           "anti cheratina",
+           "anti endotelio" 
+       ],
+       answer: 0,
+      
+   },
+      {
+       q: "il pemfigoide benigno delle membrane mucose ",
+       options: [
+           "snd paraneoplastica",
+           "dovuto ad allergia alla polvere",
+           "dovuto ad allergia pelo di gatto",
+           "malattia infettiva" 
+       ],
+       answer: 0,
+      
+   },
+      {
+       q: "stomatite sottoprotesica",
+       options: [
+           "sostenuta da miceti",
+           "malattia allergica",
+           "tossicosi endogena",
+           "tossicosi esogena" 
+       ],
+       answer: 0,
+      
+   },
+      {
+       q: "crollo difese imm alla base dell'insorgenza di",
+       options: [
+           "stomatite ulcero necrotic",
+           "leucoplachia omogenea",
+           "leucoplachia disomogenea",
+           "aftosi cronica ricorrente" 
+       ],
+       answer: 0,
+      
+   },
+      {
+       q: "terapia stomatite da candida albicans",
+       options: [
+           "antibiotici",
+           "citostatici",
+           "antimicotici",
+           "cortisonici" 
+       ],
+       answer: 2,
+      
+   },
+      {
+       q: "realizzazione associazioni Fuso-Spillari",
+       options: [
+           "per allergie ai farmaci",
+           "per immuno deficienze",
+           "per intolleranze alimentari",
+           "per reaz allergiche ad otturazioni in amalgama d'argento" 
+       ],
+       answer: 3,
+      
+   },
+      {
+       q: "FdR disordini potenzialmente maligni",
+       options: [
+           "Alcool e tabacco",
+           "HPV",
+           "Dieta e stato socioeconomico",
+           "Animali" 
+       ],
+       answer: 0,
+      
+   },
+      {
+       q: "quando effettuo esame bioptico",
+       options: [
+           "lesioni clinicamente evidenti",
+           "dopo follow up",
+           "solo perlesioni pigmentate al blu di toluidina",
+           "lesioni che non migliorano / guariscono in 14gg circa " 
+       ],
+       answer: 3,
+      
+   },
+      {
+       q: "Cheilite Attinica",
+       options: [
+           "localizza alla base della lingua",
+           "Forma esofitica",
+           "> donne",
+           "correlata ad esposizione al sole prolungata" 
+       ],
+       answer: 3,
+      
+   },
+      {
+       q: "I disordini potenzialmente maligni",
+       options: [
+           "leucoplachia e eritroplachia",
+           "solo condizioni pre-k",
+           "hanno sempre sintomi sistemici",
+           "lesioni e condizioni pre-k" 
+       ],
+       answer: 3,
+      
+   },
+      {
+       q: "Lichen Planus Orale",
+       options: [
+           "dermatite altamente contagiosa",
+           "manifestazioni asimmetriche",
+           "> uomini",
+           "maggiori rischi se in sede linguale" 
+       ],
+       answer: 3,
+      
+   },
+      {
+       q: "terapia DPM",
+       options: [
+           "escissioni chirurgiche",
+           "terapia fotodinamica ",
+           "inieizione intralesionale di corticosteroidi",
+           "trattamento non conserv dopo 3mm di trattamento conserv" 
+       ],
+       answer: 3,
+      
+   },
+      {
+       q: "k in situ",
+       options: [
+           "rispetto confine memb basale",
+           "alterazione Ag superficie",
+           "Mut p53",
+           "Variazioni rapporti nucleo citoplasma" 
+       ],
+       answer: 0,
+      
+   },
+      {
+       q: "il DPM ha maggiore rischio malignità se c'è",
+       options: [
+           "Lichen planus",
+           "LES",
+           "eritroplachia",
+           "leucoplachia" 
+       ],
+       answer: 2,
+      
+   },
+      {
+       q: "sintomi parodontite cronica apicale",
+       options: [
+           "spesso asintomatica",
+           "dolore generalizzato farmaco resistente",
+           "dolore urente intermittente localizzato",
+           "n" 
+       ],
+       answer: 0,
+      
+   },
+      {
+       q: "terapia malattie parodontali",
+       options: [
+           "rimozioni placche batteriche",
+           "rimozioni gengiva",
+           "n",
+           "n" 
+       ],
+       answer: 0,
+      
+   },
+      {
+       q: "diagnosi parodontite in soggetto in 3a decade",
+       options: [
+           "lesioni a tutti gli elementi dentali",
+           "localizza lesioni ai primi denti che erompono",
+           "premolari e molari sup",
+           "lesioni a lenta progressione" 
+       ],
+       answer: 1,
+      
+   },
+      {
+       q: "tessuti parodontali",
+       options: [
+           "vascolare e nervoso nella polpa",
+           "duri dell'elemento dentario",
+           "di sostegno dell'elemento dentario",
+           "tutte" 
+       ],
+       answer: 2,
+      
+   },
+      {
+       q: "gengiva",
+       options: [
+           "parte libera + aderente",
+           "parte molle + dura",
+           "parte cheratinizzata e non ",
+           "parte alveolare e extralveolare" 
+       ],
+       answer: 0,
+      
+   },
+      {
+       q: "principali malattie parodontali",
+       options: [
+           "alveolite e mucosite",
+           "carie e pulpite",
+           "granuloma e ascesso",
+           "gengivite e parodontite" 
+       ],
+       answer: 3,
+      
+   },
+      {
+       q: "fattore eziologico parodontiti",
+       options: [
+           "pellicola acquisita",
+           "biofilm",
+           "tartaro",
+           "streptococcus mutans" 
+       ],
+       answer: 1,
+      
+   },
+      {
+       q: "manifestazione parodontite",
+       options: [
+           "tasche gengive, sanguinamento e perdita di attacco",
+           "recessione gengivale",
+           "intrusione elementi dentali",
+           "carie" 
+       ],
+       answer: 0,
+      
+   },
+      {
+       q: "parodontite aggressiva localizzata viene diagnosticata",
+       options: [
+           "tarda età per progressione lenta",
+           "giovane età, primi denti che erompono",
+           "età pre puberale",
+           "feto" 
+       ],
+       answer: 1,
+      
+   },
+      {
+       q: "fattori predisponenti parodontite",
+       options: [
+           "protesi",
+           "infezioni",
+           "alimentari - farmacologici",
+           "genetici - acquisiti" 
+       ],
+       answer: 3,
+      
+   },
+      {
+       q: "terapia parodontite",
+       options: [
+           "estrazioni denti compromessi",
+           "rimozione biofilm",
+           "aumento tessuto gengivale",
+           "rigenerazione tessuto perso" 
+       ],
+       answer: 1,
+      
+   },  {
+       q: "parodontite associata a ",
+       options: [
+           "disturbi neurologici",
+           "deficit cognitivo progressivo",
+           "patologie CV",
+           "nessuna" 
+       ],
+       answer: 2,
+      
+   },  {
+       q: "disordini craniomandibolari a carico di",
+       options: [
+           "atm",
+           "muscoli masticatori",
+           "atm e muscoli",
+           "occlusioni" 
+       ],
+       answer: 2,
+      
+   },  {
+       q: "sintomi DCM",
+       options: [
+           "rumori articolari",
+           "dolore facciale",
+           "limitazioni movimenti atm",
+           "tutte" 
+       ],
+       answer: 3,
+      
+   },  {
+       q: "",
+       options: [
+           "",
+           "",
+           "",
+           "" 
+       ],
+       answer: ,
+      
+   },
 ];
 
 const batch4 = [ // Batch 4 per Parte 2 (Servono 6 domande estratte)
@@ -2796,10 +3335,10 @@ function startPart2() {
     part2History = [];
     
     // Composizione 30 domande: 12 da B1, 6 da B2, 6 da B3, 6 da B4
-    const q1 = getRandomQuestions(batch1, 12);
-    const q2 = getRandomQuestions(batch2, 6);
-    const q3 = getRandomQuestions(batch3, 6);
-    const q4 = getRandomQuestions(batch4, 6);
+    const q1 = getRandomQuestions(batch1, 24);
+    const q2 = getRandomQuestions(batch2, 12);
+    const q3 = getRandomQuestions(batch3, 12);
+    const q4 = getRandomQuestions(batch4, 12);
     
     // Unione e mescolamento di tutte le domande estratte
     currentQuestions = [...q1, ...q2, ...q3, ...q4].sort(() => 0.5 - Math.random());
