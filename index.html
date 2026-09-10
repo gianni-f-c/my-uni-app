@@ -1536,6 +1536,7 @@ const batch1 = [ // Batch 1 per Parte 2 (Servono 12 domande estratte)
        answer: 1,
       
    },
+    
 ];
 
 const batch2 = [ // Batch 2 per Parte 2 (Servono 6 domande estratte)
@@ -1586,7 +1587,7 @@ function startPart1() {
     currentPart = 1;
     currentIndex = 0;
     part1Score = 0;
-    currentQuestions = getRandomQuestions(batch0, 5);
+    currentQuestions = getRandomQuestions(batch0, 20);
     
     document.getElementById("start-screen").classList.add("hidden");
     document.getElementById("quiz-screen").classList.remove("hidden");
@@ -1691,8 +1692,8 @@ function nextQuestion() {
 
 // VALUTAZIONE PARTE 1
 function evaluatePart1() {
-    if (part1Score >= 4) {
-        alert(`Complimenti! Hai superato la Parte 1 con ${part1Score}/5 risposte esatte. Ora verrai reindirizzato alla Parte 2.`);
+    if (part1Score >= 7) {
+        alert(`Complimenti! Hai superato la Parte 1 con ${part1Score}/10 risposte esatte. Ora verrai reindirizzato alla Parte 2.`);
         startPart2();
     } else {
         document.getElementById("quiz-screen").classList.add("hidden");
