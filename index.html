@@ -3638,10 +3638,10 @@ function startPart2() {
     part2History = [];
     
     // Composizione 30 domande: 12 da B1, 6 da B2, 6 da B3, 6 da B4
-    const q1 = getRandomQuestions(batch1, 24);
-    const q2 = getRandomQuestions(batch2, 12);
-    const q3 = getRandomQuestions(batch3, 12);
-    const q4 = getRandomQuestions(batch4, 12);
+    const q1 = getRandomQuestions(batch1, 12);
+    const q2 = getRandomQuestions(batch2, 6);
+    const q3 = getRandomQuestions(batch3, 6);
+    const q4 = getRandomQuestions(batch4, 6);
     
     // Unione e mescolamento di tutte le domande estratte
     currentQuestions = [...q1, ...q2, ...q3, ...q4].sort(() => 0.5 - Math.random());
